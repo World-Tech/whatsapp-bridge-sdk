@@ -33,6 +33,7 @@ git commit -m "$release_note"
 
 # Sets the new remote
 git_remote=`git remote`
+echo $GIT_TOKEN
 if [ "$git_remote" = "" ]; then # git remote not defined
 
     if [ "$GIT_TOKEN" = "" ]; then
