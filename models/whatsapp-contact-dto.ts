@@ -28,23 +28,23 @@ export interface WhatsappContactDto {
     id: number;
 
     /**
-     * @type {string}
+     * @type {number}
      * @memberof WhatsappContactDto
-     * @example 23
+     * @example 5493814123123
      */
-    phoneNumber: string;
+    phoneNumber: number;
 
     /**
      * @type {string}
      * @memberof WhatsappContactDto
-     * @example 23
+     * @example Jhon Doe
      */
     pushName: string;
 
     /**
-     * @type {Array<string>}
+     * @type {string}
      * @memberof WhatsappContactDto
-     * @example 23
+     * @example https://pps.whatsapp.net/v/t61.24694-24/457509556_2356010488071107_6417764276476104496_n.jpg?ccb=11-4&oh=01_Q5AaIIFucBhJzpQiltPNuSAmyUkHd0uxhyBTWGxrhxSmEaU2&oe=677BCB9A&_nc_sid=5e03e0&_nc_cat=101
      */
-    profilePicUrl: Array<string>;
+    profilePicUrl?: string | null;
 }
