@@ -13,4 +13,5 @@ export * from './apis/auth-api';
 export * from './apis/contacts-api';
 export * from './apis/default-api';
 export * from './apis/healthchecks-api';
+export * from './apis/messages-api';
 export * from './apis/users-api';

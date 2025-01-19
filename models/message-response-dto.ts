@@ -11,10 +11,19 @@
  * https://github.com/swagger-api/swagger-codegen.git
  * Do not edit the class manually.
  */
-export * from './apis/auth-api';
-export * from './apis/contacts-api';
-export * from './apis/default-api';
-export * from './apis/healthchecks-api';
-export * from './apis/messages-api';
-export * from './apis/users-api';
 
+import { WhatsappMessageDto } from './whatsapp-message-dto';
+ /**
+ * 
+ *
+ * @export
+ * @interface MessageResponseDto
+ */
+export interface MessageResponseDto {
+
+    /**
+     * @type {Array<WhatsappMessageDto>}
+     * @memberof MessageResponseDto
+     */
+    data: Array<WhatsappMessageDto>;
+}

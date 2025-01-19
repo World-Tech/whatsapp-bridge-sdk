@@ -27,4 +27,5 @@ __exportStar(require("./apis/auth-api"), exports);
 __exportStar(require("./apis/contacts-api"), exports);
 __exportStar(require("./apis/default-api"), exports);
 __exportStar(require("./apis/healthchecks-api"), exports);
+__exportStar(require("./apis/messages-api"), exports);
 __exportStar(require("./apis/users-api"), exports);
