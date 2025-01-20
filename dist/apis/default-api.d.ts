@@ -23,12 +23,6 @@ export declare const DefaultApiAxiosParamCreator: (configuration?: Configuration
      * @throws {RequiredError}
      */
     appControllerGetHello: (options?: AxiosRequestConfig) => Promise<RequestArgs>;
-    /**
-     *
-     * @param {*} [options] Override http request option.
-     * @throws {RequiredError}
-     */
-    getChats: (options?: AxiosRequestConfig) => Promise<RequestArgs>;
 };
 /**
  * DefaultApi - functional programming interface
@@ -41,12 +35,6 @@ export declare const DefaultApiFp: (configuration?: Configuration) => {
      * @throws {RequiredError}
      */
     appControllerGetHello(options?: AxiosRequestConfig): Promise<(axios?: AxiosInstance, basePath?: string) => Promise<AxiosResponse<void>>>;
-    /**
-     *
-     * @param {*} [options] Override http request option.
-     * @throws {RequiredError}
-     */
-    getChats(options?: AxiosRequestConfig): Promise<(axios?: AxiosInstance, basePath?: string) => Promise<AxiosResponse<void>>>;
 };
 /**
  * DefaultApi - factory interface
@@ -59,12 +47,6 @@ export declare const DefaultApiFactory: (configuration?: Configuration, basePath
      * @throws {RequiredError}
      */
     appControllerGetHello(options?: AxiosRequestConfig): Promise<AxiosResponse<void>>;
-    /**
-     *
-     * @param {*} [options] Override http request option.
-     * @throws {RequiredError}
-     */
-    getChats(options?: AxiosRequestConfig): Promise<AxiosResponse<void>>;
 };
 /**
  * DefaultApi - object-oriented interface
@@ -80,11 +62,4 @@ export declare class DefaultApi extends BaseAPI {
      * @memberof DefaultApi
      */
     appControllerGetHello(options?: AxiosRequestConfig): Promise<AxiosResponse<void>>;
-    /**
-     *
-     * @param {*} [options] Override http request option.
-     * @throws {RequiredError}
-     * @memberof DefaultApi
-     */
-    getChats(options?: AxiosRequestConfig): Promise<AxiosResponse<void>>;
 }
