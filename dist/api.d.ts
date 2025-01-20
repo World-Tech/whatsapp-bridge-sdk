@@ -10,6 +10,7 @@
  * Do not edit the class manually.
  */
 export * from './apis/auth-api';
+export * from './apis/chats-api';
 export * from './apis/contacts-api';
 export * from './apis/default-api';
 export * from './apis/healthchecks-api';

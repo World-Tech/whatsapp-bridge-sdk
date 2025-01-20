@@ -31,7 +31,7 @@ export interface WhatsappMessageDto {
     /**
      * @type {string}
      * @memberof WhatsappMessageDto
-     * @example cm5o4kbjf001o8gppboeyg0x1o
+     * @example cm5o4kbjf001o8gppboeyg0xo
      */
     externalMessageId: string;
 
