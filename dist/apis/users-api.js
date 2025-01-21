@@ -16,10 +16,12 @@ var __extends = (this && this.__extends) || (function () {
     var extendStatics = function (d, b) {
         extendStatics = Object.setPrototypeOf ||
             ({ __proto__: [] } instanceof Array && function (d, b) { d.__proto__ = b; }) ||
-            function (d, b) { for (var p in b) if (b.hasOwnProperty(p)) d[p] = b[p]; };
+            function (d, b) { for (var p in b) if (Object.prototype.hasOwnProperty.call(b, p)) d[p] = b[p]; };
         return extendStatics(d, b);
     };
     return function (d, b) {
+        if (typeof b !== "function" && b !== null)
+            throw new TypeError("Class extends value " + String(b) + " is not a constructor or null");
         extendStatics(d, b);
         function __() { this.constructor = d; }
         d.prototype = b === null ? Object.create(b) : (__.prototype = b.prototype, new __());
@@ -46,12 +48,12 @@ var __awaiter = (this && this.__awaiter) || function (thisArg, _arguments, P, ge
     });
 };
 var __generator = (this && this.__generator) || function (thisArg, body) {
-    var _ = { label: 0, sent: function() { if (t[0] & 1) throw t[1]; return t[1]; }, trys: [], ops: [] }, f, y, t, g;
-    return g = { next: verb(0), "throw": verb(1), "return": verb(2) }, typeof Symbol === "function" && (g[Symbol.iterator] = function() { return this; }), g;
+    var _ = { label: 0, sent: function() { if (t[0] & 1) throw t[1]; return t[1]; }, trys: [], ops: [] }, f, y, t, g = Object.create((typeof Iterator === "function" ? Iterator : Object).prototype);
+    return g.next = verb(0), g["throw"] = verb(1), g["return"] = verb(2), typeof Symbol === "function" && (g[Symbol.iterator] = function() { return this; }), g;
     function verb(n) { return function (v) { return step([n, v]); }; }
     function step(op) {
         if (f) throw new TypeError("Generator is already executing.");
-        while (_) try {
+        while (g && (g = 0, op[0] && (_ = 0)), _) try {
             if (f = 1, y && (t = op[0] & 2 ? y["return"] : op[0] ? y["throw"] || ((t = y["return"]) && t.call(y), 0) : y.next) && !(t = t.call(y, op[1])).done) return t;
             if (y = 0, t) op = [op[0] & 2, t.value];
             switch (op[0]) {
@@ -72,6 +74,15 @@ var __generator = (this && this.__generator) || function (thisArg, body) {
         if (op[0] & 5) throw op[1]; return { value: op[0] ? op[1] : void 0, done: true };
     }
 };
+var __spreadArray = (this && this.__spreadArray) || function (to, from, pack) {
+    if (pack || arguments.length === 2) for (var i = 0, l = from.length, ar; i < l; i++) {
+        if (ar || !(i in from)) {
+            if (!ar) ar = Array.prototype.slice.call(from, 0, i);
+            ar[i] = from[i];
+        }
+    }
+    return to.concat(ar || Array.prototype.slice.call(from));
+};
 Object.defineProperty(exports, "__esModule", { value: true });
 exports.UsersApi = exports.UsersApiFactory = exports.UsersApiFp = exports.UsersApiAxiosParamCreator = void 0;
 var axios_1 = require("axios");
@@ -82,7 +93,7 @@ var base_1 = require("../base");
  * UsersApi - axios parameter creator
  * @export
  */
-exports.UsersApiAxiosParamCreator = function (configuration) {
+var UsersApiAxiosParamCreator = function (configuration) {
     var _this = this;
     return {
         /**
@@ -91,10 +102,14 @@ exports.UsersApiAxiosParamCreator = function (configuration) {
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        createSetter: function (body, options) {
-            if (options === void 0) { options = {}; }
-            return __awaiter(_this, void 0, void 0, function () {
+        createSetter: function (body_1) {
+            var args_1 = [];
+            for (var _i = 1; _i < arguments.length; _i++) {
+                args_1[_i - 1] = arguments[_i];
+            }
+            return __awaiter(_this, __spreadArray([body_1], args_1, true), void 0, function (body, options) {
                 var localVarPath, localVarUrlObj, baseOptions, localVarRequestOptions, localVarHeaderParameter, localVarQueryParameter, accessToken, _a, query, key, key, headersFromBaseOptions, needsSerialization;
+                if (options === void 0) { options = {}; }
                 return __generator(this, function (_b) {
                     switch (_b.label) {
                         case 0:
@@ -151,10 +166,14 @@ exports.UsersApiAxiosParamCreator = function (configuration) {
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        usersControllerGet: function (options) {
-            if (options === void 0) { options = {}; }
-            return __awaiter(_this, void 0, void 0, function () {
+        usersControllerGet: function () {
+            var args_1 = [];
+            for (var _i = 0; _i < arguments.length; _i++) {
+                args_1[_i] = arguments[_i];
+            }
+            return __awaiter(_this, __spreadArray([], args_1, true), void 0, function (options) {
                 var localVarPath, localVarUrlObj, baseOptions, localVarRequestOptions, localVarHeaderParameter, localVarQueryParameter, query, key, key, headersFromBaseOptions;
+                if (options === void 0) { options = {}; }
                 return __generator(this, function (_a) {
                     localVarPath = "/api/users";
                     localVarUrlObj = new URL(localVarPath, 'https://example.com');
@@ -187,17 +206,21 @@ exports.UsersApiAxiosParamCreator = function (configuration) {
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        usersControllerShow: function (id, options) {
-            if (options === void 0) { options = {}; }
-            return __awaiter(_this, void 0, void 0, function () {
+        usersControllerShow: function (id_1) {
+            var args_1 = [];
+            for (var _i = 1; _i < arguments.length; _i++) {
+                args_1[_i - 1] = arguments[_i];
+            }
+            return __awaiter(_this, __spreadArray([id_1], args_1, true), void 0, function (id, options) {
                 var localVarPath, localVarUrlObj, baseOptions, localVarRequestOptions, localVarHeaderParameter, localVarQueryParameter, query, key, key, headersFromBaseOptions;
+                if (options === void 0) { options = {}; }
                 return __generator(this, function (_a) {
                     // verify required parameter 'id' is not null or undefined
                     if (id === null || id === undefined) {
                         throw new base_1.RequiredError('id', 'Required parameter id was null or undefined when calling usersControllerShow.');
                     }
                     localVarPath = "/api/users/{id}"
-                        .replace("{" + "id" + "}", encodeURIComponent(String(id)));
+                        .replace("{".concat("id", "}"), encodeURIComponent(String(id)));
                     localVarUrlObj = new URL(localVarPath, 'https://example.com');
                     if (configuration) {
                         baseOptions = configuration.baseOptions;
@@ -227,10 +250,14 @@ exports.UsersApiAxiosParamCreator = function (configuration) {
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        usersControllerStore: function (options) {
-            if (options === void 0) { options = {}; }
-            return __awaiter(_this, void 0, void 0, function () {
+        usersControllerStore: function () {
+            var args_1 = [];
+            for (var _i = 0; _i < arguments.length; _i++) {
+                args_1[_i] = arguments[_i];
+            }
+            return __awaiter(_this, __spreadArray([], args_1, true), void 0, function (options) {
                 var localVarPath, localVarUrlObj, baseOptions, localVarRequestOptions, localVarHeaderParameter, localVarQueryParameter, query, key, key, headersFromBaseOptions;
+                if (options === void 0) { options = {}; }
                 return __generator(this, function (_a) {
                     localVarPath = "/api/users";
                     localVarUrlObj = new URL(localVarPath, 'https://example.com');
@@ -263,17 +290,21 @@ exports.UsersApiAxiosParamCreator = function (configuration) {
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        usersControllerUpdate: function (id, options) {
-            if (options === void 0) { options = {}; }
-            return __awaiter(_this, void 0, void 0, function () {
+        usersControllerUpdate: function (id_1) {
+            var args_1 = [];
+            for (var _i = 1; _i < arguments.length; _i++) {
+                args_1[_i - 1] = arguments[_i];
+            }
+            return __awaiter(_this, __spreadArray([id_1], args_1, true), void 0, function (id, options) {
                 var localVarPath, localVarUrlObj, baseOptions, localVarRequestOptions, localVarHeaderParameter, localVarQueryParameter, query, key, key, headersFromBaseOptions;
+                if (options === void 0) { options = {}; }
                 return __generator(this, function (_a) {
                     // verify required parameter 'id' is not null or undefined
                     if (id === null || id === undefined) {
                         throw new base_1.RequiredError('id', 'Required parameter id was null or undefined when calling usersControllerUpdate.');
                     }
                     localVarPath = "/api/users/{id}"
-                        .replace("{" + "id" + "}", encodeURIComponent(String(id)));
+                        .replace("{".concat("id", "}"), encodeURIComponent(String(id)));
                     localVarUrlObj = new URL(localVarPath, 'https://example.com');
                     if (configuration) {
                         baseOptions = configuration.baseOptions;
@@ -300,11 +331,12 @@ exports.UsersApiAxiosParamCreator = function (configuration) {
         },
     };
 };
+exports.UsersApiAxiosParamCreator = UsersApiAxiosParamCreator;
 /**
  * UsersApi - functional programming interface
  * @export
  */
-exports.UsersApiFp = function (configuration) {
+var UsersApiFp = function (configuration) {
     return {
         /**
          *
@@ -317,7 +349,7 @@ exports.UsersApiFp = function (configuration) {
                 var localVarAxiosArgs;
                 return __generator(this, function (_a) {
                     switch (_a.label) {
-                        case 0: return [4 /*yield*/, exports.UsersApiAxiosParamCreator(configuration).createSetter(body, options)];
+                        case 0: return [4 /*yield*/, (0, exports.UsersApiAxiosParamCreator)(configuration).createSetter(body, options)];
                         case 1:
                             localVarAxiosArgs = _a.sent();
                             return [2 /*return*/, function (axios, basePath) {
@@ -340,7 +372,7 @@ exports.UsersApiFp = function (configuration) {
                 var localVarAxiosArgs;
                 return __generator(this, function (_a) {
                     switch (_a.label) {
-                        case 0: return [4 /*yield*/, exports.UsersApiAxiosParamCreator(configuration).usersControllerGet(options)];
+                        case 0: return [4 /*yield*/, (0, exports.UsersApiAxiosParamCreator)(configuration).usersControllerGet(options)];
                         case 1:
                             localVarAxiosArgs = _a.sent();
                             return [2 /*return*/, function (axios, basePath) {
@@ -364,7 +396,7 @@ exports.UsersApiFp = function (configuration) {
                 var localVarAxiosArgs;
                 return __generator(this, function (_a) {
                     switch (_a.label) {
-                        case 0: return [4 /*yield*/, exports.UsersApiAxiosParamCreator(configuration).usersControllerShow(id, options)];
+                        case 0: return [4 /*yield*/, (0, exports.UsersApiAxiosParamCreator)(configuration).usersControllerShow(id, options)];
                         case 1:
                             localVarAxiosArgs = _a.sent();
                             return [2 /*return*/, function (axios, basePath) {
@@ -387,7 +419,7 @@ exports.UsersApiFp = function (configuration) {
                 var localVarAxiosArgs;
                 return __generator(this, function (_a) {
                     switch (_a.label) {
-                        case 0: return [4 /*yield*/, exports.UsersApiAxiosParamCreator(configuration).usersControllerStore(options)];
+                        case 0: return [4 /*yield*/, (0, exports.UsersApiAxiosParamCreator)(configuration).usersControllerStore(options)];
                         case 1:
                             localVarAxiosArgs = _a.sent();
                             return [2 /*return*/, function (axios, basePath) {
@@ -411,7 +443,7 @@ exports.UsersApiFp = function (configuration) {
                 var localVarAxiosArgs;
                 return __generator(this, function (_a) {
                     switch (_a.label) {
-                        case 0: return [4 /*yield*/, exports.UsersApiAxiosParamCreator(configuration).usersControllerUpdate(id, options)];
+                        case 0: return [4 /*yield*/, (0, exports.UsersApiAxiosParamCreator)(configuration).usersControllerUpdate(id, options)];
                         case 1:
                             localVarAxiosArgs = _a.sent();
                             return [2 /*return*/, function (axios, basePath) {
@@ -426,11 +458,12 @@ exports.UsersApiFp = function (configuration) {
         },
     };
 };
+exports.UsersApiFp = UsersApiFp;
 /**
  * UsersApi - factory interface
  * @export
  */
-exports.UsersApiFactory = function (configuration, basePath, axios) {
+var UsersApiFactory = function (configuration, basePath, axios) {
     return {
         /**
          *
@@ -441,7 +474,7 @@ exports.UsersApiFactory = function (configuration, basePath, axios) {
         createSetter: function (body, options) {
             return __awaiter(this, void 0, void 0, function () {
                 return __generator(this, function (_a) {
-                    return [2 /*return*/, exports.UsersApiFp(configuration).createSetter(body, options).then(function (request) { return request(axios, basePath); })];
+                    return [2 /*return*/, (0, exports.UsersApiFp)(configuration).createSetter(body, options).then(function (request) { return request(axios, basePath); })];
                 });
             });
         },
@@ -453,7 +486,7 @@ exports.UsersApiFactory = function (configuration, basePath, axios) {
         usersControllerGet: function (options) {
             return __awaiter(this, void 0, void 0, function () {
                 return __generator(this, function (_a) {
-                    return [2 /*return*/, exports.UsersApiFp(configuration).usersControllerGet(options).then(function (request) { return request(axios, basePath); })];
+                    return [2 /*return*/, (0, exports.UsersApiFp)(configuration).usersControllerGet(options).then(function (request) { return request(axios, basePath); })];
                 });
             });
         },
@@ -466,7 +499,7 @@ exports.UsersApiFactory = function (configuration, basePath, axios) {
         usersControllerShow: function (id, options) {
             return __awaiter(this, void 0, void 0, function () {
                 return __generator(this, function (_a) {
-                    return [2 /*return*/, exports.UsersApiFp(configuration).usersControllerShow(id, options).then(function (request) { return request(axios, basePath); })];
+                    return [2 /*return*/, (0, exports.UsersApiFp)(configuration).usersControllerShow(id, options).then(function (request) { return request(axios, basePath); })];
                 });
             });
         },
@@ -478,7 +511,7 @@ exports.UsersApiFactory = function (configuration, basePath, axios) {
         usersControllerStore: function (options) {
             return __awaiter(this, void 0, void 0, function () {
                 return __generator(this, function (_a) {
-                    return [2 /*return*/, exports.UsersApiFp(configuration).usersControllerStore(options).then(function (request) { return request(axios, basePath); })];
+                    return [2 /*return*/, (0, exports.UsersApiFp)(configuration).usersControllerStore(options).then(function (request) { return request(axios, basePath); })];
                 });
             });
         },
@@ -491,12 +524,13 @@ exports.UsersApiFactory = function (configuration, basePath, axios) {
         usersControllerUpdate: function (id, options) {
             return __awaiter(this, void 0, void 0, function () {
                 return __generator(this, function (_a) {
-                    return [2 /*return*/, exports.UsersApiFp(configuration).usersControllerUpdate(id, options).then(function (request) { return request(axios, basePath); })];
+                    return [2 /*return*/, (0, exports.UsersApiFp)(configuration).usersControllerUpdate(id, options).then(function (request) { return request(axios, basePath); })];
                 });
             });
         },
     };
 };
+exports.UsersApiFactory = UsersApiFactory;
 /**
  * UsersApi - object-oriented interface
  * @export
@@ -519,7 +553,7 @@ var UsersApi = /** @class */ (function (_super) {
         return __awaiter(this, void 0, void 0, function () {
             var _this = this;
             return __generator(this, function (_a) {
-                return [2 /*return*/, exports.UsersApiFp(this.configuration).createSetter(body, options).then(function (request) { return request(_this.axios, _this.basePath); })];
+                return [2 /*return*/, (0, exports.UsersApiFp)(this.configuration).createSetter(body, options).then(function (request) { return request(_this.axios, _this.basePath); })];
             });
         });
     };
@@ -533,7 +567,7 @@ var UsersApi = /** @class */ (function (_super) {
         return __awaiter(this, void 0, void 0, function () {
             var _this = this;
             return __generator(this, function (_a) {
-                return [2 /*return*/, exports.UsersApiFp(this.configuration).usersControllerGet(options).then(function (request) { return request(_this.axios, _this.basePath); })];
+                return [2 /*return*/, (0, exports.UsersApiFp)(this.configuration).usersControllerGet(options).then(function (request) { return request(_this.axios, _this.basePath); })];
             });
         });
     };
@@ -548,7 +582,7 @@ var UsersApi = /** @class */ (function (_super) {
         return __awaiter(this, void 0, void 0, function () {
             var _this = this;
             return __generator(this, function (_a) {
-                return [2 /*return*/, exports.UsersApiFp(this.configuration).usersControllerShow(id, options).then(function (request) { return request(_this.axios, _this.basePath); })];
+                return [2 /*return*/, (0, exports.UsersApiFp)(this.configuration).usersControllerShow(id, options).then(function (request) { return request(_this.axios, _this.basePath); })];
             });
         });
     };
@@ -562,7 +596,7 @@ var UsersApi = /** @class */ (function (_super) {
         return __awaiter(this, void 0, void 0, function () {
             var _this = this;
             return __generator(this, function (_a) {
-                return [2 /*return*/, exports.UsersApiFp(this.configuration).usersControllerStore(options).then(function (request) { return request(_this.axios, _this.basePath); })];
+                return [2 /*return*/, (0, exports.UsersApiFp)(this.configuration).usersControllerStore(options).then(function (request) { return request(_this.axios, _this.basePath); })];
             });
         });
     };
@@ -577,7 +611,7 @@ var UsersApi = /** @class */ (function (_super) {
         return __awaiter(this, void 0, void 0, function () {
             var _this = this;
             return __generator(this, function (_a) {
-                return [2 /*return*/, exports.UsersApiFp(this.configuration).usersControllerUpdate(id, options).then(function (request) { return request(_this.axios, _this.basePath); })];
+                return [2 /*return*/, (0, exports.UsersApiFp)(this.configuration).usersControllerUpdate(id, options).then(function (request) { return request(_this.axios, _this.basePath); })];
             });
         });
     };
