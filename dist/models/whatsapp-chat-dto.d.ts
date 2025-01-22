@@ -9,7 +9,6 @@
  * https://github.com/swagger-api/swagger-codegen.git
  * Do not edit the class manually.
  */
-import { WhatsappContactDto } from './whatsapp-contact-dto';
 /**
 *
 *
@@ -47,9 +46,4 @@ export interface WhatsappChatDto {
      * @example 3
      */
     unreadMessages: number;
-    /**
-     * @type {WhatsappContactDto}
-     * @memberof WhatsappChatDto
-     */
-    contact: WhatsappContactDto;
 }
