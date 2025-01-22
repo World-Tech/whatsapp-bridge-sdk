@@ -45,5 +45,5 @@ export interface WhatsappContactDto {
      * @type {WhatsappChatDto}
      * @memberof WhatsappContactDto
      */
-    chat: WhatsappChatDto;
+    chat: WhatsappChatDto | null;
 }
