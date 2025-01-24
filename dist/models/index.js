@@ -37,3 +37,4 @@ __exportStar(require("./user-update-password-dto"), exports);
 __exportStar(require("./whatsapp-chat-dto"), exports);
 __exportStar(require("./whatsapp-contact-dto"), exports);
 __exportStar(require("./whatsapp-message-dto"), exports);
+__exportStar(require("./whatsapp-message-key-dto"), exports);

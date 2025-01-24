@@ -10,6 +10,7 @@
  * Do not edit the class manually.
  */
 import { ConversationMessageDto } from './conversation-message-dto';
+import { WhatsappMessageKeyDto } from './whatsapp-message-key-dto';
 /**
 *
 *
@@ -40,4 +41,9 @@ export interface WhatsappMessageDto {
      * @memberof WhatsappMessageDto
      */
     message: ConversationMessageDto;
+    /**
+     * @type {WhatsappMessageKeyDto}
+     * @memberof WhatsappMessageDto
+     */
+    key: WhatsappMessageKeyDto;
 }
