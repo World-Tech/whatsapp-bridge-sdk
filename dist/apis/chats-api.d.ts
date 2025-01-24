@@ -12,12 +12,20 @@
 import { AxiosResponse, AxiosInstance, AxiosRequestConfig } from 'axios';
 import { Configuration } from '../configuration';
 import { RequestArgs, BaseAPI } from '../base';
+import { ActiveChatResponseDTO } from '../models';
 import { ChatsResponseDTO } from '../models';
 /**
  * ChatsApi - axios parameter creator
  * @export
  */
 export declare const ChatsApiAxiosParamCreator: (configuration?: Configuration) => {
+    /**
+     *
+     * @param {number} id
+     * @param {*} [options] Override http request option.
+     * @throws {RequiredError}
+     */
+    getChat: (id: number, options?: AxiosRequestConfig) => Promise<RequestArgs>;
     /**
      *
      * @param {*} [options] Override http request option.
@@ -32,6 +40,13 @@ export declare const ChatsApiAxiosParamCreator: (configuration?: Configuration) 
 export declare const ChatsApiFp: (configuration?: Configuration) => {
     /**
      *
+     * @param {number} id
+     * @param {*} [options] Override http request option.
+     * @throws {RequiredError}
+     */
+    getChat(id: number, options?: AxiosRequestConfig): Promise<(axios?: AxiosInstance, basePath?: string) => Promise<AxiosResponse<ActiveChatResponseDTO>>>;
+    /**
+     *
      * @param {*} [options] Override http request option.
      * @throws {RequiredError}
      */
@@ -42,6 +57,13 @@ export declare const ChatsApiFp: (configuration?: Configuration) => {
  * @export
  */
 export declare const ChatsApiFactory: (configuration?: Configuration, basePath?: string, axios?: AxiosInstance) => {
+    /**
+     *
+     * @param {number} id
+     * @param {*} [options] Override http request option.
+     * @throws {RequiredError}
+     */
+    getChat(id: number, options?: AxiosRequestConfig): Promise<AxiosResponse<ActiveChatResponseDTO>>;
     /**
      *
      * @param {*} [options] Override http request option.
@@ -56,6 +78,14 @@ export declare const ChatsApiFactory: (configuration?: Configuration, basePath?:
  * @extends {BaseAPI}
  */
 export declare class ChatsApi extends BaseAPI {
+    /**
+     *
+     * @param {number} id
+     * @param {*} [options] Override http request option.
+     * @throws {RequiredError}
+     * @memberof ChatsApi
+     */
+    getChat(id: number, options?: AxiosRequestConfig): Promise<AxiosResponse<ActiveChatResponseDTO>>;
     /**
      *
      * @param {*} [options] Override http request option.

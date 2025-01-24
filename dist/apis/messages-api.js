@@ -98,18 +98,23 @@ var MessagesApiAxiosParamCreator = function (configuration) {
     return {
         /**
          *
+         * @param {number} chatId
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        getMessages: function () {
+        getMessages: function (chatId_1) {
             var args_1 = [];
-            for (var _i = 0; _i < arguments.length; _i++) {
-                args_1[_i] = arguments[_i];
+            for (var _i = 1; _i < arguments.length; _i++) {
+                args_1[_i - 1] = arguments[_i];
             }
-            return __awaiter(_this, __spreadArray([], args_1, true), void 0, function (options) {
+            return __awaiter(_this, __spreadArray([chatId_1], args_1, true), void 0, function (chatId, options) {
                 var localVarPath, localVarUrlObj, baseOptions, localVarRequestOptions, localVarHeaderParameter, localVarQueryParameter, query, key, key, headersFromBaseOptions;
                 if (options === void 0) { options = {}; }
                 return __generator(this, function (_a) {
+                    // verify required parameter 'chatId' is not null or undefined
+                    if (chatId === null || chatId === undefined) {
+                        throw new base_1.RequiredError('chatId', 'Required parameter chatId was null or undefined when calling getMessages.');
+                    }
                     localVarPath = "/api/messages";
                     localVarUrlObj = new URL(localVarPath, 'https://example.com');
                     if (configuration) {
@@ -118,6 +123,9 @@ var MessagesApiAxiosParamCreator = function (configuration) {
                     localVarRequestOptions = __assign(__assign({ method: 'GET' }, baseOptions), options);
                     localVarHeaderParameter = {};
                     localVarQueryParameter = {};
+                    if (chatId !== undefined) {
+                        localVarQueryParameter['chatId'] = chatId;
+                    }
                     query = new URLSearchParams(localVarUrlObj.search);
                     for (key in localVarQueryParameter) {
                         query.set(key, localVarQueryParameter[key]);
@@ -146,15 +154,16 @@ var MessagesApiFp = function (configuration) {
     return {
         /**
          *
+         * @param {number} chatId
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        getMessages: function (options) {
+        getMessages: function (chatId, options) {
             return __awaiter(this, void 0, void 0, function () {
                 var localVarAxiosArgs;
                 return __generator(this, function (_a) {
                     switch (_a.label) {
-                        case 0: return [4 /*yield*/, (0, exports.MessagesApiAxiosParamCreator)(configuration).getMessages(options)];
+                        case 0: return [4 /*yield*/, (0, exports.MessagesApiAxiosParamCreator)(configuration).getMessages(chatId, options)];
                         case 1:
                             localVarAxiosArgs = _a.sent();
                             return [2 /*return*/, function (axios, basePath) {
@@ -178,13 +187,14 @@ var MessagesApiFactory = function (configuration, basePath, axios) {
     return {
         /**
          *
+         * @param {number} chatId
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        getMessages: function (options) {
+        getMessages: function (chatId, options) {
             return __awaiter(this, void 0, void 0, function () {
                 return __generator(this, function (_a) {
-                    return [2 /*return*/, (0, exports.MessagesApiFp)(configuration).getMessages(options).then(function (request) { return request(axios, basePath); })];
+                    return [2 /*return*/, (0, exports.MessagesApiFp)(configuration).getMessages(chatId, options).then(function (request) { return request(axios, basePath); })];
                 });
             });
         },
@@ -204,15 +214,16 @@ var MessagesApi = /** @class */ (function (_super) {
     }
     /**
      *
+     * @param {number} chatId
      * @param {*} [options] Override http request option.
      * @throws {RequiredError}
      * @memberof MessagesApi
      */
-    MessagesApi.prototype.getMessages = function (options) {
+    MessagesApi.prototype.getMessages = function (chatId, options) {
         return __awaiter(this, void 0, void 0, function () {
             var _this = this;
             return __generator(this, function (_a) {
-                return [2 /*return*/, (0, exports.MessagesApiFp)(this.configuration).getMessages(options).then(function (request) { return request(_this.axios, _this.basePath); })];
+                return [2 /*return*/, (0, exports.MessagesApiFp)(this.configuration).getMessages(chatId, options).then(function (request) { return request(_this.axios, _this.basePath); })];
             });
         });
     };

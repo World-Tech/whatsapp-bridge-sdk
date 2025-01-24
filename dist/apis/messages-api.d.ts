@@ -20,10 +20,11 @@ import { MessageResponseDto } from '../models';
 export declare const MessagesApiAxiosParamCreator: (configuration?: Configuration) => {
     /**
      *
+     * @param {number} chatId
      * @param {*} [options] Override http request option.
      * @throws {RequiredError}
      */
-    getMessages: (options?: AxiosRequestConfig) => Promise<RequestArgs>;
+    getMessages: (chatId: number, options?: AxiosRequestConfig) => Promise<RequestArgs>;
 };
 /**
  * MessagesApi - functional programming interface
@@ -32,10 +33,11 @@ export declare const MessagesApiAxiosParamCreator: (configuration?: Configuratio
 export declare const MessagesApiFp: (configuration?: Configuration) => {
     /**
      *
+     * @param {number} chatId
      * @param {*} [options] Override http request option.
      * @throws {RequiredError}
      */
-    getMessages(options?: AxiosRequestConfig): Promise<(axios?: AxiosInstance, basePath?: string) => Promise<AxiosResponse<MessageResponseDto>>>;
+    getMessages(chatId: number, options?: AxiosRequestConfig): Promise<(axios?: AxiosInstance, basePath?: string) => Promise<AxiosResponse<MessageResponseDto>>>;
 };
 /**
  * MessagesApi - factory interface
@@ -44,10 +46,11 @@ export declare const MessagesApiFp: (configuration?: Configuration) => {
 export declare const MessagesApiFactory: (configuration?: Configuration, basePath?: string, axios?: AxiosInstance) => {
     /**
      *
+     * @param {number} chatId
      * @param {*} [options] Override http request option.
      * @throws {RequiredError}
      */
-    getMessages(options?: AxiosRequestConfig): Promise<AxiosResponse<MessageResponseDto>>;
+    getMessages(chatId: number, options?: AxiosRequestConfig): Promise<AxiosResponse<MessageResponseDto>>;
 };
 /**
  * MessagesApi - object-oriented interface
@@ -58,9 +61,10 @@ export declare const MessagesApiFactory: (configuration?: Configuration, basePat
 export declare class MessagesApi extends BaseAPI {
     /**
      *
+     * @param {number} chatId
      * @param {*} [options] Override http request option.
      * @throws {RequiredError}
      * @memberof MessagesApi
      */
-    getMessages(options?: AxiosRequestConfig): Promise<AxiosResponse<MessageResponseDto>>;
+    getMessages(chatId: number, options?: AxiosRequestConfig): Promise<AxiosResponse<MessageResponseDto>>;
 }

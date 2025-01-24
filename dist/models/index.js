@@ -14,6 +14,8 @@ var __exportStar = (this && this.__exportStar) || function(m, exports) {
     for (var p in m) if (p !== "default" && !Object.prototype.hasOwnProperty.call(exports, p)) __createBinding(exports, m, p);
 };
 Object.defineProperty(exports, "__esModule", { value: true });
+__exportStar(require("./active-chat-dto"), exports);
+__exportStar(require("./active-chat-response-dto"), exports);
 __exportStar(require("./api-request-user-update-password-dto"), exports);
 __exportStar(require("./api-response-auth-dto"), exports);
 __exportStar(require("./api-response-user-dto"), exports);

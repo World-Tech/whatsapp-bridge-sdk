@@ -1,3 +1,5 @@
+export * from './active-chat-dto';
+export * from './active-chat-response-dto';
 export * from './api-request-user-update-password-dto';
 export * from './api-response-auth-dto';
 export * from './api-response-user-dto';

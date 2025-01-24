@@ -26,10 +26,15 @@ export const MessagesApiAxiosParamCreator = function (configuration?: Configurat
     return {
         /**
          * 
+         * @param {number} chatId 
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        getMessages: async (options: AxiosRequestConfig = {}): Promise<RequestArgs> => {
+        getMessages: async (chatId: number, options: AxiosRequestConfig = {}): Promise<RequestArgs> => {
+            // verify required parameter 'chatId' is not null or undefined
+            if (chatId === null || chatId === undefined) {
+                throw new RequiredError('chatId','Required parameter chatId was null or undefined when calling getMessages.');
+            }
             const localVarPath = `/api/messages`;
             // use dummy base URL string because the URL constructor only accepts absolute URLs.
             const localVarUrlObj = new URL(localVarPath, 'https://example.com');
@@ -40,6 +45,10 @@ export const MessagesApiAxiosParamCreator = function (configuration?: Configurat
             const localVarRequestOptions :AxiosRequestConfig = { method: 'GET', ...baseOptions, ...options};
             const localVarHeaderParameter = {} as any;
             const localVarQueryParameter = {} as any;
+
+            if (chatId !== undefined) {
+                localVarQueryParameter['chatId'] = chatId;
+            }
 
             const query = new URLSearchParams(localVarUrlObj.search);
             for (const key in localVarQueryParameter) {
@@ -68,11 +77,12 @@ export const MessagesApiFp = function(configuration?: Configuration) {
     return {
         /**
          * 
+         * @param {number} chatId 
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        async getMessages(options?: AxiosRequestConfig): Promise<(axios?: AxiosInstance, basePath?: string) => Promise<AxiosResponse<MessageResponseDto>>> {
-            const localVarAxiosArgs = await MessagesApiAxiosParamCreator(configuration).getMessages(options);
+        async getMessages(chatId: number, options?: AxiosRequestConfig): Promise<(axios?: AxiosInstance, basePath?: string) => Promise<AxiosResponse<MessageResponseDto>>> {
+            const localVarAxiosArgs = await MessagesApiAxiosParamCreator(configuration).getMessages(chatId, options);
             return (axios: AxiosInstance = globalAxios, basePath: string = BASE_PATH) => {
                 const axiosRequestArgs :AxiosRequestConfig = {...localVarAxiosArgs.options, url: basePath + localVarAxiosArgs.url};
                 return axios.request(axiosRequestArgs);
@@ -89,11 +99,12 @@ export const MessagesApiFactory = function (configuration?: Configuration, baseP
     return {
         /**
          * 
+         * @param {number} chatId 
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        async getMessages(options?: AxiosRequestConfig): Promise<AxiosResponse<MessageResponseDto>> {
-            return MessagesApiFp(configuration).getMessages(options).then((request) => request(axios, basePath));
+        async getMessages(chatId: number, options?: AxiosRequestConfig): Promise<AxiosResponse<MessageResponseDto>> {
+            return MessagesApiFp(configuration).getMessages(chatId, options).then((request) => request(axios, basePath));
         },
     };
 };
@@ -107,11 +118,12 @@ export const MessagesApiFactory = function (configuration?: Configuration, baseP
 export class MessagesApi extends BaseAPI {
     /**
      * 
+     * @param {number} chatId 
      * @param {*} [options] Override http request option.
      * @throws {RequiredError}
      * @memberof MessagesApi
      */
-    public async getMessages(options?: AxiosRequestConfig) : Promise<AxiosResponse<MessageResponseDto>> {
-        return MessagesApiFp(this.configuration).getMessages(options).then((request) => request(this.axios, this.basePath));
+    public async getMessages(chatId: number, options?: AxiosRequestConfig) : Promise<AxiosResponse<MessageResponseDto>> {
+        return MessagesApiFp(this.configuration).getMessages(chatId, options).then((request) => request(this.axios, this.basePath));
     }
 }
