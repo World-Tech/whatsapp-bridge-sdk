@@ -12,8 +12,8 @@
 import { AxiosResponse, AxiosInstance, AxiosRequestConfig } from 'axios';
 import { Configuration } from '../configuration';
 import { RequestArgs, BaseAPI } from '../base';
-import { ActiveChatResponseDTO } from '../models';
 import { ChatsResponseDTO } from '../models';
+import { WhatsappChatResponseDTO } from '../models';
 /**
  * ChatsApi - axios parameter creator
  * @export
@@ -44,7 +44,7 @@ export declare const ChatsApiFp: (configuration?: Configuration) => {
      * @param {*} [options] Override http request option.
      * @throws {RequiredError}
      */
-    getChat(id: number, options?: AxiosRequestConfig): Promise<(axios?: AxiosInstance, basePath?: string) => Promise<AxiosResponse<ActiveChatResponseDTO>>>;
+    getChat(id: number, options?: AxiosRequestConfig): Promise<(axios?: AxiosInstance, basePath?: string) => Promise<AxiosResponse<WhatsappChatResponseDTO>>>;
     /**
      *
      * @param {*} [options] Override http request option.
@@ -63,7 +63,7 @@ export declare const ChatsApiFactory: (configuration?: Configuration, basePath?:
      * @param {*} [options] Override http request option.
      * @throws {RequiredError}
      */
-    getChat(id: number, options?: AxiosRequestConfig): Promise<AxiosResponse<ActiveChatResponseDTO>>;
+    getChat(id: number, options?: AxiosRequestConfig): Promise<AxiosResponse<WhatsappChatResponseDTO>>;
     /**
      *
      * @param {*} [options] Override http request option.
@@ -85,7 +85,7 @@ export declare class ChatsApi extends BaseAPI {
      * @throws {RequiredError}
      * @memberof ChatsApi
      */
-    getChat(id: number, options?: AxiosRequestConfig): Promise<AxiosResponse<ActiveChatResponseDTO>>;
+    getChat(id: number, options?: AxiosRequestConfig): Promise<AxiosResponse<WhatsappChatResponseDTO>>;
     /**
      *
      * @param {*} [options] Override http request option.

@@ -14,8 +14,6 @@ var __exportStar = (this && this.__exportStar) || function(m, exports) {
     for (var p in m) if (p !== "default" && !Object.prototype.hasOwnProperty.call(exports, p)) __createBinding(exports, m, p);
 };
 Object.defineProperty(exports, "__esModule", { value: true });
-__exportStar(require("./active-chat-dto"), exports);
-__exportStar(require("./active-chat-response-dto"), exports);
 __exportStar(require("./api-request-user-update-password-dto"), exports);
 __exportStar(require("./api-response-auth-dto"), exports);
 __exportStar(require("./api-response-user-dto"), exports);
@@ -37,6 +35,7 @@ __exportStar(require("./unauthorized-token-dto"), exports);
 __exportStar(require("./user-detail-dto"), exports);
 __exportStar(require("./user-update-password-dto"), exports);
 __exportStar(require("./whatsapp-chat-dto"), exports);
+__exportStar(require("./whatsapp-chat-response-dto"), exports);
 __exportStar(require("./whatsapp-contact-dto"), exports);
 __exportStar(require("./whatsapp-message-dto"), exports);
 __exportStar(require("./whatsapp-message-key-dto"), exports);

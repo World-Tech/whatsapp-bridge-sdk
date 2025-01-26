@@ -1,5 +1,3 @@
-export * from './active-chat-dto';
-export * from './active-chat-response-dto';
 export * from './api-request-user-update-password-dto';
 export * from './api-response-auth-dto';
 export * from './api-response-user-dto';
@@ -21,6 +19,7 @@ export * from './unauthorized-token-dto';
 export * from './user-detail-dto';
 export * from './user-update-password-dto';
 export * from './whatsapp-chat-dto';
+export * from './whatsapp-chat-response-dto';
 export * from './whatsapp-contact-dto';
 export * from './whatsapp-message-dto';
 export * from './whatsapp-message-key-dto';

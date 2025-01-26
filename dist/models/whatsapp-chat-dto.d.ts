@@ -10,6 +10,7 @@
  * Do not edit the class manually.
  */
 import { WhatsappContactDto } from './whatsapp-contact-dto';
+import { WhatsappMessageDto } from './whatsapp-message-dto';
 /**
 *
 *
@@ -48,11 +49,10 @@ export interface WhatsappChatDto {
      */
     unreadMessages: number;
     /**
-     * @type {number}
+     * @type {Array<WhatsappMessageDto>}
      * @memberof WhatsappChatDto
-     * @example 3
      */
-    messages: number;
+    messages: Array<WhatsappMessageDto>;
     /**
      * @type {WhatsappContactDto}
      * @memberof WhatsappChatDto

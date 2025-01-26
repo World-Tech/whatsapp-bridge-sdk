@@ -17,8 +17,8 @@ import { Configuration } from '../configuration';
 // Some imports not used depending on template conditions
 // @ts-ignore
 import { BASE_PATH, COLLECTION_FORMATS, RequestArgs, BaseAPI, RequiredError } from '../base';
-import { ActiveChatResponseDTO } from '../models';
 import { ChatsResponseDTO } from '../models';
+import { WhatsappChatResponseDTO } from '../models';
 /**
  * ChatsApi - axios parameter creator
  * @export
@@ -112,7 +112,7 @@ export const ChatsApiFp = function(configuration?: Configuration) {
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        async getChat(id: number, options?: AxiosRequestConfig): Promise<(axios?: AxiosInstance, basePath?: string) => Promise<AxiosResponse<ActiveChatResponseDTO>>> {
+        async getChat(id: number, options?: AxiosRequestConfig): Promise<(axios?: AxiosInstance, basePath?: string) => Promise<AxiosResponse<WhatsappChatResponseDTO>>> {
             const localVarAxiosArgs = await ChatsApiAxiosParamCreator(configuration).getChat(id, options);
             return (axios: AxiosInstance = globalAxios, basePath: string = BASE_PATH) => {
                 const axiosRequestArgs :AxiosRequestConfig = {...localVarAxiosArgs.options, url: basePath + localVarAxiosArgs.url};
@@ -146,7 +146,7 @@ export const ChatsApiFactory = function (configuration?: Configuration, basePath
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        async getChat(id: number, options?: AxiosRequestConfig): Promise<AxiosResponse<ActiveChatResponseDTO>> {
+        async getChat(id: number, options?: AxiosRequestConfig): Promise<AxiosResponse<WhatsappChatResponseDTO>> {
             return ChatsApiFp(configuration).getChat(id, options).then((request) => request(axios, basePath));
         },
         /**
@@ -174,7 +174,7 @@ export class ChatsApi extends BaseAPI {
      * @throws {RequiredError}
      * @memberof ChatsApi
      */
-    public async getChat(id: number, options?: AxiosRequestConfig) : Promise<AxiosResponse<ActiveChatResponseDTO>> {
+    public async getChat(id: number, options?: AxiosRequestConfig) : Promise<AxiosResponse<WhatsappChatResponseDTO>> {
         return ChatsApiFp(this.configuration).getChat(id, options).then((request) => request(this.axios, this.basePath));
     }
     /**
