@@ -143,6 +143,53 @@ var MessagesApiAxiosParamCreator = function (configuration) {
                 });
             });
         },
+        /**
+         *
+         * @param {SendTextDto} body
+         * @param {*} [options] Override http request option.
+         * @throws {RequiredError}
+         */
+        sendMessage: function (body_1) {
+            var args_1 = [];
+            for (var _i = 1; _i < arguments.length; _i++) {
+                args_1[_i - 1] = arguments[_i];
+            }
+            return __awaiter(_this, __spreadArray([body_1], args_1, true), void 0, function (body, options) {
+                var localVarPath, localVarUrlObj, baseOptions, localVarRequestOptions, localVarHeaderParameter, localVarQueryParameter, query, key, key, headersFromBaseOptions, needsSerialization;
+                if (options === void 0) { options = {}; }
+                return __generator(this, function (_a) {
+                    // verify required parameter 'body' is not null or undefined
+                    if (body === null || body === undefined) {
+                        throw new base_1.RequiredError('body', 'Required parameter body was null or undefined when calling sendMessage.');
+                    }
+                    localVarPath = "/api/messages/send-text";
+                    localVarUrlObj = new URL(localVarPath, 'https://example.com');
+                    if (configuration) {
+                        baseOptions = configuration.baseOptions;
+                    }
+                    localVarRequestOptions = __assign(__assign({ method: 'POST' }, baseOptions), options);
+                    localVarHeaderParameter = {};
+                    localVarQueryParameter = {};
+                    localVarHeaderParameter['Content-Type'] = 'application/json';
+                    query = new URLSearchParams(localVarUrlObj.search);
+                    for (key in localVarQueryParameter) {
+                        query.set(key, localVarQueryParameter[key]);
+                    }
+                    for (key in options.params) {
+                        query.set(key, options.params[key]);
+                    }
+                    localVarUrlObj.search = (new URLSearchParams(query)).toString();
+                    headersFromBaseOptions = baseOptions && baseOptions.headers ? baseOptions.headers : {};
+                    localVarRequestOptions.headers = __assign(__assign(__assign({}, localVarHeaderParameter), headersFromBaseOptions), options.headers);
+                    needsSerialization = (typeof body !== "string") || localVarRequestOptions.headers['Content-Type'] === 'application/json';
+                    localVarRequestOptions.data = needsSerialization ? JSON.stringify(body !== undefined ? body : {}) : (body || "");
+                    return [2 /*return*/, {
+                            url: localVarUrlObj.pathname + localVarUrlObj.search + localVarUrlObj.hash,
+                            options: localVarRequestOptions,
+                        }];
+                });
+            });
+        },
     };
 };
 exports.MessagesApiAxiosParamCreator = MessagesApiAxiosParamCreator;
@@ -164,6 +211,30 @@ var MessagesApiFp = function (configuration) {
                 return __generator(this, function (_a) {
                     switch (_a.label) {
                         case 0: return [4 /*yield*/, (0, exports.MessagesApiAxiosParamCreator)(configuration).getMessages(chatId, options)];
+                        case 1:
+                            localVarAxiosArgs = _a.sent();
+                            return [2 /*return*/, function (axios, basePath) {
+                                    if (axios === void 0) { axios = axios_1.default; }
+                                    if (basePath === void 0) { basePath = base_1.BASE_PATH; }
+                                    var axiosRequestArgs = __assign(__assign({}, localVarAxiosArgs.options), { url: basePath + localVarAxiosArgs.url });
+                                    return axios.request(axiosRequestArgs);
+                                }];
+                    }
+                });
+            });
+        },
+        /**
+         *
+         * @param {SendTextDto} body
+         * @param {*} [options] Override http request option.
+         * @throws {RequiredError}
+         */
+        sendMessage: function (body, options) {
+            return __awaiter(this, void 0, void 0, function () {
+                var localVarAxiosArgs;
+                return __generator(this, function (_a) {
+                    switch (_a.label) {
+                        case 0: return [4 /*yield*/, (0, exports.MessagesApiAxiosParamCreator)(configuration).sendMessage(body, options)];
                         case 1:
                             localVarAxiosArgs = _a.sent();
                             return [2 /*return*/, function (axios, basePath) {
@@ -198,6 +269,19 @@ var MessagesApiFactory = function (configuration, basePath, axios) {
                 });
             });
         },
+        /**
+         *
+         * @param {SendTextDto} body
+         * @param {*} [options] Override http request option.
+         * @throws {RequiredError}
+         */
+        sendMessage: function (body, options) {
+            return __awaiter(this, void 0, void 0, function () {
+                return __generator(this, function (_a) {
+                    return [2 /*return*/, (0, exports.MessagesApiFp)(configuration).sendMessage(body, options).then(function (request) { return request(axios, basePath); })];
+                });
+            });
+        },
     };
 };
 exports.MessagesApiFactory = MessagesApiFactory;
@@ -224,6 +308,21 @@ var MessagesApi = /** @class */ (function (_super) {
             var _this = this;
             return __generator(this, function (_a) {
                 return [2 /*return*/, (0, exports.MessagesApiFp)(this.configuration).getMessages(chatId, options).then(function (request) { return request(_this.axios, _this.basePath); })];
+            });
+        });
+    };
+    /**
+     *
+     * @param {SendTextDto} body
+     * @param {*} [options] Override http request option.
+     * @throws {RequiredError}
+     * @memberof MessagesApi
+     */
+    MessagesApi.prototype.sendMessage = function (body, options) {
+        return __awaiter(this, void 0, void 0, function () {
+            var _this = this;
+            return __generator(this, function (_a) {
+                return [2 /*return*/, (0, exports.MessagesApiFp)(this.configuration).sendMessage(body, options).then(function (request) { return request(_this.axios, _this.basePath); })];
             });
         });
     };

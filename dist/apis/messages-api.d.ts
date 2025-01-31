@@ -13,6 +13,8 @@ import { AxiosResponse, AxiosInstance, AxiosRequestConfig } from 'axios';
 import { Configuration } from '../configuration';
 import { RequestArgs, BaseAPI } from '../base';
 import { MessageResponseDto } from '../models';
+import { SendTextDto } from '../models';
+import { SendTextResponseDto } from '../models';
 /**
  * MessagesApi - axios parameter creator
  * @export
@@ -25,6 +27,13 @@ export declare const MessagesApiAxiosParamCreator: (configuration?: Configuratio
      * @throws {RequiredError}
      */
     getMessages: (chatId: number, options?: AxiosRequestConfig) => Promise<RequestArgs>;
+    /**
+     *
+     * @param {SendTextDto} body
+     * @param {*} [options] Override http request option.
+     * @throws {RequiredError}
+     */
+    sendMessage: (body: SendTextDto, options?: AxiosRequestConfig) => Promise<RequestArgs>;
 };
 /**
  * MessagesApi - functional programming interface
@@ -38,6 +47,13 @@ export declare const MessagesApiFp: (configuration?: Configuration) => {
      * @throws {RequiredError}
      */
     getMessages(chatId: number, options?: AxiosRequestConfig): Promise<(axios?: AxiosInstance, basePath?: string) => Promise<AxiosResponse<MessageResponseDto>>>;
+    /**
+     *
+     * @param {SendTextDto} body
+     * @param {*} [options] Override http request option.
+     * @throws {RequiredError}
+     */
+    sendMessage(body: SendTextDto, options?: AxiosRequestConfig): Promise<(axios?: AxiosInstance, basePath?: string) => Promise<AxiosResponse<SendTextResponseDto>>>;
 };
 /**
  * MessagesApi - factory interface
@@ -51,6 +67,13 @@ export declare const MessagesApiFactory: (configuration?: Configuration, basePat
      * @throws {RequiredError}
      */
     getMessages(chatId: number, options?: AxiosRequestConfig): Promise<AxiosResponse<MessageResponseDto>>;
+    /**
+     *
+     * @param {SendTextDto} body
+     * @param {*} [options] Override http request option.
+     * @throws {RequiredError}
+     */
+    sendMessage(body: SendTextDto, options?: AxiosRequestConfig): Promise<AxiosResponse<SendTextResponseDto>>;
 };
 /**
  * MessagesApi - object-oriented interface
@@ -67,4 +90,12 @@ export declare class MessagesApi extends BaseAPI {
      * @memberof MessagesApi
      */
     getMessages(chatId: number, options?: AxiosRequestConfig): Promise<AxiosResponse<MessageResponseDto>>;
+    /**
+     *
+     * @param {SendTextDto} body
+     * @param {*} [options] Override http request option.
+     * @throws {RequiredError}
+     * @memberof MessagesApi
+     */
+    sendMessage(body: SendTextDto, options?: AxiosRequestConfig): Promise<AxiosResponse<SendTextResponseDto>>;
 }
