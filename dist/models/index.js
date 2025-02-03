@@ -31,6 +31,7 @@ __exportStar(require("./inline-response503-info"), exports);
 __exportStar(require("./key-dto"), exports);
 __exportStar(require("./message-response-dto"), exports);
 __exportStar(require("./role-dto"), exports);
+__exportStar(require("./send-text-data-response-dto"), exports);
 __exportStar(require("./send-text-dto"), exports);
 __exportStar(require("./send-text-response-dto"), exports);
 __exportStar(require("./status-dto"), exports);

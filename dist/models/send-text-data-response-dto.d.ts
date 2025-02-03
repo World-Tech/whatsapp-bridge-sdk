@@ -9,17 +9,17 @@
  * https://github.com/swagger-api/swagger-codegen.git
  * Do not edit the class manually.
  */
-import { InlineResponse2011Class } from './inline-response2011-class';
+import { SendTextResponseDto } from './send-text-response-dto';
 /**
 *
 *
 * @export
-* @interface SendTextResponseDto
+* @interface SendTextDataResponseDto
 */
-export interface SendTextResponseDto {
+export interface SendTextDataResponseDto {
     /**
-     * @type {InlineResponse2011Class}
-     * @memberof SendTextResponseDto
+     * @type {SendTextResponseDto}
+     * @memberof SendTextDataResponseDto
      */
-    message: InlineResponse2011Class;
+    data: SendTextResponseDto;
 }

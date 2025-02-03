@@ -18,8 +18,8 @@ import { Configuration } from '../configuration';
 // @ts-ignore
 import { BASE_PATH, COLLECTION_FORMATS, RequestArgs, BaseAPI, RequiredError } from '../base';
 import { MessageResponseDto } from '../models';
+import { SendTextDataResponseDto } from '../models';
 import { SendTextDto } from '../models';
-import { SendTextResponseDto } from '../models';
 /**
  * MessagesApi - axios parameter creator
  * @export
@@ -138,7 +138,7 @@ export const MessagesApiFp = function(configuration?: Configuration) {
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        async sendMessage(body: SendTextDto, options?: AxiosRequestConfig): Promise<(axios?: AxiosInstance, basePath?: string) => Promise<AxiosResponse<SendTextResponseDto>>> {
+        async sendMessage(body: SendTextDto, options?: AxiosRequestConfig): Promise<(axios?: AxiosInstance, basePath?: string) => Promise<AxiosResponse<SendTextDataResponseDto>>> {
             const localVarAxiosArgs = await MessagesApiAxiosParamCreator(configuration).sendMessage(body, options);
             return (axios: AxiosInstance = globalAxios, basePath: string = BASE_PATH) => {
                 const axiosRequestArgs :AxiosRequestConfig = {...localVarAxiosArgs.options, url: basePath + localVarAxiosArgs.url};
@@ -169,7 +169,7 @@ export const MessagesApiFactory = function (configuration?: Configuration, baseP
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        async sendMessage(body: SendTextDto, options?: AxiosRequestConfig): Promise<AxiosResponse<SendTextResponseDto>> {
+        async sendMessage(body: SendTextDto, options?: AxiosRequestConfig): Promise<AxiosResponse<SendTextDataResponseDto>> {
             return MessagesApiFp(configuration).sendMessage(body, options).then((request) => request(axios, basePath));
         },
     };
@@ -199,7 +199,7 @@ export class MessagesApi extends BaseAPI {
      * @throws {RequiredError}
      * @memberof MessagesApi
      */
-    public async sendMessage(body: SendTextDto, options?: AxiosRequestConfig) : Promise<AxiosResponse<SendTextResponseDto>> {
+    public async sendMessage(body: SendTextDto, options?: AxiosRequestConfig) : Promise<AxiosResponse<SendTextDataResponseDto>> {
         return MessagesApiFp(this.configuration).sendMessage(body, options).then((request) => request(this.axios, this.basePath));
     }
 }

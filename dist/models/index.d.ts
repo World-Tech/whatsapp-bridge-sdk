@@ -15,6 +15,7 @@ export * from './inline-response503-info';
 export * from './key-dto';
 export * from './message-response-dto';
 export * from './role-dto';
+export * from './send-text-data-response-dto';
 export * from './send-text-dto';
 export * from './send-text-response-dto';
 export * from './status-dto';

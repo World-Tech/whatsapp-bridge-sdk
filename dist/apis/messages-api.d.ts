@@ -13,8 +13,8 @@ import { AxiosResponse, AxiosInstance, AxiosRequestConfig } from 'axios';
 import { Configuration } from '../configuration';
 import { RequestArgs, BaseAPI } from '../base';
 import { MessageResponseDto } from '../models';
+import { SendTextDataResponseDto } from '../models';
 import { SendTextDto } from '../models';
-import { SendTextResponseDto } from '../models';
 /**
  * MessagesApi - axios parameter creator
  * @export
@@ -53,7 +53,7 @@ export declare const MessagesApiFp: (configuration?: Configuration) => {
      * @param {*} [options] Override http request option.
      * @throws {RequiredError}
      */
-    sendMessage(body: SendTextDto, options?: AxiosRequestConfig): Promise<(axios?: AxiosInstance, basePath?: string) => Promise<AxiosResponse<SendTextResponseDto>>>;
+    sendMessage(body: SendTextDto, options?: AxiosRequestConfig): Promise<(axios?: AxiosInstance, basePath?: string) => Promise<AxiosResponse<SendTextDataResponseDto>>>;
 };
 /**
  * MessagesApi - factory interface
@@ -73,7 +73,7 @@ export declare const MessagesApiFactory: (configuration?: Configuration, basePat
      * @param {*} [options] Override http request option.
      * @throws {RequiredError}
      */
-    sendMessage(body: SendTextDto, options?: AxiosRequestConfig): Promise<AxiosResponse<SendTextResponseDto>>;
+    sendMessage(body: SendTextDto, options?: AxiosRequestConfig): Promise<AxiosResponse<SendTextDataResponseDto>>;
 };
 /**
  * MessagesApi - object-oriented interface
@@ -97,5 +97,5 @@ export declare class MessagesApi extends BaseAPI {
      * @throws {RequiredError}
      * @memberof MessagesApi
      */
-    sendMessage(body: SendTextDto, options?: AxiosRequestConfig): Promise<AxiosResponse<SendTextResponseDto>>;
+    sendMessage(body: SendTextDto, options?: AxiosRequestConfig): Promise<AxiosResponse<SendTextDataResponseDto>>;
 }
