@@ -13,6 +13,7 @@
  */
 
 import { InlineResponse2011Class } from './inline-response2011-class';
+import { WhatsappChatDto } from './whatsapp-chat-dto';
  /**
  * 
  *
@@ -26,4 +27,10 @@ export interface SendTextResponseDto {
      * @memberof SendTextResponseDto
      */
     message: InlineResponse2011Class;
+
+    /**
+     * @type {WhatsappChatDto}
+     * @memberof SendTextResponseDto
+     */
+    chat: WhatsappChatDto;
 }

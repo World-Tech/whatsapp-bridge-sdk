@@ -13,6 +13,8 @@ import { AxiosResponse, AxiosInstance, AxiosRequestConfig } from 'axios';
 import { Configuration } from '../configuration';
 import { RequestArgs, BaseAPI } from '../base';
 import { MessageResponseDto } from '../models';
+import { ReadMessageDto } from '../models';
+import { ReadMessageResponseDataDto } from '../models';
 import { SendTextDataResponseDto } from '../models';
 import { SendTextDto } from '../models';
 /**
@@ -29,11 +31,18 @@ export declare const MessagesApiAxiosParamCreator: (configuration?: Configuratio
     getMessages: (chatId: number, options?: AxiosRequestConfig) => Promise<RequestArgs>;
     /**
      *
+     * @param {ReadMessageDto} body
+     * @param {*} [options] Override http request option.
+     * @throws {RequiredError}
+     */
+    readMessage: (body: ReadMessageDto, options?: AxiosRequestConfig) => Promise<RequestArgs>;
+    /**
+     *
      * @param {SendTextDto} body
      * @param {*} [options] Override http request option.
      * @throws {RequiredError}
      */
-    sendMessage: (body: SendTextDto, options?: AxiosRequestConfig) => Promise<RequestArgs>;
+    sendTextMessage: (body: SendTextDto, options?: AxiosRequestConfig) => Promise<RequestArgs>;
 };
 /**
  * MessagesApi - functional programming interface
@@ -49,11 +58,18 @@ export declare const MessagesApiFp: (configuration?: Configuration) => {
     getMessages(chatId: number, options?: AxiosRequestConfig): Promise<(axios?: AxiosInstance, basePath?: string) => Promise<AxiosResponse<MessageResponseDto>>>;
     /**
      *
+     * @param {ReadMessageDto} body
+     * @param {*} [options] Override http request option.
+     * @throws {RequiredError}
+     */
+    readMessage(body: ReadMessageDto, options?: AxiosRequestConfig): Promise<(axios?: AxiosInstance, basePath?: string) => Promise<AxiosResponse<ReadMessageResponseDataDto>>>;
+    /**
+     *
      * @param {SendTextDto} body
      * @param {*} [options] Override http request option.
      * @throws {RequiredError}
      */
-    sendMessage(body: SendTextDto, options?: AxiosRequestConfig): Promise<(axios?: AxiosInstance, basePath?: string) => Promise<AxiosResponse<SendTextDataResponseDto>>>;
+    sendTextMessage(body: SendTextDto, options?: AxiosRequestConfig): Promise<(axios?: AxiosInstance, basePath?: string) => Promise<AxiosResponse<SendTextDataResponseDto>>>;
 };
 /**
  * MessagesApi - factory interface
@@ -69,11 +85,18 @@ export declare const MessagesApiFactory: (configuration?: Configuration, basePat
     getMessages(chatId: number, options?: AxiosRequestConfig): Promise<AxiosResponse<MessageResponseDto>>;
     /**
      *
+     * @param {ReadMessageDto} body
+     * @param {*} [options] Override http request option.
+     * @throws {RequiredError}
+     */
+    readMessage(body: ReadMessageDto, options?: AxiosRequestConfig): Promise<AxiosResponse<ReadMessageResponseDataDto>>;
+    /**
+     *
      * @param {SendTextDto} body
      * @param {*} [options] Override http request option.
      * @throws {RequiredError}
      */
-    sendMessage(body: SendTextDto, options?: AxiosRequestConfig): Promise<AxiosResponse<SendTextDataResponseDto>>;
+    sendTextMessage(body: SendTextDto, options?: AxiosRequestConfig): Promise<AxiosResponse<SendTextDataResponseDto>>;
 };
 /**
  * MessagesApi - object-oriented interface
@@ -92,10 +115,18 @@ export declare class MessagesApi extends BaseAPI {
     getMessages(chatId: number, options?: AxiosRequestConfig): Promise<AxiosResponse<MessageResponseDto>>;
     /**
      *
+     * @param {ReadMessageDto} body
+     * @param {*} [options] Override http request option.
+     * @throws {RequiredError}
+     * @memberof MessagesApi
+     */
+    readMessage(body: ReadMessageDto, options?: AxiosRequestConfig): Promise<AxiosResponse<ReadMessageResponseDataDto>>;
+    /**
+     *
      * @param {SendTextDto} body
      * @param {*} [options] Override http request option.
      * @throws {RequiredError}
      * @memberof MessagesApi
      */
-    sendMessage(body: SendTextDto, options?: AxiosRequestConfig): Promise<AxiosResponse<SendTextDataResponseDto>>;
+    sendTextMessage(body: SendTextDto, options?: AxiosRequestConfig): Promise<AxiosResponse<SendTextDataResponseDto>>;
 }
