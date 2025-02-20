@@ -26,10 +26,15 @@ export const ContactsApiAxiosParamCreator = function (configuration?: Configurat
     return {
         /**
          * 
+         * @param {number} branchId 
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        getContacts: async (options: AxiosRequestConfig = {}): Promise<RequestArgs> => {
+        getContacts: async (branchId: number, options: AxiosRequestConfig = {}): Promise<RequestArgs> => {
+            // verify required parameter 'branchId' is not null or undefined
+            if (branchId === null || branchId === undefined) {
+                throw new RequiredError('branchId','Required parameter branchId was null or undefined when calling getContacts.');
+            }
             const localVarPath = `/api/contacts`;
             // use dummy base URL string because the URL constructor only accepts absolute URLs.
             const localVarUrlObj = new URL(localVarPath, 'https://example.com');
@@ -40,6 +45,10 @@ export const ContactsApiAxiosParamCreator = function (configuration?: Configurat
             const localVarRequestOptions :AxiosRequestConfig = { method: 'GET', ...baseOptions, ...options};
             const localVarHeaderParameter = {} as any;
             const localVarQueryParameter = {} as any;
+
+            if (branchId !== undefined) {
+                localVarQueryParameter['branchId'] = branchId;
+            }
 
             const query = new URLSearchParams(localVarUrlObj.search);
             for (const key in localVarQueryParameter) {
@@ -68,11 +77,12 @@ export const ContactsApiFp = function(configuration?: Configuration) {
     return {
         /**
          * 
+         * @param {number} branchId 
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        async getContacts(options?: AxiosRequestConfig): Promise<(axios?: AxiosInstance, basePath?: string) => Promise<AxiosResponse<ContactsResponseDTO>>> {
-            const localVarAxiosArgs = await ContactsApiAxiosParamCreator(configuration).getContacts(options);
+        async getContacts(branchId: number, options?: AxiosRequestConfig): Promise<(axios?: AxiosInstance, basePath?: string) => Promise<AxiosResponse<ContactsResponseDTO>>> {
+            const localVarAxiosArgs = await ContactsApiAxiosParamCreator(configuration).getContacts(branchId, options);
             return (axios: AxiosInstance = globalAxios, basePath: string = BASE_PATH) => {
                 const axiosRequestArgs :AxiosRequestConfig = {...localVarAxiosArgs.options, url: basePath + localVarAxiosArgs.url};
                 return axios.request(axiosRequestArgs);
@@ -89,11 +99,12 @@ export const ContactsApiFactory = function (configuration?: Configuration, baseP
     return {
         /**
          * 
+         * @param {number} branchId 
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        async getContacts(options?: AxiosRequestConfig): Promise<AxiosResponse<ContactsResponseDTO>> {
-            return ContactsApiFp(configuration).getContacts(options).then((request) => request(axios, basePath));
+        async getContacts(branchId: number, options?: AxiosRequestConfig): Promise<AxiosResponse<ContactsResponseDTO>> {
+            return ContactsApiFp(configuration).getContacts(branchId, options).then((request) => request(axios, basePath));
         },
     };
 };
@@ -107,11 +118,12 @@ export const ContactsApiFactory = function (configuration?: Configuration, baseP
 export class ContactsApi extends BaseAPI {
     /**
      * 
+     * @param {number} branchId 
      * @param {*} [options] Override http request option.
      * @throws {RequiredError}
      * @memberof ContactsApi
      */
-    public async getContacts(options?: AxiosRequestConfig) : Promise<AxiosResponse<ContactsResponseDTO>> {
-        return ContactsApiFp(this.configuration).getContacts(options).then((request) => request(this.axios, this.basePath));
+    public async getContacts(branchId: number, options?: AxiosRequestConfig) : Promise<AxiosResponse<ContactsResponseDTO>> {
+        return ContactsApiFp(this.configuration).getContacts(branchId, options).then((request) => request(this.axios, this.basePath));
     }
 }

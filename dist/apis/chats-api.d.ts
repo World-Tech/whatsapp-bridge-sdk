@@ -28,10 +28,11 @@ export declare const ChatsApiAxiosParamCreator: (configuration?: Configuration) 
     getChat: (id: number, options?: AxiosRequestConfig) => Promise<RequestArgs>;
     /**
      *
+     * @param {number} branchId
      * @param {*} [options] Override http request option.
      * @throws {RequiredError}
      */
-    getChats: (options?: AxiosRequestConfig) => Promise<RequestArgs>;
+    getChats: (branchId: number, options?: AxiosRequestConfig) => Promise<RequestArgs>;
 };
 /**
  * ChatsApi - functional programming interface
@@ -47,10 +48,11 @@ export declare const ChatsApiFp: (configuration?: Configuration) => {
     getChat(id: number, options?: AxiosRequestConfig): Promise<(axios?: AxiosInstance, basePath?: string) => Promise<AxiosResponse<WhatsappChatResponseDTO>>>;
     /**
      *
+     * @param {number} branchId
      * @param {*} [options] Override http request option.
      * @throws {RequiredError}
      */
-    getChats(options?: AxiosRequestConfig): Promise<(axios?: AxiosInstance, basePath?: string) => Promise<AxiosResponse<ChatsResponseDTO>>>;
+    getChats(branchId: number, options?: AxiosRequestConfig): Promise<(axios?: AxiosInstance, basePath?: string) => Promise<AxiosResponse<ChatsResponseDTO>>>;
 };
 /**
  * ChatsApi - factory interface
@@ -66,10 +68,11 @@ export declare const ChatsApiFactory: (configuration?: Configuration, basePath?:
     getChat(id: number, options?: AxiosRequestConfig): Promise<AxiosResponse<WhatsappChatResponseDTO>>;
     /**
      *
+     * @param {number} branchId
      * @param {*} [options] Override http request option.
      * @throws {RequiredError}
      */
-    getChats(options?: AxiosRequestConfig): Promise<AxiosResponse<ChatsResponseDTO>>;
+    getChats(branchId: number, options?: AxiosRequestConfig): Promise<AxiosResponse<ChatsResponseDTO>>;
 };
 /**
  * ChatsApi - object-oriented interface
@@ -88,9 +91,10 @@ export declare class ChatsApi extends BaseAPI {
     getChat(id: number, options?: AxiosRequestConfig): Promise<AxiosResponse<WhatsappChatResponseDTO>>;
     /**
      *
+     * @param {number} branchId
      * @param {*} [options] Override http request option.
      * @throws {RequiredError}
      * @memberof ChatsApi
      */
-    getChats(options?: AxiosRequestConfig): Promise<AxiosResponse<ChatsResponseDTO>>;
+    getChats(branchId: number, options?: AxiosRequestConfig): Promise<AxiosResponse<ChatsResponseDTO>>;
 }

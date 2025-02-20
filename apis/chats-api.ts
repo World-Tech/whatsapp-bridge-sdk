@@ -66,10 +66,15 @@ export const ChatsApiAxiosParamCreator = function (configuration?: Configuration
         },
         /**
          * 
+         * @param {number} branchId 
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        getChats: async (options: AxiosRequestConfig = {}): Promise<RequestArgs> => {
+        getChats: async (branchId: number, options: AxiosRequestConfig = {}): Promise<RequestArgs> => {
+            // verify required parameter 'branchId' is not null or undefined
+            if (branchId === null || branchId === undefined) {
+                throw new RequiredError('branchId','Required parameter branchId was null or undefined when calling getChats.');
+            }
             const localVarPath = `/api/chats`;
             // use dummy base URL string because the URL constructor only accepts absolute URLs.
             const localVarUrlObj = new URL(localVarPath, 'https://example.com');
@@ -80,6 +85,10 @@ export const ChatsApiAxiosParamCreator = function (configuration?: Configuration
             const localVarRequestOptions :AxiosRequestConfig = { method: 'GET', ...baseOptions, ...options};
             const localVarHeaderParameter = {} as any;
             const localVarQueryParameter = {} as any;
+
+            if (branchId !== undefined) {
+                localVarQueryParameter['branchId'] = branchId;
+            }
 
             const query = new URLSearchParams(localVarUrlObj.search);
             for (const key in localVarQueryParameter) {
@@ -121,11 +130,12 @@ export const ChatsApiFp = function(configuration?: Configuration) {
         },
         /**
          * 
+         * @param {number} branchId 
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        async getChats(options?: AxiosRequestConfig): Promise<(axios?: AxiosInstance, basePath?: string) => Promise<AxiosResponse<ChatsResponseDTO>>> {
-            const localVarAxiosArgs = await ChatsApiAxiosParamCreator(configuration).getChats(options);
+        async getChats(branchId: number, options?: AxiosRequestConfig): Promise<(axios?: AxiosInstance, basePath?: string) => Promise<AxiosResponse<ChatsResponseDTO>>> {
+            const localVarAxiosArgs = await ChatsApiAxiosParamCreator(configuration).getChats(branchId, options);
             return (axios: AxiosInstance = globalAxios, basePath: string = BASE_PATH) => {
                 const axiosRequestArgs :AxiosRequestConfig = {...localVarAxiosArgs.options, url: basePath + localVarAxiosArgs.url};
                 return axios.request(axiosRequestArgs);
@@ -151,11 +161,12 @@ export const ChatsApiFactory = function (configuration?: Configuration, basePath
         },
         /**
          * 
+         * @param {number} branchId 
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        async getChats(options?: AxiosRequestConfig): Promise<AxiosResponse<ChatsResponseDTO>> {
-            return ChatsApiFp(configuration).getChats(options).then((request) => request(axios, basePath));
+        async getChats(branchId: number, options?: AxiosRequestConfig): Promise<AxiosResponse<ChatsResponseDTO>> {
+            return ChatsApiFp(configuration).getChats(branchId, options).then((request) => request(axios, basePath));
         },
     };
 };
@@ -179,11 +190,12 @@ export class ChatsApi extends BaseAPI {
     }
     /**
      * 
+     * @param {number} branchId 
      * @param {*} [options] Override http request option.
      * @throws {RequiredError}
      * @memberof ChatsApi
      */
-    public async getChats(options?: AxiosRequestConfig) : Promise<AxiosResponse<ChatsResponseDTO>> {
-        return ChatsApiFp(this.configuration).getChats(options).then((request) => request(this.axios, this.basePath));
+    public async getChats(branchId: number, options?: AxiosRequestConfig) : Promise<AxiosResponse<ChatsResponseDTO>> {
+        return ChatsApiFp(this.configuration).getChats(branchId, options).then((request) => request(this.axios, this.basePath));
     }
 }

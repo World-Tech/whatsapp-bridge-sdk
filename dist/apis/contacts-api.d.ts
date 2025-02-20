@@ -20,10 +20,11 @@ import { ContactsResponseDTO } from '../models';
 export declare const ContactsApiAxiosParamCreator: (configuration?: Configuration) => {
     /**
      *
+     * @param {number} branchId
      * @param {*} [options] Override http request option.
      * @throws {RequiredError}
      */
-    getContacts: (options?: AxiosRequestConfig) => Promise<RequestArgs>;
+    getContacts: (branchId: number, options?: AxiosRequestConfig) => Promise<RequestArgs>;
 };
 /**
  * ContactsApi - functional programming interface
@@ -32,10 +33,11 @@ export declare const ContactsApiAxiosParamCreator: (configuration?: Configuratio
 export declare const ContactsApiFp: (configuration?: Configuration) => {
     /**
      *
+     * @param {number} branchId
      * @param {*} [options] Override http request option.
      * @throws {RequiredError}
      */
-    getContacts(options?: AxiosRequestConfig): Promise<(axios?: AxiosInstance, basePath?: string) => Promise<AxiosResponse<ContactsResponseDTO>>>;
+    getContacts(branchId: number, options?: AxiosRequestConfig): Promise<(axios?: AxiosInstance, basePath?: string) => Promise<AxiosResponse<ContactsResponseDTO>>>;
 };
 /**
  * ContactsApi - factory interface
@@ -44,10 +46,11 @@ export declare const ContactsApiFp: (configuration?: Configuration) => {
 export declare const ContactsApiFactory: (configuration?: Configuration, basePath?: string, axios?: AxiosInstance) => {
     /**
      *
+     * @param {number} branchId
      * @param {*} [options] Override http request option.
      * @throws {RequiredError}
      */
-    getContacts(options?: AxiosRequestConfig): Promise<AxiosResponse<ContactsResponseDTO>>;
+    getContacts(branchId: number, options?: AxiosRequestConfig): Promise<AxiosResponse<ContactsResponseDTO>>;
 };
 /**
  * ContactsApi - object-oriented interface
@@ -58,9 +61,10 @@ export declare const ContactsApiFactory: (configuration?: Configuration, basePat
 export declare class ContactsApi extends BaseAPI {
     /**
      *
+     * @param {number} branchId
      * @param {*} [options] Override http request option.
      * @throws {RequiredError}
      * @memberof ContactsApi
      */
-    getContacts(options?: AxiosRequestConfig): Promise<AxiosResponse<ContactsResponseDTO>>;
+    getContacts(branchId: number, options?: AxiosRequestConfig): Promise<AxiosResponse<ContactsResponseDTO>>;
 }

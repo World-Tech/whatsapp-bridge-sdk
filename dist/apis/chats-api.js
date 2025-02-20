@@ -143,18 +143,23 @@ var ChatsApiAxiosParamCreator = function (configuration) {
         },
         /**
          *
+         * @param {number} branchId
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        getChats: function () {
+        getChats: function (branchId_1) {
             var args_1 = [];
-            for (var _i = 0; _i < arguments.length; _i++) {
-                args_1[_i] = arguments[_i];
+            for (var _i = 1; _i < arguments.length; _i++) {
+                args_1[_i - 1] = arguments[_i];
             }
-            return __awaiter(_this, __spreadArray([], args_1, true), void 0, function (options) {
+            return __awaiter(_this, __spreadArray([branchId_1], args_1, true), void 0, function (branchId, options) {
                 var localVarPath, localVarUrlObj, baseOptions, localVarRequestOptions, localVarHeaderParameter, localVarQueryParameter, query, key, key, headersFromBaseOptions;
                 if (options === void 0) { options = {}; }
                 return __generator(this, function (_a) {
+                    // verify required parameter 'branchId' is not null or undefined
+                    if (branchId === null || branchId === undefined) {
+                        throw new base_1.RequiredError('branchId', 'Required parameter branchId was null or undefined when calling getChats.');
+                    }
                     localVarPath = "/api/chats";
                     localVarUrlObj = new URL(localVarPath, 'https://example.com');
                     if (configuration) {
@@ -163,6 +168,9 @@ var ChatsApiAxiosParamCreator = function (configuration) {
                     localVarRequestOptions = __assign(__assign({ method: 'GET' }, baseOptions), options);
                     localVarHeaderParameter = {};
                     localVarQueryParameter = {};
+                    if (branchId !== undefined) {
+                        localVarQueryParameter['branchId'] = branchId;
+                    }
                     query = new URLSearchParams(localVarUrlObj.search);
                     for (key in localVarQueryParameter) {
                         query.set(key, localVarQueryParameter[key]);
@@ -215,15 +223,16 @@ var ChatsApiFp = function (configuration) {
         },
         /**
          *
+         * @param {number} branchId
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        getChats: function (options) {
+        getChats: function (branchId, options) {
             return __awaiter(this, void 0, void 0, function () {
                 var localVarAxiosArgs;
                 return __generator(this, function (_a) {
                     switch (_a.label) {
-                        case 0: return [4 /*yield*/, (0, exports.ChatsApiAxiosParamCreator)(configuration).getChats(options)];
+                        case 0: return [4 /*yield*/, (0, exports.ChatsApiAxiosParamCreator)(configuration).getChats(branchId, options)];
                         case 1:
                             localVarAxiosArgs = _a.sent();
                             return [2 /*return*/, function (axios, basePath) {
@@ -260,13 +269,14 @@ var ChatsApiFactory = function (configuration, basePath, axios) {
         },
         /**
          *
+         * @param {number} branchId
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        getChats: function (options) {
+        getChats: function (branchId, options) {
             return __awaiter(this, void 0, void 0, function () {
                 return __generator(this, function (_a) {
-                    return [2 /*return*/, (0, exports.ChatsApiFp)(configuration).getChats(options).then(function (request) { return request(axios, basePath); })];
+                    return [2 /*return*/, (0, exports.ChatsApiFp)(configuration).getChats(branchId, options).then(function (request) { return request(axios, basePath); })];
                 });
             });
         },
@@ -301,15 +311,16 @@ var ChatsApi = /** @class */ (function (_super) {
     };
     /**
      *
+     * @param {number} branchId
      * @param {*} [options] Override http request option.
      * @throws {RequiredError}
      * @memberof ChatsApi
      */
-    ChatsApi.prototype.getChats = function (options) {
+    ChatsApi.prototype.getChats = function (branchId, options) {
         return __awaiter(this, void 0, void 0, function () {
             var _this = this;
             return __generator(this, function (_a) {
-                return [2 /*return*/, (0, exports.ChatsApiFp)(this.configuration).getChats(options).then(function (request) { return request(_this.axios, _this.basePath); })];
+                return [2 /*return*/, (0, exports.ChatsApiFp)(this.configuration).getChats(branchId, options).then(function (request) { return request(_this.axios, _this.basePath); })];
             });
         });
     };
