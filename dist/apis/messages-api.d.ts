@@ -24,11 +24,12 @@ import { SendTextDto } from '../models';
 export declare const MessagesApiAxiosParamCreator: (configuration?: Configuration) => {
     /**
      *
+     * @param {number} branchId
      * @param {number} chatId
      * @param {*} [options] Override http request option.
      * @throws {RequiredError}
      */
-    getMessages: (chatId: number, options?: AxiosRequestConfig) => Promise<RequestArgs>;
+    getMessages: (branchId: number, chatId: number, options?: AxiosRequestConfig) => Promise<RequestArgs>;
     /**
      *
      * @param {ReadMessageDto} body
@@ -51,11 +52,12 @@ export declare const MessagesApiAxiosParamCreator: (configuration?: Configuratio
 export declare const MessagesApiFp: (configuration?: Configuration) => {
     /**
      *
+     * @param {number} branchId
      * @param {number} chatId
      * @param {*} [options] Override http request option.
      * @throws {RequiredError}
      */
-    getMessages(chatId: number, options?: AxiosRequestConfig): Promise<(axios?: AxiosInstance, basePath?: string) => Promise<AxiosResponse<MessageResponseDto>>>;
+    getMessages(branchId: number, chatId: number, options?: AxiosRequestConfig): Promise<(axios?: AxiosInstance, basePath?: string) => Promise<AxiosResponse<MessageResponseDto>>>;
     /**
      *
      * @param {ReadMessageDto} body
@@ -78,11 +80,12 @@ export declare const MessagesApiFp: (configuration?: Configuration) => {
 export declare const MessagesApiFactory: (configuration?: Configuration, basePath?: string, axios?: AxiosInstance) => {
     /**
      *
+     * @param {number} branchId
      * @param {number} chatId
      * @param {*} [options] Override http request option.
      * @throws {RequiredError}
      */
-    getMessages(chatId: number, options?: AxiosRequestConfig): Promise<AxiosResponse<MessageResponseDto>>;
+    getMessages(branchId: number, chatId: number, options?: AxiosRequestConfig): Promise<AxiosResponse<MessageResponseDto>>;
     /**
      *
      * @param {ReadMessageDto} body
@@ -107,12 +110,13 @@ export declare const MessagesApiFactory: (configuration?: Configuration, basePat
 export declare class MessagesApi extends BaseAPI {
     /**
      *
+     * @param {number} branchId
      * @param {number} chatId
      * @param {*} [options] Override http request option.
      * @throws {RequiredError}
      * @memberof MessagesApi
      */
-    getMessages(chatId: number, options?: AxiosRequestConfig): Promise<AxiosResponse<MessageResponseDto>>;
+    getMessages(branchId: number, chatId: number, options?: AxiosRequestConfig): Promise<AxiosResponse<MessageResponseDto>>;
     /**
      *
      * @param {ReadMessageDto} body

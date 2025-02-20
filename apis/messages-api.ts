@@ -30,11 +30,16 @@ export const MessagesApiAxiosParamCreator = function (configuration?: Configurat
     return {
         /**
          * 
+         * @param {number} branchId 
          * @param {number} chatId 
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        getMessages: async (chatId: number, options: AxiosRequestConfig = {}): Promise<RequestArgs> => {
+        getMessages: async (branchId: number, chatId: number, options: AxiosRequestConfig = {}): Promise<RequestArgs> => {
+            // verify required parameter 'branchId' is not null or undefined
+            if (branchId === null || branchId === undefined) {
+                throw new RequiredError('branchId','Required parameter branchId was null or undefined when calling getMessages.');
+            }
             // verify required parameter 'chatId' is not null or undefined
             if (chatId === null || chatId === undefined) {
                 throw new RequiredError('chatId','Required parameter chatId was null or undefined when calling getMessages.');
@@ -49,6 +54,10 @@ export const MessagesApiAxiosParamCreator = function (configuration?: Configurat
             const localVarRequestOptions :AxiosRequestConfig = { method: 'GET', ...baseOptions, ...options};
             const localVarHeaderParameter = {} as any;
             const localVarQueryParameter = {} as any;
+
+            if (branchId !== undefined) {
+                localVarQueryParameter['branchId'] = branchId;
+            }
 
             if (chatId !== undefined) {
                 localVarQueryParameter['chatId'] = chatId;
@@ -165,12 +174,13 @@ export const MessagesApiFp = function(configuration?: Configuration) {
     return {
         /**
          * 
+         * @param {number} branchId 
          * @param {number} chatId 
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        async getMessages(chatId: number, options?: AxiosRequestConfig): Promise<(axios?: AxiosInstance, basePath?: string) => Promise<AxiosResponse<MessageResponseDto>>> {
-            const localVarAxiosArgs = await MessagesApiAxiosParamCreator(configuration).getMessages(chatId, options);
+        async getMessages(branchId: number, chatId: number, options?: AxiosRequestConfig): Promise<(axios?: AxiosInstance, basePath?: string) => Promise<AxiosResponse<MessageResponseDto>>> {
+            const localVarAxiosArgs = await MessagesApiAxiosParamCreator(configuration).getMessages(branchId, chatId, options);
             return (axios: AxiosInstance = globalAxios, basePath: string = BASE_PATH) => {
                 const axiosRequestArgs :AxiosRequestConfig = {...localVarAxiosArgs.options, url: basePath + localVarAxiosArgs.url};
                 return axios.request(axiosRequestArgs);
@@ -213,12 +223,13 @@ export const MessagesApiFactory = function (configuration?: Configuration, baseP
     return {
         /**
          * 
+         * @param {number} branchId 
          * @param {number} chatId 
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        async getMessages(chatId: number, options?: AxiosRequestConfig): Promise<AxiosResponse<MessageResponseDto>> {
-            return MessagesApiFp(configuration).getMessages(chatId, options).then((request) => request(axios, basePath));
+        async getMessages(branchId: number, chatId: number, options?: AxiosRequestConfig): Promise<AxiosResponse<MessageResponseDto>> {
+            return MessagesApiFp(configuration).getMessages(branchId, chatId, options).then((request) => request(axios, basePath));
         },
         /**
          * 
@@ -250,13 +261,14 @@ export const MessagesApiFactory = function (configuration?: Configuration, baseP
 export class MessagesApi extends BaseAPI {
     /**
      * 
+     * @param {number} branchId 
      * @param {number} chatId 
      * @param {*} [options] Override http request option.
      * @throws {RequiredError}
      * @memberof MessagesApi
      */
-    public async getMessages(chatId: number, options?: AxiosRequestConfig) : Promise<AxiosResponse<MessageResponseDto>> {
-        return MessagesApiFp(this.configuration).getMessages(chatId, options).then((request) => request(this.axios, this.basePath));
+    public async getMessages(branchId: number, chatId: number, options?: AxiosRequestConfig) : Promise<AxiosResponse<MessageResponseDto>> {
+        return MessagesApiFp(this.configuration).getMessages(branchId, chatId, options).then((request) => request(this.axios, this.basePath));
     }
     /**
      * 
