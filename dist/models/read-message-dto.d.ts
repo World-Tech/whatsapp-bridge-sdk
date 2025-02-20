@@ -16,4 +16,14 @@
 * @interface ReadMessageDto
 */
 export interface ReadMessageDto {
+    /**
+     * @type {number}
+     * @memberof ReadMessageDto
+     */
+    chatId: number;
+    /**
+     * @type {number}
+     * @memberof ReadMessageDto
+     */
+    branchId: number;
 }
