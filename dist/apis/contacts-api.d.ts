@@ -13,11 +13,20 @@ import { AxiosResponse, AxiosInstance, AxiosRequestConfig } from 'axios';
 import { Configuration } from '../configuration';
 import { RequestArgs, BaseAPI } from '../base';
 import { ContactsResponseDTO } from '../models';
+import { WhatsappChatResponseDTO } from '../models';
 /**
  * ContactsApi - axios parameter creator
  * @export
  */
 export declare const ContactsApiAxiosParamCreator: (configuration?: Configuration) => {
+    /**
+     *
+     * @param {number} cellphone
+     * @param {number} branchId
+     * @param {*} [options] Override http request option.
+     * @throws {RequiredError}
+     */
+    getChatFromCellphone: (cellphone: number, branchId: number, options?: AxiosRequestConfig) => Promise<RequestArgs>;
     /**
      *
      * @param {number} branchId
@@ -33,6 +42,14 @@ export declare const ContactsApiAxiosParamCreator: (configuration?: Configuratio
 export declare const ContactsApiFp: (configuration?: Configuration) => {
     /**
      *
+     * @param {number} cellphone
+     * @param {number} branchId
+     * @param {*} [options] Override http request option.
+     * @throws {RequiredError}
+     */
+    getChatFromCellphone(cellphone: number, branchId: number, options?: AxiosRequestConfig): Promise<(axios?: AxiosInstance, basePath?: string) => Promise<AxiosResponse<WhatsappChatResponseDTO>>>;
+    /**
+     *
      * @param {number} branchId
      * @param {*} [options] Override http request option.
      * @throws {RequiredError}
@@ -44,6 +61,14 @@ export declare const ContactsApiFp: (configuration?: Configuration) => {
  * @export
  */
 export declare const ContactsApiFactory: (configuration?: Configuration, basePath?: string, axios?: AxiosInstance) => {
+    /**
+     *
+     * @param {number} cellphone
+     * @param {number} branchId
+     * @param {*} [options] Override http request option.
+     * @throws {RequiredError}
+     */
+    getChatFromCellphone(cellphone: number, branchId: number, options?: AxiosRequestConfig): Promise<AxiosResponse<WhatsappChatResponseDTO>>;
     /**
      *
      * @param {number} branchId
@@ -59,6 +84,15 @@ export declare const ContactsApiFactory: (configuration?: Configuration, basePat
  * @extends {BaseAPI}
  */
 export declare class ContactsApi extends BaseAPI {
+    /**
+     *
+     * @param {number} cellphone
+     * @param {number} branchId
+     * @param {*} [options] Override http request option.
+     * @throws {RequiredError}
+     * @memberof ContactsApi
+     */
+    getChatFromCellphone(cellphone: number, branchId: number, options?: AxiosRequestConfig): Promise<AxiosResponse<WhatsappChatResponseDTO>>;
     /**
      *
      * @param {number} branchId
