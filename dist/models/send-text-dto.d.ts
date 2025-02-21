@@ -19,6 +19,12 @@ export interface SendTextDto {
     /**
      * @type {number}
      * @memberof SendTextDto
+     * @example 1
+     */
+    branchId: number;
+    /**
+     * @type {number}
+     * @memberof SendTextDto
      * @example 12
      */
     contactId: number;
@@ -28,4 +34,10 @@ export interface SendTextDto {
      * @example texto de envio
      */
     text: string;
+    /**
+     * @type {number}
+     * @memberof SendTextDto
+     * @example 3814652933
+     */
+    cellphone: number;
 }
