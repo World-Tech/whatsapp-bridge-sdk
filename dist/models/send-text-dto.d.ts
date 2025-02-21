@@ -27,7 +27,7 @@ export interface SendTextDto {
      * @memberof SendTextDto
      * @example 12
      */
-    contactId: number;
+    contactId?: number;
     /**
      * @type {string}
      * @memberof SendTextDto
@@ -39,5 +39,5 @@ export interface SendTextDto {
      * @memberof SendTextDto
      * @example 3814652933
      */
-    cellphone: number;
+    cellphone?: number;
 }
