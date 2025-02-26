@@ -15,6 +15,7 @@ import { RequestArgs, BaseAPI } from '../base';
 import { MessageResponseDto } from '../models';
 import { ReadMessageDto } from '../models';
 import { ReadMessageResponseDataDto } from '../models';
+import { SendTemplateDataDto } from '../models';
 import { SendTextDataResponseDto } from '../models';
 import { SendTextDto } from '../models';
 /**
@@ -37,6 +38,13 @@ export declare const MessagesApiAxiosParamCreator: (configuration?: Configuratio
      * @throws {RequiredError}
      */
     readMessage: (body: ReadMessageDto, options?: AxiosRequestConfig) => Promise<RequestArgs>;
+    /**
+     *
+     * @param {SendTemplateDataDto} body
+     * @param {*} [options] Override http request option.
+     * @throws {RequiredError}
+     */
+    sendTemplateMessage: (body: SendTemplateDataDto, options?: AxiosRequestConfig) => Promise<RequestArgs>;
     /**
      *
      * @param {SendTextDto} body
@@ -67,6 +75,13 @@ export declare const MessagesApiFp: (configuration?: Configuration) => {
     readMessage(body: ReadMessageDto, options?: AxiosRequestConfig): Promise<(axios?: AxiosInstance, basePath?: string) => Promise<AxiosResponse<ReadMessageResponseDataDto>>>;
     /**
      *
+     * @param {SendTemplateDataDto} body
+     * @param {*} [options] Override http request option.
+     * @throws {RequiredError}
+     */
+    sendTemplateMessage(body: SendTemplateDataDto, options?: AxiosRequestConfig): Promise<(axios?: AxiosInstance, basePath?: string) => Promise<AxiosResponse<SendTextDataResponseDto>>>;
+    /**
+     *
      * @param {SendTextDto} body
      * @param {*} [options] Override http request option.
      * @throws {RequiredError}
@@ -93,6 +108,13 @@ export declare const MessagesApiFactory: (configuration?: Configuration, basePat
      * @throws {RequiredError}
      */
     readMessage(body: ReadMessageDto, options?: AxiosRequestConfig): Promise<AxiosResponse<ReadMessageResponseDataDto>>;
+    /**
+     *
+     * @param {SendTemplateDataDto} body
+     * @param {*} [options] Override http request option.
+     * @throws {RequiredError}
+     */
+    sendTemplateMessage(body: SendTemplateDataDto, options?: AxiosRequestConfig): Promise<AxiosResponse<SendTextDataResponseDto>>;
     /**
      *
      * @param {SendTextDto} body
@@ -125,6 +147,14 @@ export declare class MessagesApi extends BaseAPI {
      * @memberof MessagesApi
      */
     readMessage(body: ReadMessageDto, options?: AxiosRequestConfig): Promise<AxiosResponse<ReadMessageResponseDataDto>>;
+    /**
+     *
+     * @param {SendTemplateDataDto} body
+     * @param {*} [options] Override http request option.
+     * @throws {RequiredError}
+     * @memberof MessagesApi
+     */
+    sendTemplateMessage(body: SendTemplateDataDto, options?: AxiosRequestConfig): Promise<AxiosResponse<SendTextDataResponseDto>>;
     /**
      *
      * @param {SendTextDto} body
