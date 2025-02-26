@@ -16,4 +16,16 @@
 * @interface AssignToMeDto
 */
 export interface AssignToMeDto {
+    /**
+     * @type {number}
+     * @memberof AssignToMeDto
+     * @example 1
+     */
+    userId: number;
+    /**
+     * @type {number}
+     * @memberof AssignToMeDto
+     * @example 1
+     */
+    branchId: number;
 }

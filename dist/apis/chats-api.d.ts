@@ -55,7 +55,7 @@ export declare const ChatsApiFp: (configuration?: Configuration) => {
      * @param {*} [options] Override http request option.
      * @throws {RequiredError}
      */
-    assignToMe(body: AssignToMeDto, id: number, options?: AxiosRequestConfig): Promise<(axios?: AxiosInstance, basePath?: string) => Promise<AxiosResponse<WhatsappChatResponseDTO>>>;
+    assignToMe(body: AssignToMeDto, id: number, options?: AxiosRequestConfig): Promise<(axios?: AxiosInstance, basePath?: string) => Promise<AxiosResponse<void>>>;
     /**
      *
      * @param {number} id
@@ -83,7 +83,7 @@ export declare const ChatsApiFactory: (configuration?: Configuration, basePath?:
      * @param {*} [options] Override http request option.
      * @throws {RequiredError}
      */
-    assignToMe(body: AssignToMeDto, id: number, options?: AxiosRequestConfig): Promise<AxiosResponse<WhatsappChatResponseDTO>>;
+    assignToMe(body: AssignToMeDto, id: number, options?: AxiosRequestConfig): Promise<AxiosResponse<void>>;
     /**
      *
      * @param {number} id
@@ -114,7 +114,7 @@ export declare class ChatsApi extends BaseAPI {
      * @throws {RequiredError}
      * @memberof ChatsApi
      */
-    assignToMe(body: AssignToMeDto, id: number, options?: AxiosRequestConfig): Promise<AxiosResponse<WhatsappChatResponseDTO>>;
+    assignToMe(body: AssignToMeDto, id: number, options?: AxiosRequestConfig): Promise<AxiosResponse<void>>;
     /**
      *
      * @param {number} id

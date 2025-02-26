@@ -171,7 +171,7 @@ export const ChatsApiFp = function(configuration?: Configuration) {
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        async assignToMe(body: AssignToMeDto, id: number, options?: AxiosRequestConfig): Promise<(axios?: AxiosInstance, basePath?: string) => Promise<AxiosResponse<WhatsappChatResponseDTO>>> {
+        async assignToMe(body: AssignToMeDto, id: number, options?: AxiosRequestConfig): Promise<(axios?: AxiosInstance, basePath?: string) => Promise<AxiosResponse<void>>> {
             const localVarAxiosArgs = await ChatsApiAxiosParamCreator(configuration).assignToMe(body, id, options);
             return (axios: AxiosInstance = globalAxios, basePath: string = BASE_PATH) => {
                 const axiosRequestArgs :AxiosRequestConfig = {...localVarAxiosArgs.options, url: basePath + localVarAxiosArgs.url};
@@ -220,7 +220,7 @@ export const ChatsApiFactory = function (configuration?: Configuration, basePath
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        async assignToMe(body: AssignToMeDto, id: number, options?: AxiosRequestConfig): Promise<AxiosResponse<WhatsappChatResponseDTO>> {
+        async assignToMe(body: AssignToMeDto, id: number, options?: AxiosRequestConfig): Promise<AxiosResponse<void>> {
             return ChatsApiFp(configuration).assignToMe(body, id, options).then((request) => request(axios, basePath));
         },
         /**
@@ -259,7 +259,7 @@ export class ChatsApi extends BaseAPI {
      * @throws {RequiredError}
      * @memberof ChatsApi
      */
-    public async assignToMe(body: AssignToMeDto, id: number, options?: AxiosRequestConfig) : Promise<AxiosResponse<WhatsappChatResponseDTO>> {
+    public async assignToMe(body: AssignToMeDto, id: number, options?: AxiosRequestConfig) : Promise<AxiosResponse<void>> {
         return ChatsApiFp(this.configuration).assignToMe(body, id, options).then((request) => request(this.axios, this.basePath));
     }
     /**
