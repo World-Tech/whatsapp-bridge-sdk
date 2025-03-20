@@ -13,6 +13,8 @@
  */
 
 import { ConversationMessageDto } from './conversation-message-dto';
+import { DocumentMessageDto } from './document-message-dto';
+import { ImageMessageDto } from './image-message-dto';
 import { WhatsappMessageKeyDto } from './whatsapp-message-key-dto';
  /**
  * 
@@ -44,10 +46,10 @@ export interface WhatsappMessageDto {
     messageTimestamp: number;
 
     /**
-     * @type {ConversationMessageDto}
+     * @type {ConversationMessageDto | ImageMessageDto | DocumentMessageDto}
      * @memberof WhatsappMessageDto
      */
-    message: ConversationMessageDto;
+    message: ConversationMessageDto | ImageMessageDto | DocumentMessageDto;
 
     /**
      * @type {WhatsappMessageKeyDto}
