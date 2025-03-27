@@ -49,6 +49,12 @@ export interface WhatsappChatDto {
      */
     unreadMessages: number;
     /**
+     * @type {boolean}
+     * @memberof WhatsappChatDto
+     * @example true
+     */
+    unread: boolean;
+    /**
      * @type {Array<WhatsappMessageDto>}
      * @memberof WhatsappChatDto
      */

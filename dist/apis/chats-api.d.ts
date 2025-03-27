@@ -14,6 +14,7 @@ import { Configuration } from '../configuration';
 import { RequestArgs, BaseAPI } from '../base';
 import { AssignToMeDto } from '../models';
 import { ChatsResponseDTO } from '../models';
+import { MarkChatUnreadDto } from '../models';
 import { WhatsappChatResponseDTO } from '../models';
 /**
  * ChatsApi - axios parameter creator
@@ -43,6 +44,14 @@ export declare const ChatsApiAxiosParamCreator: (configuration?: Configuration) 
      * @throws {RequiredError}
      */
     getChats: (branchId: number, userId?: number, options?: AxiosRequestConfig) => Promise<RequestArgs>;
+    /**
+     *
+     * @param {MarkChatUnreadDto} body
+     * @param {number} id
+     * @param {*} [options] Override http request option.
+     * @throws {RequiredError}
+     */
+    markChatUnread: (body: MarkChatUnreadDto, id: number, options?: AxiosRequestConfig) => Promise<RequestArgs>;
 };
 /**
  * ChatsApi - functional programming interface
@@ -72,6 +81,14 @@ export declare const ChatsApiFp: (configuration?: Configuration) => {
      * @throws {RequiredError}
      */
     getChats(branchId: number, userId?: number, options?: AxiosRequestConfig): Promise<(axios?: AxiosInstance, basePath?: string) => Promise<AxiosResponse<ChatsResponseDTO>>>;
+    /**
+     *
+     * @param {MarkChatUnreadDto} body
+     * @param {number} id
+     * @param {*} [options] Override http request option.
+     * @throws {RequiredError}
+     */
+    markChatUnread(body: MarkChatUnreadDto, id: number, options?: AxiosRequestConfig): Promise<(axios?: AxiosInstance, basePath?: string) => Promise<AxiosResponse<void>>>;
 };
 /**
  * ChatsApi - factory interface
@@ -101,6 +118,14 @@ export declare const ChatsApiFactory: (configuration?: Configuration, basePath?:
      * @throws {RequiredError}
      */
     getChats(branchId: number, userId?: number, options?: AxiosRequestConfig): Promise<AxiosResponse<ChatsResponseDTO>>;
+    /**
+     *
+     * @param {MarkChatUnreadDto} body
+     * @param {number} id
+     * @param {*} [options] Override http request option.
+     * @throws {RequiredError}
+     */
+    markChatUnread(body: MarkChatUnreadDto, id: number, options?: AxiosRequestConfig): Promise<AxiosResponse<void>>;
 };
 /**
  * ChatsApi - object-oriented interface
@@ -135,4 +160,13 @@ export declare class ChatsApi extends BaseAPI {
      * @memberof ChatsApi
      */
     getChats(branchId: number, userId?: number, options?: AxiosRequestConfig): Promise<AxiosResponse<ChatsResponseDTO>>;
+    /**
+     *
+     * @param {MarkChatUnreadDto} body
+     * @param {number} id
+     * @param {*} [options] Override http request option.
+     * @throws {RequiredError}
+     * @memberof ChatsApi
+     */
+    markChatUnread(body: MarkChatUnreadDto, id: number, options?: AxiosRequestConfig): Promise<AxiosResponse<void>>;
 }
