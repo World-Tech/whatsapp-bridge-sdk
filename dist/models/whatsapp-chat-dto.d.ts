@@ -55,6 +55,12 @@ export interface WhatsappChatDto {
      */
     unread: boolean;
     /**
+     * @type {number}
+     * @memberof WhatsappChatDto
+     * @example 1965
+     */
+    assignedUserId: number;
+    /**
      * @type {Array<WhatsappMessageDto>}
      * @memberof WhatsappChatDto
      */
