@@ -28,4 +28,16 @@ export interface SendTemplateDataDto {
      * @example 1
      */
     branchId: number;
+    /**
+     * @type {number}
+     * @memberof SendTemplateDataDto
+     * @example 1
+     */
+    leadId?: number;
+    /**
+     * @type {number}
+     * @memberof SendTemplateDataDto
+     * @example 1
+     */
+    sellerId?: number;
 }
