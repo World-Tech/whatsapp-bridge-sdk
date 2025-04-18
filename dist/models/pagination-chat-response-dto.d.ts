@@ -25,12 +25,6 @@ export interface PaginationChatResponseDto {
     /**
      * @type {number}
      * @memberof PaginationChatResponseDto
-     * @example 9001
-     */
-    assignedUserId: number;
-    /**
-     * @type {number}
-     * @memberof PaginationChatResponseDto
      * @example 10
      */
     perPage: number;
