@@ -200,7 +200,7 @@ var ChatsApiAxiosParamCreator = function (configuration) {
          * @param {number} [userId]
          * @param {number} [currentPage]
          * @param {number} [rowsPerPage]
-         * @param {number} [unread]
+         * @param {boolean} [unread]
          * @param {string} [q]
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
@@ -378,7 +378,7 @@ var ChatsApiFp = function (configuration) {
          * @param {number} [userId]
          * @param {number} [currentPage]
          * @param {number} [rowsPerPage]
-         * @param {number} [unread]
+         * @param {boolean} [unread]
          * @param {string} [q]
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
@@ -468,7 +468,7 @@ var ChatsApiFactory = function (configuration, basePath, axios) {
          * @param {number} [userId]
          * @param {number} [currentPage]
          * @param {number} [rowsPerPage]
-         * @param {number} [unread]
+         * @param {boolean} [unread]
          * @param {string} [q]
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
@@ -545,7 +545,7 @@ var ChatsApi = /** @class */ (function (_super) {
      * @param {number} [userId]
      * @param {number} [currentPage]
      * @param {number} [rowsPerPage]
-     * @param {number} [unread]
+     * @param {boolean} [unread]
      * @param {string} [q]
      * @param {*} [options] Override http request option.
      * @throws {RequiredError}
