@@ -117,24 +117,17 @@ export const ChatsApiAxiosParamCreator = function (configuration?: Configuration
         /**
          * 
          * @param {number} branchId 
-         * @param {number} currentPage 
-         * @param {number} rowsPerPage 
          * @param {number} [userId] 
+         * @param {number} [currentPage] 
+         * @param {number} [rowsPerPage] 
+         * @param {number} [unread] 
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        getChats: async (branchId: number, currentPage: number, rowsPerPage: number, userId?: number, options: AxiosRequestConfig = {}): Promise<RequestArgs> => {
+        getChats: async (branchId: number, userId?: number, currentPage?: number, rowsPerPage?: number, unread?: number, options: AxiosRequestConfig = {}): Promise<RequestArgs> => {
             // verify required parameter 'branchId' is not null or undefined
             if (branchId === null || branchId === undefined) {
                 throw new RequiredError('branchId','Required parameter branchId was null or undefined when calling getChats.');
-            }
-            // verify required parameter 'currentPage' is not null or undefined
-            if (currentPage === null || currentPage === undefined) {
-                throw new RequiredError('currentPage','Required parameter currentPage was null or undefined when calling getChats.');
-            }
-            // verify required parameter 'rowsPerPage' is not null or undefined
-            if (rowsPerPage === null || rowsPerPage === undefined) {
-                throw new RequiredError('rowsPerPage','Required parameter rowsPerPage was null or undefined when calling getChats.');
             }
             const localVarPath = `/api/chats`;
             // use dummy base URL string because the URL constructor only accepts absolute URLs.
@@ -161,6 +154,10 @@ export const ChatsApiAxiosParamCreator = function (configuration?: Configuration
 
             if (rowsPerPage !== undefined) {
                 localVarQueryParameter['rowsPerPage'] = rowsPerPage;
+            }
+
+            if (unread !== undefined) {
+                localVarQueryParameter['unread'] = unread;
             }
 
             const query = new URLSearchParams(localVarUrlObj.search);
@@ -266,14 +263,15 @@ export const ChatsApiFp = function(configuration?: Configuration) {
         /**
          * 
          * @param {number} branchId 
-         * @param {number} currentPage 
-         * @param {number} rowsPerPage 
          * @param {number} [userId] 
+         * @param {number} [currentPage] 
+         * @param {number} [rowsPerPage] 
+         * @param {number} [unread] 
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        async getChats(branchId: number, currentPage: number, rowsPerPage: number, userId?: number, options?: AxiosRequestConfig): Promise<(axios?: AxiosInstance, basePath?: string) => Promise<AxiosResponse<PaginationChatResponseDto>>> {
-            const localVarAxiosArgs = await ChatsApiAxiosParamCreator(configuration).getChats(branchId, currentPage, rowsPerPage, userId, options);
+        async getChats(branchId: number, userId?: number, currentPage?: number, rowsPerPage?: number, unread?: number, options?: AxiosRequestConfig): Promise<(axios?: AxiosInstance, basePath?: string) => Promise<AxiosResponse<PaginationChatResponseDto>>> {
+            const localVarAxiosArgs = await ChatsApiAxiosParamCreator(configuration).getChats(branchId, userId, currentPage, rowsPerPage, unread, options);
             return (axios: AxiosInstance = globalAxios, basePath: string = BASE_PATH) => {
                 const axiosRequestArgs :AxiosRequestConfig = {...localVarAxiosArgs.options, url: basePath + localVarAxiosArgs.url};
                 return axios.request(axiosRequestArgs);
@@ -324,14 +322,15 @@ export const ChatsApiFactory = function (configuration?: Configuration, basePath
         /**
          * 
          * @param {number} branchId 
-         * @param {number} currentPage 
-         * @param {number} rowsPerPage 
          * @param {number} [userId] 
+         * @param {number} [currentPage] 
+         * @param {number} [rowsPerPage] 
+         * @param {number} [unread] 
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        async getChats(branchId: number, currentPage: number, rowsPerPage: number, userId?: number, options?: AxiosRequestConfig): Promise<AxiosResponse<PaginationChatResponseDto>> {
-            return ChatsApiFp(configuration).getChats(branchId, currentPage, rowsPerPage, userId, options).then((request) => request(axios, basePath));
+        async getChats(branchId: number, userId?: number, currentPage?: number, rowsPerPage?: number, unread?: number, options?: AxiosRequestConfig): Promise<AxiosResponse<PaginationChatResponseDto>> {
+            return ChatsApiFp(configuration).getChats(branchId, userId, currentPage, rowsPerPage, unread, options).then((request) => request(axios, basePath));
         },
         /**
          * 
@@ -377,15 +376,16 @@ export class ChatsApi extends BaseAPI {
     /**
      * 
      * @param {number} branchId 
-     * @param {number} currentPage 
-     * @param {number} rowsPerPage 
      * @param {number} [userId] 
+     * @param {number} [currentPage] 
+     * @param {number} [rowsPerPage] 
+     * @param {number} [unread] 
      * @param {*} [options] Override http request option.
      * @throws {RequiredError}
      * @memberof ChatsApi
      */
-    public async getChats(branchId: number, currentPage: number, rowsPerPage: number, userId?: number, options?: AxiosRequestConfig) : Promise<AxiosResponse<PaginationChatResponseDto>> {
-        return ChatsApiFp(this.configuration).getChats(branchId, currentPage, rowsPerPage, userId, options).then((request) => request(this.axios, this.basePath));
+    public async getChats(branchId: number, userId?: number, currentPage?: number, rowsPerPage?: number, unread?: number, options?: AxiosRequestConfig) : Promise<AxiosResponse<PaginationChatResponseDto>> {
+        return ChatsApiFp(this.configuration).getChats(branchId, userId, currentPage, rowsPerPage, unread, options).then((request) => request(this.axios, this.basePath));
     }
     /**
      * 

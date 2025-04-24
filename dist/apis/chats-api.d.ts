@@ -39,13 +39,14 @@ export declare const ChatsApiAxiosParamCreator: (configuration?: Configuration) 
     /**
      *
      * @param {number} branchId
-     * @param {number} currentPage
-     * @param {number} rowsPerPage
      * @param {number} [userId]
+     * @param {number} [currentPage]
+     * @param {number} [rowsPerPage]
+     * @param {number} [unread]
      * @param {*} [options] Override http request option.
      * @throws {RequiredError}
      */
-    getChats: (branchId: number, currentPage: number, rowsPerPage: number, userId?: number, options?: AxiosRequestConfig) => Promise<RequestArgs>;
+    getChats: (branchId: number, userId?: number, currentPage?: number, rowsPerPage?: number, unread?: number, options?: AxiosRequestConfig) => Promise<RequestArgs>;
     /**
      *
      * @param {MarkChatUnreadDto} body
@@ -78,13 +79,14 @@ export declare const ChatsApiFp: (configuration?: Configuration) => {
     /**
      *
      * @param {number} branchId
-     * @param {number} currentPage
-     * @param {number} rowsPerPage
      * @param {number} [userId]
+     * @param {number} [currentPage]
+     * @param {number} [rowsPerPage]
+     * @param {number} [unread]
      * @param {*} [options] Override http request option.
      * @throws {RequiredError}
      */
-    getChats(branchId: number, currentPage: number, rowsPerPage: number, userId?: number, options?: AxiosRequestConfig): Promise<(axios?: AxiosInstance, basePath?: string) => Promise<AxiosResponse<PaginationChatResponseDto>>>;
+    getChats(branchId: number, userId?: number, currentPage?: number, rowsPerPage?: number, unread?: number, options?: AxiosRequestConfig): Promise<(axios?: AxiosInstance, basePath?: string) => Promise<AxiosResponse<PaginationChatResponseDto>>>;
     /**
      *
      * @param {MarkChatUnreadDto} body
@@ -117,13 +119,14 @@ export declare const ChatsApiFactory: (configuration?: Configuration, basePath?:
     /**
      *
      * @param {number} branchId
-     * @param {number} currentPage
-     * @param {number} rowsPerPage
      * @param {number} [userId]
+     * @param {number} [currentPage]
+     * @param {number} [rowsPerPage]
+     * @param {number} [unread]
      * @param {*} [options] Override http request option.
      * @throws {RequiredError}
      */
-    getChats(branchId: number, currentPage: number, rowsPerPage: number, userId?: number, options?: AxiosRequestConfig): Promise<AxiosResponse<PaginationChatResponseDto>>;
+    getChats(branchId: number, userId?: number, currentPage?: number, rowsPerPage?: number, unread?: number, options?: AxiosRequestConfig): Promise<AxiosResponse<PaginationChatResponseDto>>;
     /**
      *
      * @param {MarkChatUnreadDto} body
@@ -160,14 +163,15 @@ export declare class ChatsApi extends BaseAPI {
     /**
      *
      * @param {number} branchId
-     * @param {number} currentPage
-     * @param {number} rowsPerPage
      * @param {number} [userId]
+     * @param {number} [currentPage]
+     * @param {number} [rowsPerPage]
+     * @param {number} [unread]
      * @param {*} [options] Override http request option.
      * @throws {RequiredError}
      * @memberof ChatsApi
      */
-    getChats(branchId: number, currentPage: number, rowsPerPage: number, userId?: number, options?: AxiosRequestConfig): Promise<AxiosResponse<PaginationChatResponseDto>>;
+    getChats(branchId: number, userId?: number, currentPage?: number, rowsPerPage?: number, unread?: number, options?: AxiosRequestConfig): Promise<AxiosResponse<PaginationChatResponseDto>>;
     /**
      *
      * @param {MarkChatUnreadDto} body
