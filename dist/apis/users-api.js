@@ -12,32 +12,6 @@
  * https://github.com/swagger-api/swagger-codegen.git
  * Do not edit the class manually.
  */
-var __extends = (this && this.__extends) || (function () {
-    var extendStatics = function (d, b) {
-        extendStatics = Object.setPrototypeOf ||
-            ({ __proto__: [] } instanceof Array && function (d, b) { d.__proto__ = b; }) ||
-            function (d, b) { for (var p in b) if (Object.prototype.hasOwnProperty.call(b, p)) d[p] = b[p]; };
-        return extendStatics(d, b);
-    };
-    return function (d, b) {
-        if (typeof b !== "function" && b !== null)
-            throw new TypeError("Class extends value " + String(b) + " is not a constructor or null");
-        extendStatics(d, b);
-        function __() { this.constructor = d; }
-        d.prototype = b === null ? Object.create(b) : (__.prototype = b.prototype, new __());
-    };
-})();
-var __assign = (this && this.__assign) || function () {
-    __assign = Object.assign || function(t) {
-        for (var s, i = 1, n = arguments.length; i < n; i++) {
-            s = arguments[i];
-            for (var p in s) if (Object.prototype.hasOwnProperty.call(s, p))
-                t[p] = s[p];
-        }
-        return t;
-    };
-    return __assign.apply(this, arguments);
-};
 var __awaiter = (this && this.__awaiter) || function (thisArg, _arguments, P, generator) {
     function adopt(value) { return value instanceof P ? value : new P(function (resolve) { resolve(value); }); }
     return new (P || (P = Promise))(function (resolve, reject) {
@@ -47,54 +21,17 @@ var __awaiter = (this && this.__awaiter) || function (thisArg, _arguments, P, ge
         step((generator = generator.apply(thisArg, _arguments || [])).next());
     });
 };
-var __generator = (this && this.__generator) || function (thisArg, body) {
-    var _ = { label: 0, sent: function() { if (t[0] & 1) throw t[1]; return t[1]; }, trys: [], ops: [] }, f, y, t, g = Object.create((typeof Iterator === "function" ? Iterator : Object).prototype);
-    return g.next = verb(0), g["throw"] = verb(1), g["return"] = verb(2), typeof Symbol === "function" && (g[Symbol.iterator] = function() { return this; }), g;
-    function verb(n) { return function (v) { return step([n, v]); }; }
-    function step(op) {
-        if (f) throw new TypeError("Generator is already executing.");
-        while (g && (g = 0, op[0] && (_ = 0)), _) try {
-            if (f = 1, y && (t = op[0] & 2 ? y["return"] : op[0] ? y["throw"] || ((t = y["return"]) && t.call(y), 0) : y.next) && !(t = t.call(y, op[1])).done) return t;
-            if (y = 0, t) op = [op[0] & 2, t.value];
-            switch (op[0]) {
-                case 0: case 1: t = op; break;
-                case 4: _.label++; return { value: op[1], done: false };
-                case 5: _.label++; y = op[1]; op = [0]; continue;
-                case 7: op = _.ops.pop(); _.trys.pop(); continue;
-                default:
-                    if (!(t = _.trys, t = t.length > 0 && t[t.length - 1]) && (op[0] === 6 || op[0] === 2)) { _ = 0; continue; }
-                    if (op[0] === 3 && (!t || (op[1] > t[0] && op[1] < t[3]))) { _.label = op[1]; break; }
-                    if (op[0] === 6 && _.label < t[1]) { _.label = t[1]; t = op; break; }
-                    if (t && _.label < t[2]) { _.label = t[2]; _.ops.push(op); break; }
-                    if (t[2]) _.ops.pop();
-                    _.trys.pop(); continue;
-            }
-            op = body.call(thisArg, _);
-        } catch (e) { op = [6, e]; y = 0; } finally { f = t = 0; }
-        if (op[0] & 5) throw op[1]; return { value: op[0] ? op[1] : void 0, done: true };
-    }
-};
-var __spreadArray = (this && this.__spreadArray) || function (to, from, pack) {
-    if (pack || arguments.length === 2) for (var i = 0, l = from.length, ar; i < l; i++) {
-        if (ar || !(i in from)) {
-            if (!ar) ar = Array.prototype.slice.call(from, 0, i);
-            ar[i] = from[i];
-        }
-    }
-    return to.concat(ar || Array.prototype.slice.call(from));
-};
 Object.defineProperty(exports, "__esModule", { value: true });
 exports.UsersApi = exports.UsersApiFactory = exports.UsersApiFp = exports.UsersApiAxiosParamCreator = void 0;
-var axios_1 = require("axios");
+const axios_1 = require("axios");
 // Some imports not used depending on template conditions
 // @ts-ignore
-var base_1 = require("../base");
+const base_1 = require("../base");
 /**
  * UsersApi - axios parameter creator
  * @export
  */
-var UsersApiAxiosParamCreator = function (configuration) {
-    var _this = this;
+const UsersApiAxiosParamCreator = function (configuration) {
     return {
         /**
          *
@@ -102,233 +39,183 @@ var UsersApiAxiosParamCreator = function (configuration) {
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        createSetter: function (body_1) {
-            var args_1 = [];
-            for (var _i = 1; _i < arguments.length; _i++) {
-                args_1[_i - 1] = arguments[_i];
+        createSetter: (body_1, ...args_1) => __awaiter(this, [body_1, ...args_1], void 0, function* (body, options = {}) {
+            // verify required parameter 'body' is not null or undefined
+            if (body === null || body === undefined) {
+                throw new base_1.RequiredError('body', 'Required parameter body was null or undefined when calling createSetter.');
             }
-            return __awaiter(_this, __spreadArray([body_1], args_1, true), void 0, function (body, options) {
-                var localVarPath, localVarUrlObj, baseOptions, localVarRequestOptions, localVarHeaderParameter, localVarQueryParameter, accessToken, _a, query, key, key, headersFromBaseOptions, needsSerialization;
-                if (options === void 0) { options = {}; }
-                return __generator(this, function (_b) {
-                    switch (_b.label) {
-                        case 0:
-                            // verify required parameter 'body' is not null or undefined
-                            if (body === null || body === undefined) {
-                                throw new base_1.RequiredError('body', 'Required parameter body was null or undefined when calling createSetter.');
-                            }
-                            localVarPath = "/api/users/update-password";
-                            localVarUrlObj = new URL(localVarPath, 'https://example.com');
-                            if (configuration) {
-                                baseOptions = configuration.baseOptions;
-                            }
-                            localVarRequestOptions = __assign(__assign({ method: 'PATCH' }, baseOptions), options);
-                            localVarHeaderParameter = {};
-                            localVarQueryParameter = {};
-                            if (!(configuration && configuration.accessToken)) return [3 /*break*/, 5];
-                            if (!(typeof configuration.accessToken === 'function')) return [3 /*break*/, 2];
-                            return [4 /*yield*/, configuration.accessToken()];
-                        case 1:
-                            _a = _b.sent();
-                            return [3 /*break*/, 4];
-                        case 2: return [4 /*yield*/, configuration.accessToken];
-                        case 3:
-                            _a = _b.sent();
-                            _b.label = 4;
-                        case 4:
-                            accessToken = _a;
-                            localVarHeaderParameter["Authorization"] = "Bearer " + accessToken;
-                            _b.label = 5;
-                        case 5:
-                            localVarHeaderParameter['Content-Type'] = 'application/json';
-                            query = new URLSearchParams(localVarUrlObj.search);
-                            for (key in localVarQueryParameter) {
-                                query.set(key, localVarQueryParameter[key]);
-                            }
-                            for (key in options.params) {
-                                query.set(key, options.params[key]);
-                            }
-                            localVarUrlObj.search = (new URLSearchParams(query)).toString();
-                            headersFromBaseOptions = baseOptions && baseOptions.headers ? baseOptions.headers : {};
-                            localVarRequestOptions.headers = __assign(__assign(__assign({}, localVarHeaderParameter), headersFromBaseOptions), options.headers);
-                            needsSerialization = (typeof body !== "string") || localVarRequestOptions.headers['Content-Type'] === 'application/json';
-                            localVarRequestOptions.data = needsSerialization ? JSON.stringify(body !== undefined ? body : {}) : (body || "");
-                            return [2 /*return*/, {
-                                    url: localVarUrlObj.pathname + localVarUrlObj.search + localVarUrlObj.hash,
-                                    options: localVarRequestOptions,
-                                }];
-                    }
-                });
-            });
-        },
+            const localVarPath = `/api/users/update-password`;
+            // use dummy base URL string because the URL constructor only accepts absolute URLs.
+            const localVarUrlObj = new URL(localVarPath, 'https://example.com');
+            let baseOptions;
+            if (configuration) {
+                baseOptions = configuration.baseOptions;
+            }
+            const localVarRequestOptions = Object.assign(Object.assign({ method: 'PATCH' }, baseOptions), options);
+            const localVarHeaderParameter = {};
+            const localVarQueryParameter = {};
+            // authentication access-token required
+            // http bearer authentication required
+            if (configuration && configuration.accessToken) {
+                const accessToken = typeof configuration.accessToken === 'function'
+                    ? yield configuration.accessToken()
+                    : yield configuration.accessToken;
+                localVarHeaderParameter["Authorization"] = "Bearer " + accessToken;
+            }
+            localVarHeaderParameter['Content-Type'] = 'application/json';
+            const query = new URLSearchParams(localVarUrlObj.search);
+            for (const key in localVarQueryParameter) {
+                query.set(key, localVarQueryParameter[key]);
+            }
+            for (const key in options.params) {
+                query.set(key, options.params[key]);
+            }
+            localVarUrlObj.search = (new URLSearchParams(query)).toString();
+            let headersFromBaseOptions = baseOptions && baseOptions.headers ? baseOptions.headers : {};
+            localVarRequestOptions.headers = Object.assign(Object.assign(Object.assign({}, localVarHeaderParameter), headersFromBaseOptions), options.headers);
+            const needsSerialization = (typeof body !== "string") || localVarRequestOptions.headers['Content-Type'] === 'application/json';
+            localVarRequestOptions.data = needsSerialization ? JSON.stringify(body !== undefined ? body : {}) : (body || "");
+            return {
+                url: localVarUrlObj.pathname + localVarUrlObj.search + localVarUrlObj.hash,
+                options: localVarRequestOptions,
+            };
+        }),
         /**
          *
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        usersControllerGet: function () {
-            var args_1 = [];
-            for (var _i = 0; _i < arguments.length; _i++) {
-                args_1[_i] = arguments[_i];
+        usersControllerGet: (...args_1) => __awaiter(this, [...args_1], void 0, function* (options = {}) {
+            const localVarPath = `/api/users`;
+            // use dummy base URL string because the URL constructor only accepts absolute URLs.
+            const localVarUrlObj = new URL(localVarPath, 'https://example.com');
+            let baseOptions;
+            if (configuration) {
+                baseOptions = configuration.baseOptions;
             }
-            return __awaiter(_this, __spreadArray([], args_1, true), void 0, function (options) {
-                var localVarPath, localVarUrlObj, baseOptions, localVarRequestOptions, localVarHeaderParameter, localVarQueryParameter, query, key, key, headersFromBaseOptions;
-                if (options === void 0) { options = {}; }
-                return __generator(this, function (_a) {
-                    localVarPath = "/api/users";
-                    localVarUrlObj = new URL(localVarPath, 'https://example.com');
-                    if (configuration) {
-                        baseOptions = configuration.baseOptions;
-                    }
-                    localVarRequestOptions = __assign(__assign({ method: 'GET' }, baseOptions), options);
-                    localVarHeaderParameter = {};
-                    localVarQueryParameter = {};
-                    query = new URLSearchParams(localVarUrlObj.search);
-                    for (key in localVarQueryParameter) {
-                        query.set(key, localVarQueryParameter[key]);
-                    }
-                    for (key in options.params) {
-                        query.set(key, options.params[key]);
-                    }
-                    localVarUrlObj.search = (new URLSearchParams(query)).toString();
-                    headersFromBaseOptions = baseOptions && baseOptions.headers ? baseOptions.headers : {};
-                    localVarRequestOptions.headers = __assign(__assign(__assign({}, localVarHeaderParameter), headersFromBaseOptions), options.headers);
-                    return [2 /*return*/, {
-                            url: localVarUrlObj.pathname + localVarUrlObj.search + localVarUrlObj.hash,
-                            options: localVarRequestOptions,
-                        }];
-                });
-            });
-        },
+            const localVarRequestOptions = Object.assign(Object.assign({ method: 'GET' }, baseOptions), options);
+            const localVarHeaderParameter = {};
+            const localVarQueryParameter = {};
+            const query = new URLSearchParams(localVarUrlObj.search);
+            for (const key in localVarQueryParameter) {
+                query.set(key, localVarQueryParameter[key]);
+            }
+            for (const key in options.params) {
+                query.set(key, options.params[key]);
+            }
+            localVarUrlObj.search = (new URLSearchParams(query)).toString();
+            let headersFromBaseOptions = baseOptions && baseOptions.headers ? baseOptions.headers : {};
+            localVarRequestOptions.headers = Object.assign(Object.assign(Object.assign({}, localVarHeaderParameter), headersFromBaseOptions), options.headers);
+            return {
+                url: localVarUrlObj.pathname + localVarUrlObj.search + localVarUrlObj.hash,
+                options: localVarRequestOptions,
+            };
+        }),
         /**
          *
          * @param {number} id
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        usersControllerShow: function (id_1) {
-            var args_1 = [];
-            for (var _i = 1; _i < arguments.length; _i++) {
-                args_1[_i - 1] = arguments[_i];
+        usersControllerShow: (id_1, ...args_1) => __awaiter(this, [id_1, ...args_1], void 0, function* (id, options = {}) {
+            // verify required parameter 'id' is not null or undefined
+            if (id === null || id === undefined) {
+                throw new base_1.RequiredError('id', 'Required parameter id was null or undefined when calling usersControllerShow.');
             }
-            return __awaiter(_this, __spreadArray([id_1], args_1, true), void 0, function (id, options) {
-                var localVarPath, localVarUrlObj, baseOptions, localVarRequestOptions, localVarHeaderParameter, localVarQueryParameter, query, key, key, headersFromBaseOptions;
-                if (options === void 0) { options = {}; }
-                return __generator(this, function (_a) {
-                    // verify required parameter 'id' is not null or undefined
-                    if (id === null || id === undefined) {
-                        throw new base_1.RequiredError('id', 'Required parameter id was null or undefined when calling usersControllerShow.');
-                    }
-                    localVarPath = "/api/users/{id}"
-                        .replace("{".concat("id", "}"), encodeURIComponent(String(id)));
-                    localVarUrlObj = new URL(localVarPath, 'https://example.com');
-                    if (configuration) {
-                        baseOptions = configuration.baseOptions;
-                    }
-                    localVarRequestOptions = __assign(__assign({ method: 'GET' }, baseOptions), options);
-                    localVarHeaderParameter = {};
-                    localVarQueryParameter = {};
-                    query = new URLSearchParams(localVarUrlObj.search);
-                    for (key in localVarQueryParameter) {
-                        query.set(key, localVarQueryParameter[key]);
-                    }
-                    for (key in options.params) {
-                        query.set(key, options.params[key]);
-                    }
-                    localVarUrlObj.search = (new URLSearchParams(query)).toString();
-                    headersFromBaseOptions = baseOptions && baseOptions.headers ? baseOptions.headers : {};
-                    localVarRequestOptions.headers = __assign(__assign(__assign({}, localVarHeaderParameter), headersFromBaseOptions), options.headers);
-                    return [2 /*return*/, {
-                            url: localVarUrlObj.pathname + localVarUrlObj.search + localVarUrlObj.hash,
-                            options: localVarRequestOptions,
-                        }];
-                });
-            });
-        },
+            const localVarPath = `/api/users/{id}`
+                .replace(`{${"id"}}`, encodeURIComponent(String(id)));
+            // use dummy base URL string because the URL constructor only accepts absolute URLs.
+            const localVarUrlObj = new URL(localVarPath, 'https://example.com');
+            let baseOptions;
+            if (configuration) {
+                baseOptions = configuration.baseOptions;
+            }
+            const localVarRequestOptions = Object.assign(Object.assign({ method: 'GET' }, baseOptions), options);
+            const localVarHeaderParameter = {};
+            const localVarQueryParameter = {};
+            const query = new URLSearchParams(localVarUrlObj.search);
+            for (const key in localVarQueryParameter) {
+                query.set(key, localVarQueryParameter[key]);
+            }
+            for (const key in options.params) {
+                query.set(key, options.params[key]);
+            }
+            localVarUrlObj.search = (new URLSearchParams(query)).toString();
+            let headersFromBaseOptions = baseOptions && baseOptions.headers ? baseOptions.headers : {};
+            localVarRequestOptions.headers = Object.assign(Object.assign(Object.assign({}, localVarHeaderParameter), headersFromBaseOptions), options.headers);
+            return {
+                url: localVarUrlObj.pathname + localVarUrlObj.search + localVarUrlObj.hash,
+                options: localVarRequestOptions,
+            };
+        }),
         /**
          *
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        usersControllerStore: function () {
-            var args_1 = [];
-            for (var _i = 0; _i < arguments.length; _i++) {
-                args_1[_i] = arguments[_i];
+        usersControllerStore: (...args_1) => __awaiter(this, [...args_1], void 0, function* (options = {}) {
+            const localVarPath = `/api/users`;
+            // use dummy base URL string because the URL constructor only accepts absolute URLs.
+            const localVarUrlObj = new URL(localVarPath, 'https://example.com');
+            let baseOptions;
+            if (configuration) {
+                baseOptions = configuration.baseOptions;
             }
-            return __awaiter(_this, __spreadArray([], args_1, true), void 0, function (options) {
-                var localVarPath, localVarUrlObj, baseOptions, localVarRequestOptions, localVarHeaderParameter, localVarQueryParameter, query, key, key, headersFromBaseOptions;
-                if (options === void 0) { options = {}; }
-                return __generator(this, function (_a) {
-                    localVarPath = "/api/users";
-                    localVarUrlObj = new URL(localVarPath, 'https://example.com');
-                    if (configuration) {
-                        baseOptions = configuration.baseOptions;
-                    }
-                    localVarRequestOptions = __assign(__assign({ method: 'POST' }, baseOptions), options);
-                    localVarHeaderParameter = {};
-                    localVarQueryParameter = {};
-                    query = new URLSearchParams(localVarUrlObj.search);
-                    for (key in localVarQueryParameter) {
-                        query.set(key, localVarQueryParameter[key]);
-                    }
-                    for (key in options.params) {
-                        query.set(key, options.params[key]);
-                    }
-                    localVarUrlObj.search = (new URLSearchParams(query)).toString();
-                    headersFromBaseOptions = baseOptions && baseOptions.headers ? baseOptions.headers : {};
-                    localVarRequestOptions.headers = __assign(__assign(__assign({}, localVarHeaderParameter), headersFromBaseOptions), options.headers);
-                    return [2 /*return*/, {
-                            url: localVarUrlObj.pathname + localVarUrlObj.search + localVarUrlObj.hash,
-                            options: localVarRequestOptions,
-                        }];
-                });
-            });
-        },
+            const localVarRequestOptions = Object.assign(Object.assign({ method: 'POST' }, baseOptions), options);
+            const localVarHeaderParameter = {};
+            const localVarQueryParameter = {};
+            const query = new URLSearchParams(localVarUrlObj.search);
+            for (const key in localVarQueryParameter) {
+                query.set(key, localVarQueryParameter[key]);
+            }
+            for (const key in options.params) {
+                query.set(key, options.params[key]);
+            }
+            localVarUrlObj.search = (new URLSearchParams(query)).toString();
+            let headersFromBaseOptions = baseOptions && baseOptions.headers ? baseOptions.headers : {};
+            localVarRequestOptions.headers = Object.assign(Object.assign(Object.assign({}, localVarHeaderParameter), headersFromBaseOptions), options.headers);
+            return {
+                url: localVarUrlObj.pathname + localVarUrlObj.search + localVarUrlObj.hash,
+                options: localVarRequestOptions,
+            };
+        }),
         /**
          *
          * @param {number} id
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        usersControllerUpdate: function (id_1) {
-            var args_1 = [];
-            for (var _i = 1; _i < arguments.length; _i++) {
-                args_1[_i - 1] = arguments[_i];
+        usersControllerUpdate: (id_1, ...args_1) => __awaiter(this, [id_1, ...args_1], void 0, function* (id, options = {}) {
+            // verify required parameter 'id' is not null or undefined
+            if (id === null || id === undefined) {
+                throw new base_1.RequiredError('id', 'Required parameter id was null or undefined when calling usersControllerUpdate.');
             }
-            return __awaiter(_this, __spreadArray([id_1], args_1, true), void 0, function (id, options) {
-                var localVarPath, localVarUrlObj, baseOptions, localVarRequestOptions, localVarHeaderParameter, localVarQueryParameter, query, key, key, headersFromBaseOptions;
-                if (options === void 0) { options = {}; }
-                return __generator(this, function (_a) {
-                    // verify required parameter 'id' is not null or undefined
-                    if (id === null || id === undefined) {
-                        throw new base_1.RequiredError('id', 'Required parameter id was null or undefined when calling usersControllerUpdate.');
-                    }
-                    localVarPath = "/api/users/{id}"
-                        .replace("{".concat("id", "}"), encodeURIComponent(String(id)));
-                    localVarUrlObj = new URL(localVarPath, 'https://example.com');
-                    if (configuration) {
-                        baseOptions = configuration.baseOptions;
-                    }
-                    localVarRequestOptions = __assign(__assign({ method: 'PUT' }, baseOptions), options);
-                    localVarHeaderParameter = {};
-                    localVarQueryParameter = {};
-                    query = new URLSearchParams(localVarUrlObj.search);
-                    for (key in localVarQueryParameter) {
-                        query.set(key, localVarQueryParameter[key]);
-                    }
-                    for (key in options.params) {
-                        query.set(key, options.params[key]);
-                    }
-                    localVarUrlObj.search = (new URLSearchParams(query)).toString();
-                    headersFromBaseOptions = baseOptions && baseOptions.headers ? baseOptions.headers : {};
-                    localVarRequestOptions.headers = __assign(__assign(__assign({}, localVarHeaderParameter), headersFromBaseOptions), options.headers);
-                    return [2 /*return*/, {
-                            url: localVarUrlObj.pathname + localVarUrlObj.search + localVarUrlObj.hash,
-                            options: localVarRequestOptions,
-                        }];
-                });
-            });
-        },
+            const localVarPath = `/api/users/{id}`
+                .replace(`{${"id"}}`, encodeURIComponent(String(id)));
+            // use dummy base URL string because the URL constructor only accepts absolute URLs.
+            const localVarUrlObj = new URL(localVarPath, 'https://example.com');
+            let baseOptions;
+            if (configuration) {
+                baseOptions = configuration.baseOptions;
+            }
+            const localVarRequestOptions = Object.assign(Object.assign({ method: 'PUT' }, baseOptions), options);
+            const localVarHeaderParameter = {};
+            const localVarQueryParameter = {};
+            const query = new URLSearchParams(localVarUrlObj.search);
+            for (const key in localVarQueryParameter) {
+                query.set(key, localVarQueryParameter[key]);
+            }
+            for (const key in options.params) {
+                query.set(key, options.params[key]);
+            }
+            localVarUrlObj.search = (new URLSearchParams(query)).toString();
+            let headersFromBaseOptions = baseOptions && baseOptions.headers ? baseOptions.headers : {};
+            localVarRequestOptions.headers = Object.assign(Object.assign(Object.assign({}, localVarHeaderParameter), headersFromBaseOptions), options.headers);
+            return {
+                url: localVarUrlObj.pathname + localVarUrlObj.search + localVarUrlObj.hash,
+                options: localVarRequestOptions,
+            };
+        }),
     };
 };
 exports.UsersApiAxiosParamCreator = UsersApiAxiosParamCreator;
@@ -336,7 +223,7 @@ exports.UsersApiAxiosParamCreator = UsersApiAxiosParamCreator;
  * UsersApi - functional programming interface
  * @export
  */
-var UsersApiFp = function (configuration) {
+const UsersApiFp = function (configuration) {
     return {
         /**
          *
@@ -344,22 +231,13 @@ var UsersApiFp = function (configuration) {
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        createSetter: function (body, options) {
-            return __awaiter(this, void 0, void 0, function () {
-                var localVarAxiosArgs;
-                return __generator(this, function (_a) {
-                    switch (_a.label) {
-                        case 0: return [4 /*yield*/, (0, exports.UsersApiAxiosParamCreator)(configuration).createSetter(body, options)];
-                        case 1:
-                            localVarAxiosArgs = _a.sent();
-                            return [2 /*return*/, function (axios, basePath) {
-                                    if (axios === void 0) { axios = axios_1.default; }
-                                    if (basePath === void 0) { basePath = base_1.BASE_PATH; }
-                                    var axiosRequestArgs = __assign(__assign({}, localVarAxiosArgs.options), { url: basePath + localVarAxiosArgs.url });
-                                    return axios.request(axiosRequestArgs);
-                                }];
-                    }
-                });
+        createSetter(body, options) {
+            return __awaiter(this, void 0, void 0, function* () {
+                const localVarAxiosArgs = yield (0, exports.UsersApiAxiosParamCreator)(configuration).createSetter(body, options);
+                return (axios = axios_1.default, basePath = base_1.BASE_PATH) => {
+                    const axiosRequestArgs = Object.assign(Object.assign({}, localVarAxiosArgs.options), { url: basePath + localVarAxiosArgs.url });
+                    return axios.request(axiosRequestArgs);
+                };
             });
         },
         /**
@@ -367,22 +245,13 @@ var UsersApiFp = function (configuration) {
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        usersControllerGet: function (options) {
-            return __awaiter(this, void 0, void 0, function () {
-                var localVarAxiosArgs;
-                return __generator(this, function (_a) {
-                    switch (_a.label) {
-                        case 0: return [4 /*yield*/, (0, exports.UsersApiAxiosParamCreator)(configuration).usersControllerGet(options)];
-                        case 1:
-                            localVarAxiosArgs = _a.sent();
-                            return [2 /*return*/, function (axios, basePath) {
-                                    if (axios === void 0) { axios = axios_1.default; }
-                                    if (basePath === void 0) { basePath = base_1.BASE_PATH; }
-                                    var axiosRequestArgs = __assign(__assign({}, localVarAxiosArgs.options), { url: basePath + localVarAxiosArgs.url });
-                                    return axios.request(axiosRequestArgs);
-                                }];
-                    }
-                });
+        usersControllerGet(options) {
+            return __awaiter(this, void 0, void 0, function* () {
+                const localVarAxiosArgs = yield (0, exports.UsersApiAxiosParamCreator)(configuration).usersControllerGet(options);
+                return (axios = axios_1.default, basePath = base_1.BASE_PATH) => {
+                    const axiosRequestArgs = Object.assign(Object.assign({}, localVarAxiosArgs.options), { url: basePath + localVarAxiosArgs.url });
+                    return axios.request(axiosRequestArgs);
+                };
             });
         },
         /**
@@ -391,22 +260,13 @@ var UsersApiFp = function (configuration) {
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        usersControllerShow: function (id, options) {
-            return __awaiter(this, void 0, void 0, function () {
-                var localVarAxiosArgs;
-                return __generator(this, function (_a) {
-                    switch (_a.label) {
-                        case 0: return [4 /*yield*/, (0, exports.UsersApiAxiosParamCreator)(configuration).usersControllerShow(id, options)];
-                        case 1:
-                            localVarAxiosArgs = _a.sent();
-                            return [2 /*return*/, function (axios, basePath) {
-                                    if (axios === void 0) { axios = axios_1.default; }
-                                    if (basePath === void 0) { basePath = base_1.BASE_PATH; }
-                                    var axiosRequestArgs = __assign(__assign({}, localVarAxiosArgs.options), { url: basePath + localVarAxiosArgs.url });
-                                    return axios.request(axiosRequestArgs);
-                                }];
-                    }
-                });
+        usersControllerShow(id, options) {
+            return __awaiter(this, void 0, void 0, function* () {
+                const localVarAxiosArgs = yield (0, exports.UsersApiAxiosParamCreator)(configuration).usersControllerShow(id, options);
+                return (axios = axios_1.default, basePath = base_1.BASE_PATH) => {
+                    const axiosRequestArgs = Object.assign(Object.assign({}, localVarAxiosArgs.options), { url: basePath + localVarAxiosArgs.url });
+                    return axios.request(axiosRequestArgs);
+                };
             });
         },
         /**
@@ -414,22 +274,13 @@ var UsersApiFp = function (configuration) {
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        usersControllerStore: function (options) {
-            return __awaiter(this, void 0, void 0, function () {
-                var localVarAxiosArgs;
-                return __generator(this, function (_a) {
-                    switch (_a.label) {
-                        case 0: return [4 /*yield*/, (0, exports.UsersApiAxiosParamCreator)(configuration).usersControllerStore(options)];
-                        case 1:
-                            localVarAxiosArgs = _a.sent();
-                            return [2 /*return*/, function (axios, basePath) {
-                                    if (axios === void 0) { axios = axios_1.default; }
-                                    if (basePath === void 0) { basePath = base_1.BASE_PATH; }
-                                    var axiosRequestArgs = __assign(__assign({}, localVarAxiosArgs.options), { url: basePath + localVarAxiosArgs.url });
-                                    return axios.request(axiosRequestArgs);
-                                }];
-                    }
-                });
+        usersControllerStore(options) {
+            return __awaiter(this, void 0, void 0, function* () {
+                const localVarAxiosArgs = yield (0, exports.UsersApiAxiosParamCreator)(configuration).usersControllerStore(options);
+                return (axios = axios_1.default, basePath = base_1.BASE_PATH) => {
+                    const axiosRequestArgs = Object.assign(Object.assign({}, localVarAxiosArgs.options), { url: basePath + localVarAxiosArgs.url });
+                    return axios.request(axiosRequestArgs);
+                };
             });
         },
         /**
@@ -438,22 +289,13 @@ var UsersApiFp = function (configuration) {
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        usersControllerUpdate: function (id, options) {
-            return __awaiter(this, void 0, void 0, function () {
-                var localVarAxiosArgs;
-                return __generator(this, function (_a) {
-                    switch (_a.label) {
-                        case 0: return [4 /*yield*/, (0, exports.UsersApiAxiosParamCreator)(configuration).usersControllerUpdate(id, options)];
-                        case 1:
-                            localVarAxiosArgs = _a.sent();
-                            return [2 /*return*/, function (axios, basePath) {
-                                    if (axios === void 0) { axios = axios_1.default; }
-                                    if (basePath === void 0) { basePath = base_1.BASE_PATH; }
-                                    var axiosRequestArgs = __assign(__assign({}, localVarAxiosArgs.options), { url: basePath + localVarAxiosArgs.url });
-                                    return axios.request(axiosRequestArgs);
-                                }];
-                    }
-                });
+        usersControllerUpdate(id, options) {
+            return __awaiter(this, void 0, void 0, function* () {
+                const localVarAxiosArgs = yield (0, exports.UsersApiAxiosParamCreator)(configuration).usersControllerUpdate(id, options);
+                return (axios = axios_1.default, basePath = base_1.BASE_PATH) => {
+                    const axiosRequestArgs = Object.assign(Object.assign({}, localVarAxiosArgs.options), { url: basePath + localVarAxiosArgs.url });
+                    return axios.request(axiosRequestArgs);
+                };
             });
         },
     };
@@ -463,7 +305,7 @@ exports.UsersApiFp = UsersApiFp;
  * UsersApi - factory interface
  * @export
  */
-var UsersApiFactory = function (configuration, basePath, axios) {
+const UsersApiFactory = function (configuration, basePath, axios) {
     return {
         /**
          *
@@ -471,11 +313,9 @@ var UsersApiFactory = function (configuration, basePath, axios) {
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        createSetter: function (body, options) {
-            return __awaiter(this, void 0, void 0, function () {
-                return __generator(this, function (_a) {
-                    return [2 /*return*/, (0, exports.UsersApiFp)(configuration).createSetter(body, options).then(function (request) { return request(axios, basePath); })];
-                });
+        createSetter(body, options) {
+            return __awaiter(this, void 0, void 0, function* () {
+                return (0, exports.UsersApiFp)(configuration).createSetter(body, options).then((request) => request(axios, basePath));
             });
         },
         /**
@@ -483,36 +323,9 @@ var UsersApiFactory = function (configuration, basePath, axios) {
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        usersControllerGet: function (options) {
-            return __awaiter(this, void 0, void 0, function () {
-                return __generator(this, function (_a) {
-                    return [2 /*return*/, (0, exports.UsersApiFp)(configuration).usersControllerGet(options).then(function (request) { return request(axios, basePath); })];
-                });
-            });
-        },
-        /**
-         *
-         * @param {number} id
-         * @param {*} [options] Override http request option.
-         * @throws {RequiredError}
-         */
-        usersControllerShow: function (id, options) {
-            return __awaiter(this, void 0, void 0, function () {
-                return __generator(this, function (_a) {
-                    return [2 /*return*/, (0, exports.UsersApiFp)(configuration).usersControllerShow(id, options).then(function (request) { return request(axios, basePath); })];
-                });
-            });
-        },
-        /**
-         *
-         * @param {*} [options] Override http request option.
-         * @throws {RequiredError}
-         */
-        usersControllerStore: function (options) {
-            return __awaiter(this, void 0, void 0, function () {
-                return __generator(this, function (_a) {
-                    return [2 /*return*/, (0, exports.UsersApiFp)(configuration).usersControllerStore(options).then(function (request) { return request(axios, basePath); })];
-                });
+        usersControllerGet(options) {
+            return __awaiter(this, void 0, void 0, function* () {
+                return (0, exports.UsersApiFp)(configuration).usersControllerGet(options).then((request) => request(axios, basePath));
             });
         },
         /**
@@ -521,11 +334,30 @@ var UsersApiFactory = function (configuration, basePath, axios) {
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        usersControllerUpdate: function (id, options) {
-            return __awaiter(this, void 0, void 0, function () {
-                return __generator(this, function (_a) {
-                    return [2 /*return*/, (0, exports.UsersApiFp)(configuration).usersControllerUpdate(id, options).then(function (request) { return request(axios, basePath); })];
-                });
+        usersControllerShow(id, options) {
+            return __awaiter(this, void 0, void 0, function* () {
+                return (0, exports.UsersApiFp)(configuration).usersControllerShow(id, options).then((request) => request(axios, basePath));
+            });
+        },
+        /**
+         *
+         * @param {*} [options] Override http request option.
+         * @throws {RequiredError}
+         */
+        usersControllerStore(options) {
+            return __awaiter(this, void 0, void 0, function* () {
+                return (0, exports.UsersApiFp)(configuration).usersControllerStore(options).then((request) => request(axios, basePath));
+            });
+        },
+        /**
+         *
+         * @param {number} id
+         * @param {*} [options] Override http request option.
+         * @throws {RequiredError}
+         */
+        usersControllerUpdate(id, options) {
+            return __awaiter(this, void 0, void 0, function* () {
+                return (0, exports.UsersApiFp)(configuration).usersControllerUpdate(id, options).then((request) => request(axios, basePath));
             });
         },
     };
@@ -537,11 +369,7 @@ exports.UsersApiFactory = UsersApiFactory;
  * @class UsersApi
  * @extends {BaseAPI}
  */
-var UsersApi = /** @class */ (function (_super) {
-    __extends(UsersApi, _super);
-    function UsersApi() {
-        return _super !== null && _super.apply(this, arguments) || this;
-    }
+class UsersApi extends base_1.BaseAPI {
     /**
      *
      * @param {ApiRequestUserUpdatePasswordDto} body
@@ -549,28 +377,22 @@ var UsersApi = /** @class */ (function (_super) {
      * @throws {RequiredError}
      * @memberof UsersApi
      */
-    UsersApi.prototype.createSetter = function (body, options) {
-        return __awaiter(this, void 0, void 0, function () {
-            var _this = this;
-            return __generator(this, function (_a) {
-                return [2 /*return*/, (0, exports.UsersApiFp)(this.configuration).createSetter(body, options).then(function (request) { return request(_this.axios, _this.basePath); })];
-            });
+    createSetter(body, options) {
+        return __awaiter(this, void 0, void 0, function* () {
+            return (0, exports.UsersApiFp)(this.configuration).createSetter(body, options).then((request) => request(this.axios, this.basePath));
         });
-    };
+    }
     /**
      *
      * @param {*} [options] Override http request option.
      * @throws {RequiredError}
      * @memberof UsersApi
      */
-    UsersApi.prototype.usersControllerGet = function (options) {
-        return __awaiter(this, void 0, void 0, function () {
-            var _this = this;
-            return __generator(this, function (_a) {
-                return [2 /*return*/, (0, exports.UsersApiFp)(this.configuration).usersControllerGet(options).then(function (request) { return request(_this.axios, _this.basePath); })];
-            });
+    usersControllerGet(options) {
+        return __awaiter(this, void 0, void 0, function* () {
+            return (0, exports.UsersApiFp)(this.configuration).usersControllerGet(options).then((request) => request(this.axios, this.basePath));
         });
-    };
+    }
     /**
      *
      * @param {number} id
@@ -578,28 +400,22 @@ var UsersApi = /** @class */ (function (_super) {
      * @throws {RequiredError}
      * @memberof UsersApi
      */
-    UsersApi.prototype.usersControllerShow = function (id, options) {
-        return __awaiter(this, void 0, void 0, function () {
-            var _this = this;
-            return __generator(this, function (_a) {
-                return [2 /*return*/, (0, exports.UsersApiFp)(this.configuration).usersControllerShow(id, options).then(function (request) { return request(_this.axios, _this.basePath); })];
-            });
+    usersControllerShow(id, options) {
+        return __awaiter(this, void 0, void 0, function* () {
+            return (0, exports.UsersApiFp)(this.configuration).usersControllerShow(id, options).then((request) => request(this.axios, this.basePath));
         });
-    };
+    }
     /**
      *
      * @param {*} [options] Override http request option.
      * @throws {RequiredError}
      * @memberof UsersApi
      */
-    UsersApi.prototype.usersControllerStore = function (options) {
-        return __awaiter(this, void 0, void 0, function () {
-            var _this = this;
-            return __generator(this, function (_a) {
-                return [2 /*return*/, (0, exports.UsersApiFp)(this.configuration).usersControllerStore(options).then(function (request) { return request(_this.axios, _this.basePath); })];
-            });
+    usersControllerStore(options) {
+        return __awaiter(this, void 0, void 0, function* () {
+            return (0, exports.UsersApiFp)(this.configuration).usersControllerStore(options).then((request) => request(this.axios, this.basePath));
         });
-    };
+    }
     /**
      *
      * @param {number} id
@@ -607,14 +423,10 @@ var UsersApi = /** @class */ (function (_super) {
      * @throws {RequiredError}
      * @memberof UsersApi
      */
-    UsersApi.prototype.usersControllerUpdate = function (id, options) {
-        return __awaiter(this, void 0, void 0, function () {
-            var _this = this;
-            return __generator(this, function (_a) {
-                return [2 /*return*/, (0, exports.UsersApiFp)(this.configuration).usersControllerUpdate(id, options).then(function (request) { return request(_this.axios, _this.basePath); })];
-            });
+    usersControllerUpdate(id, options) {
+        return __awaiter(this, void 0, void 0, function* () {
+            return (0, exports.UsersApiFp)(this.configuration).usersControllerUpdate(id, options).then((request) => request(this.axios, this.basePath));
         });
-    };
-    return UsersApi;
-}(base_1.BaseAPI));
+    }
+}
 exports.UsersApi = UsersApi;

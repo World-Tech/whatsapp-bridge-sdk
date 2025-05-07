@@ -20,10 +20,15 @@ export interface ReadMessageDto {
      * @type {number}
      * @memberof ReadMessageDto
      */
-    chatId: number;
+    branchId: number;
     /**
      * @type {number}
      * @memberof ReadMessageDto
      */
-    branchId: number;
+    chatId?: number;
+    /**
+     * @type {number}
+     * @memberof ReadMessageDto
+     */
+    cellphone?: number;
 }
