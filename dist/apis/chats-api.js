@@ -118,11 +118,15 @@ const ChatsApiAxiosParamCreator = function (configuration) {
         /**
          *
          * @param {number} branchId
+         * @param {string} [q]
+         * @param {boolean} [unread]
+         * @param {number} [rowsPerPage]
+         * @param {number} [currentPage]
          * @param {number} [userId]
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        getChats: (branchId_1, userId_1, ...args_1) => __awaiter(this, [branchId_1, userId_1, ...args_1], void 0, function* (branchId, userId, options = {}) {
+        getChats: (branchId_1, q_1, unread_1, rowsPerPage_1, currentPage_1, userId_1, ...args_1) => __awaiter(this, [branchId_1, q_1, unread_1, rowsPerPage_1, currentPage_1, userId_1, ...args_1], void 0, function* (branchId, q, unread, rowsPerPage, currentPage, userId, options = {}) {
             // verify required parameter 'branchId' is not null or undefined
             if (branchId === null || branchId === undefined) {
                 throw new base_1.RequiredError('branchId', 'Required parameter branchId was null or undefined when calling getChats.');
@@ -137,11 +141,23 @@ const ChatsApiAxiosParamCreator = function (configuration) {
             const localVarRequestOptions = Object.assign(Object.assign({ method: 'GET' }, baseOptions), options);
             const localVarHeaderParameter = {};
             const localVarQueryParameter = {};
-            if (branchId !== undefined) {
-                localVarQueryParameter['branchId'] = branchId;
+            if (q !== undefined) {
+                localVarQueryParameter['q'] = q;
+            }
+            if (unread !== undefined) {
+                localVarQueryParameter['unread'] = unread;
+            }
+            if (rowsPerPage !== undefined) {
+                localVarQueryParameter['rowsPerPage'] = rowsPerPage;
+            }
+            if (currentPage !== undefined) {
+                localVarQueryParameter['currentPage'] = currentPage;
             }
             if (userId !== undefined) {
                 localVarQueryParameter['userId'] = userId;
+            }
+            if (branchId !== undefined) {
+                localVarQueryParameter['branchId'] = branchId;
             }
             const query = new URLSearchParams(localVarUrlObj.search);
             for (const key in localVarQueryParameter) {
@@ -246,13 +262,17 @@ const ChatsApiFp = function (configuration) {
         /**
          *
          * @param {number} branchId
+         * @param {string} [q]
+         * @param {boolean} [unread]
+         * @param {number} [rowsPerPage]
+         * @param {number} [currentPage]
          * @param {number} [userId]
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        getChats(branchId, userId, options) {
+        getChats(branchId, q, unread, rowsPerPage, currentPage, userId, options) {
             return __awaiter(this, void 0, void 0, function* () {
-                const localVarAxiosArgs = yield (0, exports.ChatsApiAxiosParamCreator)(configuration).getChats(branchId, userId, options);
+                const localVarAxiosArgs = yield (0, exports.ChatsApiAxiosParamCreator)(configuration).getChats(branchId, q, unread, rowsPerPage, currentPage, userId, options);
                 return (axios = axios_1.default, basePath = base_1.BASE_PATH) => {
                     const axiosRequestArgs = Object.assign(Object.assign({}, localVarAxiosArgs.options), { url: basePath + localVarAxiosArgs.url });
                     return axios.request(axiosRequestArgs);
@@ -310,13 +330,17 @@ const ChatsApiFactory = function (configuration, basePath, axios) {
         /**
          *
          * @param {number} branchId
+         * @param {string} [q]
+         * @param {boolean} [unread]
+         * @param {number} [rowsPerPage]
+         * @param {number} [currentPage]
          * @param {number} [userId]
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        getChats(branchId, userId, options) {
+        getChats(branchId, q, unread, rowsPerPage, currentPage, userId, options) {
             return __awaiter(this, void 0, void 0, function* () {
-                return (0, exports.ChatsApiFp)(configuration).getChats(branchId, userId, options).then((request) => request(axios, basePath));
+                return (0, exports.ChatsApiFp)(configuration).getChats(branchId, q, unread, rowsPerPage, currentPage, userId, options).then((request) => request(axios, basePath));
             });
         },
         /**
@@ -369,14 +393,18 @@ class ChatsApi extends base_1.BaseAPI {
     /**
      *
      * @param {number} branchId
+     * @param {string} [q]
+     * @param {boolean} [unread]
+     * @param {number} [rowsPerPage]
+     * @param {number} [currentPage]
      * @param {number} [userId]
      * @param {*} [options] Override http request option.
      * @throws {RequiredError}
      * @memberof ChatsApi
      */
-    getChats(branchId, userId, options) {
+    getChats(branchId, q, unread, rowsPerPage, currentPage, userId, options) {
         return __awaiter(this, void 0, void 0, function* () {
-            return (0, exports.ChatsApiFp)(this.configuration).getChats(branchId, userId, options).then((request) => request(this.axios, this.basePath));
+            return (0, exports.ChatsApiFp)(this.configuration).getChats(branchId, q, unread, rowsPerPage, currentPage, userId, options).then((request) => request(this.axios, this.basePath));
         });
     }
     /**
