@@ -15,6 +15,7 @@
 import { ConversationMessageDto } from './conversation-message-dto';
 import { DocumentMessageDto } from './document-message-dto';
 import { ImageMessageDto } from './image-message-dto';
+import { WhatsappMessageFeedback } from './whatsapp-message-feedback';
 import { WhatsappMessageKeyDto } from './whatsapp-message-key-dto';
  /**
  * 
@@ -56,4 +57,10 @@ export interface WhatsappMessageDto {
      * @memberof WhatsappMessageDto
      */
     key: WhatsappMessageKeyDto;
+
+    /**
+     * @type {WhatsappMessageFeedback}
+     * @memberof WhatsappMessageDto
+     */
+    feedback: WhatsappMessageFeedback;
 }
