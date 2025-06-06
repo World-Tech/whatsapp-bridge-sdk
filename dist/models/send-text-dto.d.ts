@@ -40,4 +40,21 @@ export interface SendTextDto {
      * @example 3814652933
      */
     cellphone?: number;
+    /**
+     * @type {string}
+     * @memberof SendTextDto
+     * @example INBOUND
+     */
+    origin?: SendTextDtoOriginEnum;
+}
+/**
+ * @export
+ * @enum {string}
+ */
+export declare enum SendTextDtoOriginEnum {
+    INBOUND = "INBOUND",
+    SESSION = "SESSION",
+    OPERATOR = "OPERATOR",
+    AUTOMATIC = "AUTOMATIC",
+    MASSIVE = "MASSIVE"
 }

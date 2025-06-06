@@ -54,4 +54,5 @@ __exportStar(require("./whatsapp-chat-dto"), exports);
 __exportStar(require("./whatsapp-chat-response-dto"), exports);
 __exportStar(require("./whatsapp-contact-dto"), exports);
 __exportStar(require("./whatsapp-message-dto"), exports);
+__exportStar(require("./whatsapp-message-feedback"), exports);
 __exportStar(require("./whatsapp-message-key-dto"), exports);

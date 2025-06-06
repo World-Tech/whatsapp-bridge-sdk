@@ -61,6 +61,12 @@ export interface WhatsappChatDto {
      */
     assignedUserId: number;
     /**
+     * @type {number}
+     * @memberof WhatsappChatDto
+     * @example 1
+     */
+    branchId: number;
+    /**
      * @type {Array<WhatsappMessageDto>}
      * @memberof WhatsappChatDto
      */

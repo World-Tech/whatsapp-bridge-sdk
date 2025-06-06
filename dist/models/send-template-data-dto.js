@@ -13,3 +13,16 @@
  * Do not edit the class manually.
  */
 Object.defineProperty(exports, "__esModule", { value: true });
+exports.SendTemplateDataDtoOriginEnum = void 0;
+/**
+ * @export
+ * @enum {string}
+ */
+var SendTemplateDataDtoOriginEnum;
+(function (SendTemplateDataDtoOriginEnum) {
+    SendTemplateDataDtoOriginEnum["INBOUND"] = "INBOUND";
+    SendTemplateDataDtoOriginEnum["SESSION"] = "SESSION";
+    SendTemplateDataDtoOriginEnum["OPERATOR"] = "OPERATOR";
+    SendTemplateDataDtoOriginEnum["AUTOMATIC"] = "AUTOMATIC";
+    SendTemplateDataDtoOriginEnum["MASSIVE"] = "MASSIVE";
+})(SendTemplateDataDtoOriginEnum || (exports.SendTemplateDataDtoOriginEnum = SendTemplateDataDtoOriginEnum = {}));

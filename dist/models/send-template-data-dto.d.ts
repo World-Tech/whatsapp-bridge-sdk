@@ -40,4 +40,21 @@ export interface SendTemplateDataDto {
      * @example 1
      */
     sellerId?: number;
+    /**
+     * @type {string}
+     * @memberof SendTemplateDataDto
+     * @example INBOUND
+     */
+    origin?: SendTemplateDataDtoOriginEnum;
+}
+/**
+ * @export
+ * @enum {string}
+ */
+export declare enum SendTemplateDataDtoOriginEnum {
+    INBOUND = "INBOUND",
+    SESSION = "SESSION",
+    OPERATOR = "OPERATOR",
+    AUTOMATIC = "AUTOMATIC",
+    MASSIVE = "MASSIVE"
 }

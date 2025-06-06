@@ -13,3 +13,16 @@
  * Do not edit the class manually.
  */
 Object.defineProperty(exports, "__esModule", { value: true });
+exports.SendTextDtoOriginEnum = void 0;
+/**
+ * @export
+ * @enum {string}
+ */
+var SendTextDtoOriginEnum;
+(function (SendTextDtoOriginEnum) {
+    SendTextDtoOriginEnum["INBOUND"] = "INBOUND";
+    SendTextDtoOriginEnum["SESSION"] = "SESSION";
+    SendTextDtoOriginEnum["OPERATOR"] = "OPERATOR";
+    SendTextDtoOriginEnum["AUTOMATIC"] = "AUTOMATIC";
+    SendTextDtoOriginEnum["MASSIVE"] = "MASSIVE";
+})(SendTextDtoOriginEnum || (exports.SendTextDtoOriginEnum = SendTextDtoOriginEnum = {}));
