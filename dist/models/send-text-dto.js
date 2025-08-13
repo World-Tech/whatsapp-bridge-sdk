@@ -25,4 +25,5 @@ var SendTextDtoOriginEnum;
     SendTextDtoOriginEnum["OPERATOR"] = "OPERATOR";
     SendTextDtoOriginEnum["AUTOMATIC"] = "AUTOMATIC";
     SendTextDtoOriginEnum["MASSIVE"] = "MASSIVE";
+    SendTextDtoOriginEnum["AUTH"] = "AUTH";
 })(SendTextDtoOriginEnum || (exports.SendTextDtoOriginEnum = SendTextDtoOriginEnum = {}));

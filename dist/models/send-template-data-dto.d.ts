@@ -56,5 +56,6 @@ export declare enum SendTemplateDataDtoOriginEnum {
     SESSION = "SESSION",
     OPERATOR = "OPERATOR",
     AUTOMATIC = "AUTOMATIC",
-    MASSIVE = "MASSIVE"
+    MASSIVE = "MASSIVE",
+    AUTH = "AUTH"
 }

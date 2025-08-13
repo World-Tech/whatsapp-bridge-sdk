@@ -56,5 +56,6 @@ export declare enum SendTextDtoOriginEnum {
     SESSION = "SESSION",
     OPERATOR = "OPERATOR",
     AUTOMATIC = "AUTOMATIC",
-    MASSIVE = "MASSIVE"
+    MASSIVE = "MASSIVE",
+    AUTH = "AUTH"
 }

@@ -13,7 +13,6 @@ import { AxiosResponse, AxiosInstance, AxiosRequestConfig } from 'axios';
 import { Configuration } from '../configuration';
 import { RequestArgs, BaseAPI } from '../base';
 import { ApiResponseAuthDto } from '../models';
-import { AuthDto } from '../models';
 /**
  * AuthApi - axios parameter creator
  * @export
@@ -21,11 +20,10 @@ import { AuthDto } from '../models';
 export declare const AuthApiAxiosParamCreator: (configuration?: Configuration) => {
     /**
      *
-     * @param {AuthDto} body
      * @param {*} [options] Override http request option.
      * @throws {RequiredError}
      */
-    login: (body: AuthDto, options?: AxiosRequestConfig) => Promise<RequestArgs>;
+    login: (options?: AxiosRequestConfig) => Promise<RequestArgs>;
     /**
      *
      * @param {*} [options] Override http request option.
@@ -34,10 +32,11 @@ export declare const AuthApiAxiosParamCreator: (configuration?: Configuration) =
     logout: (options?: AxiosRequestConfig) => Promise<RequestArgs>;
     /**
      *
+     * @param {string} authorization Custom header
      * @param {*} [options] Override http request option.
      * @throws {RequiredError}
      */
-    refreshToken: (options?: AxiosRequestConfig) => Promise<RequestArgs>;
+    refreshToken: (authorization: string, options?: AxiosRequestConfig) => Promise<RequestArgs>;
 };
 /**
  * AuthApi - functional programming interface
@@ -46,11 +45,10 @@ export declare const AuthApiAxiosParamCreator: (configuration?: Configuration) =
 export declare const AuthApiFp: (configuration?: Configuration) => {
     /**
      *
-     * @param {AuthDto} body
      * @param {*} [options] Override http request option.
      * @throws {RequiredError}
      */
-    login(body: AuthDto, options?: AxiosRequestConfig): Promise<(axios?: AxiosInstance, basePath?: string) => Promise<AxiosResponse<ApiResponseAuthDto>>>;
+    login(options?: AxiosRequestConfig): Promise<(axios?: AxiosInstance, basePath?: string) => Promise<AxiosResponse<ApiResponseAuthDto>>>;
     /**
      *
      * @param {*} [options] Override http request option.
@@ -59,10 +57,11 @@ export declare const AuthApiFp: (configuration?: Configuration) => {
     logout(options?: AxiosRequestConfig): Promise<(axios?: AxiosInstance, basePath?: string) => Promise<AxiosResponse<void>>>;
     /**
      *
+     * @param {string} authorization Custom header
      * @param {*} [options] Override http request option.
      * @throws {RequiredError}
      */
-    refreshToken(options?: AxiosRequestConfig): Promise<(axios?: AxiosInstance, basePath?: string) => Promise<AxiosResponse<ApiResponseAuthDto>>>;
+    refreshToken(authorization: string, options?: AxiosRequestConfig): Promise<(axios?: AxiosInstance, basePath?: string) => Promise<AxiosResponse<ApiResponseAuthDto>>>;
 };
 /**
  * AuthApi - factory interface
@@ -71,11 +70,10 @@ export declare const AuthApiFp: (configuration?: Configuration) => {
 export declare const AuthApiFactory: (configuration?: Configuration, basePath?: string, axios?: AxiosInstance) => {
     /**
      *
-     * @param {AuthDto} body
      * @param {*} [options] Override http request option.
      * @throws {RequiredError}
      */
-    login(body: AuthDto, options?: AxiosRequestConfig): Promise<AxiosResponse<ApiResponseAuthDto>>;
+    login(options?: AxiosRequestConfig): Promise<AxiosResponse<ApiResponseAuthDto>>;
     /**
      *
      * @param {*} [options] Override http request option.
@@ -84,10 +82,11 @@ export declare const AuthApiFactory: (configuration?: Configuration, basePath?: 
     logout(options?: AxiosRequestConfig): Promise<AxiosResponse<void>>;
     /**
      *
+     * @param {string} authorization Custom header
      * @param {*} [options] Override http request option.
      * @throws {RequiredError}
      */
-    refreshToken(options?: AxiosRequestConfig): Promise<AxiosResponse<ApiResponseAuthDto>>;
+    refreshToken(authorization: string, options?: AxiosRequestConfig): Promise<AxiosResponse<ApiResponseAuthDto>>;
 };
 /**
  * AuthApi - object-oriented interface
@@ -98,12 +97,11 @@ export declare const AuthApiFactory: (configuration?: Configuration, basePath?: 
 export declare class AuthApi extends BaseAPI {
     /**
      *
-     * @param {AuthDto} body
      * @param {*} [options] Override http request option.
      * @throws {RequiredError}
      * @memberof AuthApi
      */
-    login(body: AuthDto, options?: AxiosRequestConfig): Promise<AxiosResponse<ApiResponseAuthDto>>;
+    login(options?: AxiosRequestConfig): Promise<AxiosResponse<ApiResponseAuthDto>>;
     /**
      *
      * @param {*} [options] Override http request option.
@@ -113,9 +111,10 @@ export declare class AuthApi extends BaseAPI {
     logout(options?: AxiosRequestConfig): Promise<AxiosResponse<void>>;
     /**
      *
+     * @param {string} authorization Custom header
      * @param {*} [options] Override http request option.
      * @throws {RequiredError}
      * @memberof AuthApi
      */
-    refreshToken(options?: AxiosRequestConfig): Promise<AxiosResponse<ApiResponseAuthDto>>;
+    refreshToken(authorization: string, options?: AxiosRequestConfig): Promise<AxiosResponse<ApiResponseAuthDto>>;
 }

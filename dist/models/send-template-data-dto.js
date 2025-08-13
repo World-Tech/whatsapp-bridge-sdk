@@ -25,4 +25,5 @@ var SendTemplateDataDtoOriginEnum;
     SendTemplateDataDtoOriginEnum["OPERATOR"] = "OPERATOR";
     SendTemplateDataDtoOriginEnum["AUTOMATIC"] = "AUTOMATIC";
     SendTemplateDataDtoOriginEnum["MASSIVE"] = "MASSIVE";
+    SendTemplateDataDtoOriginEnum["AUTH"] = "AUTH";
 })(SendTemplateDataDtoOriginEnum || (exports.SendTemplateDataDtoOriginEnum = SendTemplateDataDtoOriginEnum = {}));

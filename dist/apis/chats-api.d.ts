@@ -13,6 +13,7 @@ import { AxiosResponse, AxiosInstance, AxiosRequestConfig } from 'axios';
 import { Configuration } from '../configuration';
 import { RequestArgs, BaseAPI } from '../base';
 import { AssignToMeDto } from '../models';
+import { AssignmentTypeDto } from '../models';
 import { MarkChatUnreadDto } from '../models';
 import { PaginationChatResponseDto } from '../models';
 import { WhatsappChatResponseDTO } from '../models';
@@ -31,6 +32,15 @@ export declare const ChatsApiAxiosParamCreator: (configuration?: Configuration) 
     assignToMe: (body: AssignToMeDto, id: number, options?: AxiosRequestConfig) => Promise<RequestArgs>;
     /**
      *
+     * @param {AssignmentTypeDto} body
+     * @param {string} cellphone
+     * @param {number} id
+     * @param {*} [options] Override http request option.
+     * @throws {RequiredError}
+     */
+    assignmentType: (body: AssignmentTypeDto, cellphone: string, id: number, options?: AxiosRequestConfig) => Promise<RequestArgs>;
+    /**
+     *
      * @param {number} id
      * @param {*} [options] Override http request option.
      * @throws {RequiredError}
@@ -46,10 +56,12 @@ export declare const ChatsApiAxiosParamCreator: (configuration?: Configuration) 
      * @param {number} [currentPage]
      * @param {number} [userId]
      * @param {boolean} [externallyInitiated]
+     * @param {number} [id]
+     * @param {string} [code]
      * @param {*} [options] Override http request option.
      * @throws {RequiredError}
      */
-    getChats: (branchId: number, q?: string, unassigned?: boolean, unread?: boolean, rowsPerPage?: number, currentPage?: number, userId?: number, externallyInitiated?: boolean, options?: AxiosRequestConfig) => Promise<RequestArgs>;
+    getChats: (branchId: number, q?: string, unassigned?: boolean, unread?: boolean, rowsPerPage?: number, currentPage?: number, userId?: number, externallyInitiated?: boolean, id?: number, code?: string, options?: AxiosRequestConfig) => Promise<RequestArgs>;
     /**
      *
      * @param {MarkChatUnreadDto} body
@@ -74,6 +86,15 @@ export declare const ChatsApiFp: (configuration?: Configuration) => {
     assignToMe(body: AssignToMeDto, id: number, options?: AxiosRequestConfig): Promise<(axios?: AxiosInstance, basePath?: string) => Promise<AxiosResponse<void>>>;
     /**
      *
+     * @param {AssignmentTypeDto} body
+     * @param {string} cellphone
+     * @param {number} id
+     * @param {*} [options] Override http request option.
+     * @throws {RequiredError}
+     */
+    assignmentType(body: AssignmentTypeDto, cellphone: string, id: number, options?: AxiosRequestConfig): Promise<(axios?: AxiosInstance, basePath?: string) => Promise<AxiosResponse<void>>>;
+    /**
+     *
      * @param {number} id
      * @param {*} [options] Override http request option.
      * @throws {RequiredError}
@@ -89,10 +110,12 @@ export declare const ChatsApiFp: (configuration?: Configuration) => {
      * @param {number} [currentPage]
      * @param {number} [userId]
      * @param {boolean} [externallyInitiated]
+     * @param {number} [id]
+     * @param {string} [code]
      * @param {*} [options] Override http request option.
      * @throws {RequiredError}
      */
-    getChats(branchId: number, q?: string, unassigned?: boolean, unread?: boolean, rowsPerPage?: number, currentPage?: number, userId?: number, externallyInitiated?: boolean, options?: AxiosRequestConfig): Promise<(axios?: AxiosInstance, basePath?: string) => Promise<AxiosResponse<PaginationChatResponseDto>>>;
+    getChats(branchId: number, q?: string, unassigned?: boolean, unread?: boolean, rowsPerPage?: number, currentPage?: number, userId?: number, externallyInitiated?: boolean, id?: number, code?: string, options?: AxiosRequestConfig): Promise<(axios?: AxiosInstance, basePath?: string) => Promise<AxiosResponse<PaginationChatResponseDto>>>;
     /**
      *
      * @param {MarkChatUnreadDto} body
@@ -117,6 +140,15 @@ export declare const ChatsApiFactory: (configuration?: Configuration, basePath?:
     assignToMe(body: AssignToMeDto, id: number, options?: AxiosRequestConfig): Promise<AxiosResponse<void>>;
     /**
      *
+     * @param {AssignmentTypeDto} body
+     * @param {string} cellphone
+     * @param {number} id
+     * @param {*} [options] Override http request option.
+     * @throws {RequiredError}
+     */
+    assignmentType(body: AssignmentTypeDto, cellphone: string, id: number, options?: AxiosRequestConfig): Promise<AxiosResponse<void>>;
+    /**
+     *
      * @param {number} id
      * @param {*} [options] Override http request option.
      * @throws {RequiredError}
@@ -132,10 +164,12 @@ export declare const ChatsApiFactory: (configuration?: Configuration, basePath?:
      * @param {number} [currentPage]
      * @param {number} [userId]
      * @param {boolean} [externallyInitiated]
+     * @param {number} [id]
+     * @param {string} [code]
      * @param {*} [options] Override http request option.
      * @throws {RequiredError}
      */
-    getChats(branchId: number, q?: string, unassigned?: boolean, unread?: boolean, rowsPerPage?: number, currentPage?: number, userId?: number, externallyInitiated?: boolean, options?: AxiosRequestConfig): Promise<AxiosResponse<PaginationChatResponseDto>>;
+    getChats(branchId: number, q?: string, unassigned?: boolean, unread?: boolean, rowsPerPage?: number, currentPage?: number, userId?: number, externallyInitiated?: boolean, id?: number, code?: string, options?: AxiosRequestConfig): Promise<AxiosResponse<PaginationChatResponseDto>>;
     /**
      *
      * @param {MarkChatUnreadDto} body
@@ -163,6 +197,16 @@ export declare class ChatsApi extends BaseAPI {
     assignToMe(body: AssignToMeDto, id: number, options?: AxiosRequestConfig): Promise<AxiosResponse<void>>;
     /**
      *
+     * @param {AssignmentTypeDto} body
+     * @param {string} cellphone
+     * @param {number} id
+     * @param {*} [options] Override http request option.
+     * @throws {RequiredError}
+     * @memberof ChatsApi
+     */
+    assignmentType(body: AssignmentTypeDto, cellphone: string, id: number, options?: AxiosRequestConfig): Promise<AxiosResponse<void>>;
+    /**
+     *
      * @param {number} id
      * @param {*} [options] Override http request option.
      * @throws {RequiredError}
@@ -179,11 +223,13 @@ export declare class ChatsApi extends BaseAPI {
      * @param {number} [currentPage]
      * @param {number} [userId]
      * @param {boolean} [externallyInitiated]
+     * @param {number} [id]
+     * @param {string} [code]
      * @param {*} [options] Override http request option.
      * @throws {RequiredError}
      * @memberof ChatsApi
      */
-    getChats(branchId: number, q?: string, unassigned?: boolean, unread?: boolean, rowsPerPage?: number, currentPage?: number, userId?: number, externallyInitiated?: boolean, options?: AxiosRequestConfig): Promise<AxiosResponse<PaginationChatResponseDto>>;
+    getChats(branchId: number, q?: string, unassigned?: boolean, unread?: boolean, rowsPerPage?: number, currentPage?: number, userId?: number, externallyInitiated?: boolean, id?: number, code?: string, options?: AxiosRequestConfig): Promise<AxiosResponse<PaginationChatResponseDto>>;
     /**
      *
      * @param {MarkChatUnreadDto} body
