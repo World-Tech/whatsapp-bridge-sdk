@@ -17,22 +17,26 @@ import { Configuration } from '../configuration';
 // Some imports not used depending on template conditions
 // @ts-ignore
 import { BASE_PATH, COLLECTION_FORMATS, RequestArgs, BaseAPI, RequiredError } from '../base';
-import { ApiResponseAuthDto } from '../models';
-import { UnauthorizedDto } from '../models';
-import { UnauthorizedTokenDto } from '../models';
+import { ApplyForLoanResponseDto } from '../models';
+import { SignatureDataDto } from '../models';
 /**
- * AuthApi - axios parameter creator
+ * FlowsApi - axios parameter creator
  * @export
  */
-export const AuthApiAxiosParamCreator = function (configuration?: Configuration) {
+export const FlowsApiAxiosParamCreator = function (configuration?: Configuration) {
     return {
         /**
          * 
+         * @param {SignatureDataDto} body 
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        login: async (options: AxiosRequestConfig = {}): Promise<RequestArgs> => {
-            const localVarPath = `/api/auth/login`;
+        applyForLoan: async (body: SignatureDataDto, options: AxiosRequestConfig = {}): Promise<RequestArgs> => {
+            // verify required parameter 'body' is not null or undefined
+            if (body === null || body === undefined) {
+                throw new RequiredError('body','Required parameter body was null or undefined when calling applyForLoan.');
+            }
+            const localVarPath = `/api/flows/apply-for-loan`;
             // use dummy base URL string because the URL constructor only accepts absolute URLs.
             const localVarUrlObj = new URL(localVarPath, 'https://example.com');
             let baseOptions;
@@ -43,6 +47,43 @@ export const AuthApiAxiosParamCreator = function (configuration?: Configuration)
             const localVarHeaderParameter = {} as any;
             const localVarQueryParameter = {} as any;
 
+            localVarHeaderParameter['Content-Type'] = 'application/json';
+
+            const query = new URLSearchParams(localVarUrlObj.search);
+            for (const key in localVarQueryParameter) {
+                query.set(key, localVarQueryParameter[key]);
+            }
+            for (const key in options.params) {
+                query.set(key, options.params[key]);
+            }
+            localVarUrlObj.search = (new URLSearchParams(query)).toString();
+            let headersFromBaseOptions = baseOptions && baseOptions.headers ? baseOptions.headers : {};
+            localVarRequestOptions.headers = {...localVarHeaderParameter, ...headersFromBaseOptions, ...options.headers};
+            const needsSerialization = (typeof body !== "string") || localVarRequestOptions.headers['Content-Type'] === 'application/json';
+            localVarRequestOptions.data =  needsSerialization ? JSON.stringify(body !== undefined ? body : {}) : (body || "");
+
+            return {
+                url: localVarUrlObj.pathname + localVarUrlObj.search + localVarUrlObj.hash,
+                options: localVarRequestOptions,
+            };
+        },
+        /**
+         * 
+         * @param {*} [options] Override http request option.
+         * @throws {RequiredError}
+         */
+        flowsControllerHandleGet: async (options: AxiosRequestConfig = {}): Promise<RequestArgs> => {
+            const localVarPath = `/api/flows`;
+            // use dummy base URL string because the URL constructor only accepts absolute URLs.
+            const localVarUrlObj = new URL(localVarPath, 'https://example.com');
+            let baseOptions;
+            if (configuration) {
+                baseOptions = configuration.baseOptions;
+            }
+            const localVarRequestOptions :AxiosRequestConfig = { method: 'GET', ...baseOptions, ...options};
+            const localVarHeaderParameter = {} as any;
+            const localVarQueryParameter = {} as any;
+
             const query = new URLSearchParams(localVarUrlObj.search);
             for (const key in localVarQueryParameter) {
                 query.set(key, localVarQueryParameter[key]);
@@ -61,11 +102,17 @@ export const AuthApiAxiosParamCreator = function (configuration?: Configuration)
         },
         /**
          * 
+         * @param {number} leadId 
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        logout: async (options: AxiosRequestConfig = {}): Promise<RequestArgs> => {
-            const localVarPath = `/api/auth/logout`;
+        flowsControllerHandleGet2: async (leadId: number, options: AxiosRequestConfig = {}): Promise<RequestArgs> => {
+            // verify required parameter 'leadId' is not null or undefined
+            if (leadId === null || leadId === undefined) {
+                throw new RequiredError('leadId','Required parameter leadId was null or undefined when calling flowsControllerHandleGet2.');
+            }
+            const localVarPath = `/api/flows/getOffer/{leadId}`
+                .replace(`{${"leadId"}}`, encodeURIComponent(String(leadId)));
             // use dummy base URL string because the URL constructor only accepts absolute URLs.
             const localVarUrlObj = new URL(localVarPath, 'https://example.com');
             let baseOptions;
@@ -75,66 +122,6 @@ export const AuthApiAxiosParamCreator = function (configuration?: Configuration)
             const localVarRequestOptions :AxiosRequestConfig = { method: 'GET', ...baseOptions, ...options};
             const localVarHeaderParameter = {} as any;
             const localVarQueryParameter = {} as any;
-
-            // authentication access-token required
-            // http bearer authentication required
-            if (configuration && configuration.accessToken) {
-                const accessToken = typeof configuration.accessToken === 'function'
-                    ? await configuration.accessToken()
-                    : await configuration.accessToken;
-                localVarHeaderParameter["Authorization"] = "Bearer " + accessToken;
-            }
-
-            const query = new URLSearchParams(localVarUrlObj.search);
-            for (const key in localVarQueryParameter) {
-                query.set(key, localVarQueryParameter[key]);
-            }
-            for (const key in options.params) {
-                query.set(key, options.params[key]);
-            }
-            localVarUrlObj.search = (new URLSearchParams(query)).toString();
-            let headersFromBaseOptions = baseOptions && baseOptions.headers ? baseOptions.headers : {};
-            localVarRequestOptions.headers = {...localVarHeaderParameter, ...headersFromBaseOptions, ...options.headers};
-
-            return {
-                url: localVarUrlObj.pathname + localVarUrlObj.search + localVarUrlObj.hash,
-                options: localVarRequestOptions,
-            };
-        },
-        /**
-         * 
-         * @param {string} authorization Custom header
-         * @param {*} [options] Override http request option.
-         * @throws {RequiredError}
-         */
-        refreshToken: async (authorization: string, options: AxiosRequestConfig = {}): Promise<RequestArgs> => {
-            // verify required parameter 'authorization' is not null or undefined
-            if (authorization === null || authorization === undefined) {
-                throw new RequiredError('authorization','Required parameter authorization was null or undefined when calling refreshToken.');
-            }
-            const localVarPath = `/api/auth/refresh`;
-            // use dummy base URL string because the URL constructor only accepts absolute URLs.
-            const localVarUrlObj = new URL(localVarPath, 'https://example.com');
-            let baseOptions;
-            if (configuration) {
-                baseOptions = configuration.baseOptions;
-            }
-            const localVarRequestOptions :AxiosRequestConfig = { method: 'GET', ...baseOptions, ...options};
-            const localVarHeaderParameter = {} as any;
-            const localVarQueryParameter = {} as any;
-
-            // authentication access-token required
-            // http bearer authentication required
-            if (configuration && configuration.accessToken) {
-                const accessToken = typeof configuration.accessToken === 'function'
-                    ? await configuration.accessToken()
-                    : await configuration.accessToken;
-                localVarHeaderParameter["Authorization"] = "Bearer " + accessToken;
-            }
-
-            if (authorization !== undefined && authorization !== null) {
-                localVarHeaderParameter['Authorization'] = String(authorization);
-            }
 
             const query = new URLSearchParams(localVarUrlObj.search);
             for (const key in localVarQueryParameter) {
@@ -156,18 +143,19 @@ export const AuthApiAxiosParamCreator = function (configuration?: Configuration)
 };
 
 /**
- * AuthApi - functional programming interface
+ * FlowsApi - functional programming interface
  * @export
  */
-export const AuthApiFp = function(configuration?: Configuration) {
+export const FlowsApiFp = function(configuration?: Configuration) {
     return {
         /**
          * 
+         * @param {SignatureDataDto} body 
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        async login(options?: AxiosRequestConfig): Promise<(axios?: AxiosInstance, basePath?: string) => Promise<AxiosResponse<ApiResponseAuthDto>>> {
-            const localVarAxiosArgs = await AuthApiAxiosParamCreator(configuration).login(options);
+        async applyForLoan(body: SignatureDataDto, options?: AxiosRequestConfig): Promise<(axios?: AxiosInstance, basePath?: string) => Promise<AxiosResponse<ApplyForLoanResponseDto>>> {
+            const localVarAxiosArgs = await FlowsApiAxiosParamCreator(configuration).applyForLoan(body, options);
             return (axios: AxiosInstance = globalAxios, basePath: string = BASE_PATH) => {
                 const axiosRequestArgs :AxiosRequestConfig = {...localVarAxiosArgs.options, url: basePath + localVarAxiosArgs.url};
                 return axios.request(axiosRequestArgs);
@@ -178,8 +166,8 @@ export const AuthApiFp = function(configuration?: Configuration) {
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        async logout(options?: AxiosRequestConfig): Promise<(axios?: AxiosInstance, basePath?: string) => Promise<AxiosResponse<void>>> {
-            const localVarAxiosArgs = await AuthApiAxiosParamCreator(configuration).logout(options);
+        async flowsControllerHandleGet(options?: AxiosRequestConfig): Promise<(axios?: AxiosInstance, basePath?: string) => Promise<AxiosResponse<void>>> {
+            const localVarAxiosArgs = await FlowsApiAxiosParamCreator(configuration).flowsControllerHandleGet(options);
             return (axios: AxiosInstance = globalAxios, basePath: string = BASE_PATH) => {
                 const axiosRequestArgs :AxiosRequestConfig = {...localVarAxiosArgs.options, url: basePath + localVarAxiosArgs.url};
                 return axios.request(axiosRequestArgs);
@@ -187,12 +175,12 @@ export const AuthApiFp = function(configuration?: Configuration) {
         },
         /**
          * 
-         * @param {string} authorization Custom header
+         * @param {number} leadId 
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        async refreshToken(authorization: string, options?: AxiosRequestConfig): Promise<(axios?: AxiosInstance, basePath?: string) => Promise<AxiosResponse<ApiResponseAuthDto>>> {
-            const localVarAxiosArgs = await AuthApiAxiosParamCreator(configuration).refreshToken(authorization, options);
+        async flowsControllerHandleGet2(leadId: number, options?: AxiosRequestConfig): Promise<(axios?: AxiosInstance, basePath?: string) => Promise<AxiosResponse<void>>> {
+            const localVarAxiosArgs = await FlowsApiAxiosParamCreator(configuration).flowsControllerHandleGet2(leadId, options);
             return (axios: AxiosInstance = globalAxios, basePath: string = BASE_PATH) => {
                 const axiosRequestArgs :AxiosRequestConfig = {...localVarAxiosArgs.options, url: basePath + localVarAxiosArgs.url};
                 return axios.request(axiosRequestArgs);
@@ -202,72 +190,74 @@ export const AuthApiFp = function(configuration?: Configuration) {
 };
 
 /**
- * AuthApi - factory interface
+ * FlowsApi - factory interface
  * @export
  */
-export const AuthApiFactory = function (configuration?: Configuration, basePath?: string, axios?: AxiosInstance) {
+export const FlowsApiFactory = function (configuration?: Configuration, basePath?: string, axios?: AxiosInstance) {
     return {
         /**
          * 
+         * @param {SignatureDataDto} body 
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        async login(options?: AxiosRequestConfig): Promise<AxiosResponse<ApiResponseAuthDto>> {
-            return AuthApiFp(configuration).login(options).then((request) => request(axios, basePath));
+        async applyForLoan(body: SignatureDataDto, options?: AxiosRequestConfig): Promise<AxiosResponse<ApplyForLoanResponseDto>> {
+            return FlowsApiFp(configuration).applyForLoan(body, options).then((request) => request(axios, basePath));
         },
         /**
          * 
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        async logout(options?: AxiosRequestConfig): Promise<AxiosResponse<void>> {
-            return AuthApiFp(configuration).logout(options).then((request) => request(axios, basePath));
+        async flowsControllerHandleGet(options?: AxiosRequestConfig): Promise<AxiosResponse<void>> {
+            return FlowsApiFp(configuration).flowsControllerHandleGet(options).then((request) => request(axios, basePath));
         },
         /**
          * 
-         * @param {string} authorization Custom header
+         * @param {number} leadId 
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        async refreshToken(authorization: string, options?: AxiosRequestConfig): Promise<AxiosResponse<ApiResponseAuthDto>> {
-            return AuthApiFp(configuration).refreshToken(authorization, options).then((request) => request(axios, basePath));
+        async flowsControllerHandleGet2(leadId: number, options?: AxiosRequestConfig): Promise<AxiosResponse<void>> {
+            return FlowsApiFp(configuration).flowsControllerHandleGet2(leadId, options).then((request) => request(axios, basePath));
         },
     };
 };
 
 /**
- * AuthApi - object-oriented interface
+ * FlowsApi - object-oriented interface
  * @export
- * @class AuthApi
+ * @class FlowsApi
  * @extends {BaseAPI}
  */
-export class AuthApi extends BaseAPI {
+export class FlowsApi extends BaseAPI {
     /**
      * 
+     * @param {SignatureDataDto} body 
      * @param {*} [options] Override http request option.
      * @throws {RequiredError}
-     * @memberof AuthApi
+     * @memberof FlowsApi
      */
-    public async login(options?: AxiosRequestConfig) : Promise<AxiosResponse<ApiResponseAuthDto>> {
-        return AuthApiFp(this.configuration).login(options).then((request) => request(this.axios, this.basePath));
+    public async applyForLoan(body: SignatureDataDto, options?: AxiosRequestConfig) : Promise<AxiosResponse<ApplyForLoanResponseDto>> {
+        return FlowsApiFp(this.configuration).applyForLoan(body, options).then((request) => request(this.axios, this.basePath));
     }
     /**
      * 
      * @param {*} [options] Override http request option.
      * @throws {RequiredError}
-     * @memberof AuthApi
+     * @memberof FlowsApi
      */
-    public async logout(options?: AxiosRequestConfig) : Promise<AxiosResponse<void>> {
-        return AuthApiFp(this.configuration).logout(options).then((request) => request(this.axios, this.basePath));
+    public async flowsControllerHandleGet(options?: AxiosRequestConfig) : Promise<AxiosResponse<void>> {
+        return FlowsApiFp(this.configuration).flowsControllerHandleGet(options).then((request) => request(this.axios, this.basePath));
     }
     /**
      * 
-     * @param {string} authorization Custom header
+     * @param {number} leadId 
      * @param {*} [options] Override http request option.
      * @throws {RequiredError}
-     * @memberof AuthApi
+     * @memberof FlowsApi
      */
-    public async refreshToken(authorization: string, options?: AxiosRequestConfig) : Promise<AxiosResponse<ApiResponseAuthDto>> {
-        return AuthApiFp(this.configuration).refreshToken(authorization, options).then((request) => request(this.axios, this.basePath));
+    public async flowsControllerHandleGet2(leadId: number, options?: AxiosRequestConfig) : Promise<AxiosResponse<void>> {
+        return FlowsApiFp(this.configuration).flowsControllerHandleGet2(leadId, options).then((request) => request(this.axios, this.basePath));
     }
 }

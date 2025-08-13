@@ -89,4 +89,11 @@ export interface WhatsappChatDto {
      * @memberof WhatsappChatDto
      */
     contact: WhatsappContactDto;
+
+    /**
+     * @type {string}
+     * @memberof WhatsappChatDto
+     * @example crm
+     */
+    assignmentType: string;
 }
