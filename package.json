@@ -1,6 +1,6 @@
 {
   "name": "@libgot/whatsapp-bridge-sdk",
-  "version": "1.0.36-rc.3",
+  "version": "1.0.36",
   "description": "OpenAPI client for ",
   "author": "OpenAPI-Generator Contributors",
   "keywords": [
