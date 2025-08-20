@@ -44,5 +44,6 @@ export * from './whatsapp-chat-dto';
 export * from './whatsapp-chat-response-dto';
 export * from './whatsapp-contact-dto';
 export * from './whatsapp-message-dto';
+export * from './whatsapp-message-error';
 export * from './whatsapp-message-feedback';
 export * from './whatsapp-message-key-dto';
