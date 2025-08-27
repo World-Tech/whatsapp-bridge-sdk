@@ -44,7 +44,7 @@ export const ChatsApiAxiosParamCreator = function (configuration?: Configuration
             if (id === null || id === undefined) {
                 throw new RequiredError('id','Required parameter id was null or undefined when calling assignToSeller.');
             }
-            const localVarPath = `/api/chats/{id}/assign-to-me`
+            const localVarPath = `/api/chats/assign-to-seller`
                 .replace(`{${"id"}}`, encodeURIComponent(String(id)));
             // use dummy base URL string because the URL constructor only accepts absolute URLs.
             const localVarUrlObj = new URL(localVarPath, 'https://example.com');
