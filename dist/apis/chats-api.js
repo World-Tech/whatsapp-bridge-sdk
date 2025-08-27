@@ -40,14 +40,14 @@ const ChatsApiAxiosParamCreator = function (configuration) {
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        assignToMe: (body_1, id_1, ...args_1) => __awaiter(this, [body_1, id_1, ...args_1], void 0, function* (body, id, options = {}) {
+        assignToSeller: (body_1, id_1, ...args_1) => __awaiter(this, [body_1, id_1, ...args_1], void 0, function* (body, id, options = {}) {
             // verify required parameter 'body' is not null or undefined
             if (body === null || body === undefined) {
-                throw new base_1.RequiredError('body', 'Required parameter body was null or undefined when calling assignToMe.');
+                throw new base_1.RequiredError('body', 'Required parameter body was null or undefined when calling assignToSeller.');
             }
             // verify required parameter 'id' is not null or undefined
             if (id === null || id === undefined) {
-                throw new base_1.RequiredError('id', 'Required parameter id was null or undefined when calling assignToMe.');
+                throw new base_1.RequiredError('id', 'Required parameter id was null or undefined when calling assignToSeller.');
             }
             const localVarPath = `/api/chats/{id}/assign-to-me`
                 .replace(`{${"id"}}`, encodeURIComponent(String(id)));
@@ -302,9 +302,9 @@ const ChatsApiFp = function (configuration) {
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        assignToMe(body, id, options) {
+        assignToSeller(body, id, options) {
             return __awaiter(this, void 0, void 0, function* () {
-                const localVarAxiosArgs = yield (0, exports.ChatsApiAxiosParamCreator)(configuration).assignToMe(body, id, options);
+                const localVarAxiosArgs = yield (0, exports.ChatsApiAxiosParamCreator)(configuration).assignToSeller(body, id, options);
                 return (axios = axios_1.default, basePath = base_1.BASE_PATH) => {
                     const axiosRequestArgs = Object.assign(Object.assign({}, localVarAxiosArgs.options), { url: basePath + localVarAxiosArgs.url });
                     return axios.request(axiosRequestArgs);
@@ -399,9 +399,9 @@ const ChatsApiFactory = function (configuration, basePath, axios) {
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        assignToMe(body, id, options) {
+        assignToSeller(body, id, options) {
             return __awaiter(this, void 0, void 0, function* () {
-                return (0, exports.ChatsApiFp)(configuration).assignToMe(body, id, options).then((request) => request(axios, basePath));
+                return (0, exports.ChatsApiFp)(configuration).assignToSeller(body, id, options).then((request) => request(axios, basePath));
             });
         },
         /**
@@ -478,9 +478,9 @@ class ChatsApi extends base_1.BaseAPI {
      * @throws {RequiredError}
      * @memberof ChatsApi
      */
-    assignToMe(body, id, options) {
+    assignToSeller(body, id, options) {
         return __awaiter(this, void 0, void 0, function* () {
-            return (0, exports.ChatsApiFp)(this.configuration).assignToMe(body, id, options).then((request) => request(this.axios, this.basePath));
+            return (0, exports.ChatsApiFp)(this.configuration).assignToSeller(body, id, options).then((request) => request(this.axios, this.basePath));
         });
     }
     /**

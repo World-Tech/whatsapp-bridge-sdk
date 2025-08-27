@@ -28,4 +28,16 @@ export interface AssignToMeDto {
      * @example 1
      */
     branchId: number;
+    /**
+     * @type {number}
+     * @memberof AssignToMeDto
+     * @example 1
+     */
+    chatId?: number;
+    /**
+     * @type {number}
+     * @memberof AssignToMeDto
+     * @example 3941232654
+     */
+    cellphone?: number;
 }

@@ -29,7 +29,7 @@ export declare const ChatsApiAxiosParamCreator: (configuration?: Configuration) 
      * @param {*} [options] Override http request option.
      * @throws {RequiredError}
      */
-    assignToMe: (body: AssignToMeDto, id: number, options?: AxiosRequestConfig) => Promise<RequestArgs>;
+    assignToSeller: (body: AssignToMeDto, id: number, options?: AxiosRequestConfig) => Promise<RequestArgs>;
     /**
      *
      * @param {AssignmentTypeDto} body
@@ -83,7 +83,7 @@ export declare const ChatsApiFp: (configuration?: Configuration) => {
      * @param {*} [options] Override http request option.
      * @throws {RequiredError}
      */
-    assignToMe(body: AssignToMeDto, id: number, options?: AxiosRequestConfig): Promise<(axios?: AxiosInstance, basePath?: string) => Promise<AxiosResponse<void>>>;
+    assignToSeller(body: AssignToMeDto, id: number, options?: AxiosRequestConfig): Promise<(axios?: AxiosInstance, basePath?: string) => Promise<AxiosResponse<void>>>;
     /**
      *
      * @param {AssignmentTypeDto} body
@@ -137,7 +137,7 @@ export declare const ChatsApiFactory: (configuration?: Configuration, basePath?:
      * @param {*} [options] Override http request option.
      * @throws {RequiredError}
      */
-    assignToMe(body: AssignToMeDto, id: number, options?: AxiosRequestConfig): Promise<AxiosResponse<void>>;
+    assignToSeller(body: AssignToMeDto, id: number, options?: AxiosRequestConfig): Promise<AxiosResponse<void>>;
     /**
      *
      * @param {AssignmentTypeDto} body
@@ -194,7 +194,7 @@ export declare class ChatsApi extends BaseAPI {
      * @throws {RequiredError}
      * @memberof ChatsApi
      */
-    assignToMe(body: AssignToMeDto, id: number, options?: AxiosRequestConfig): Promise<AxiosResponse<void>>;
+    assignToSeller(body: AssignToMeDto, id: number, options?: AxiosRequestConfig): Promise<AxiosResponse<void>>;
     /**
      *
      * @param {AssignmentTypeDto} body
