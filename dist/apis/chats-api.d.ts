@@ -25,11 +25,10 @@ export declare const ChatsApiAxiosParamCreator: (configuration?: Configuration) 
     /**
      *
      * @param {AssignToMeDto} body
-     * @param {number} id
      * @param {*} [options] Override http request option.
      * @throws {RequiredError}
      */
-    assignToSeller: (body: AssignToMeDto, id: number, options?: AxiosRequestConfig) => Promise<RequestArgs>;
+    assignToSeller: (body: AssignToMeDto, options?: AxiosRequestConfig) => Promise<RequestArgs>;
     /**
      *
      * @param {AssignmentTypeDto} body
@@ -79,11 +78,10 @@ export declare const ChatsApiFp: (configuration?: Configuration) => {
     /**
      *
      * @param {AssignToMeDto} body
-     * @param {number} id
      * @param {*} [options] Override http request option.
      * @throws {RequiredError}
      */
-    assignToSeller(body: AssignToMeDto, id: number, options?: AxiosRequestConfig): Promise<(axios?: AxiosInstance, basePath?: string) => Promise<AxiosResponse<void>>>;
+    assignToSeller(body: AssignToMeDto, options?: AxiosRequestConfig): Promise<(axios?: AxiosInstance, basePath?: string) => Promise<AxiosResponse<void>>>;
     /**
      *
      * @param {AssignmentTypeDto} body
@@ -133,11 +131,10 @@ export declare const ChatsApiFactory: (configuration?: Configuration, basePath?:
     /**
      *
      * @param {AssignToMeDto} body
-     * @param {number} id
      * @param {*} [options] Override http request option.
      * @throws {RequiredError}
      */
-    assignToSeller(body: AssignToMeDto, id: number, options?: AxiosRequestConfig): Promise<AxiosResponse<void>>;
+    assignToSeller(body: AssignToMeDto, options?: AxiosRequestConfig): Promise<AxiosResponse<void>>;
     /**
      *
      * @param {AssignmentTypeDto} body
@@ -189,12 +186,11 @@ export declare class ChatsApi extends BaseAPI {
     /**
      *
      * @param {AssignToMeDto} body
-     * @param {number} id
      * @param {*} [options] Override http request option.
      * @throws {RequiredError}
      * @memberof ChatsApi
      */
-    assignToSeller(body: AssignToMeDto, id: number, options?: AxiosRequestConfig): Promise<AxiosResponse<void>>;
+    assignToSeller(body: AssignToMeDto, options?: AxiosRequestConfig): Promise<AxiosResponse<void>>;
     /**
      *
      * @param {AssignmentTypeDto} body
