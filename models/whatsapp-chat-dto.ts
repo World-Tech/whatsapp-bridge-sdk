@@ -96,4 +96,11 @@ export interface WhatsappChatDto {
      * @example crm
      */
     assignmentType: string;
+
+    /**
+     * @type {number}
+     * @memberof WhatsappChatDto
+     * @example 9023
+     */
+    leadId: number;
 }
