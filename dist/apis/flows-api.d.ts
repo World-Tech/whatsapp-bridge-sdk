@@ -32,13 +32,6 @@ export declare const FlowsApiAxiosParamCreator: (configuration?: Configuration) 
      * @throws {RequiredError}
      */
     flowsControllerHandleGet: (options?: AxiosRequestConfig) => Promise<RequestArgs>;
-    /**
-     *
-     * @param {number} leadId
-     * @param {*} [options] Override http request option.
-     * @throws {RequiredError}
-     */
-    flowsControllerHandleGet2: (leadId: number, options?: AxiosRequestConfig) => Promise<RequestArgs>;
 };
 /**
  * FlowsApi - functional programming interface
@@ -58,13 +51,6 @@ export declare const FlowsApiFp: (configuration?: Configuration) => {
      * @throws {RequiredError}
      */
     flowsControllerHandleGet(options?: AxiosRequestConfig): Promise<(axios?: AxiosInstance, basePath?: string) => Promise<AxiosResponse<void>>>;
-    /**
-     *
-     * @param {number} leadId
-     * @param {*} [options] Override http request option.
-     * @throws {RequiredError}
-     */
-    flowsControllerHandleGet2(leadId: number, options?: AxiosRequestConfig): Promise<(axios?: AxiosInstance, basePath?: string) => Promise<AxiosResponse<void>>>;
 };
 /**
  * FlowsApi - factory interface
@@ -84,13 +70,6 @@ export declare const FlowsApiFactory: (configuration?: Configuration, basePath?:
      * @throws {RequiredError}
      */
     flowsControllerHandleGet(options?: AxiosRequestConfig): Promise<AxiosResponse<void>>;
-    /**
-     *
-     * @param {number} leadId
-     * @param {*} [options] Override http request option.
-     * @throws {RequiredError}
-     */
-    flowsControllerHandleGet2(leadId: number, options?: AxiosRequestConfig): Promise<AxiosResponse<void>>;
 };
 /**
  * FlowsApi - object-oriented interface
@@ -114,12 +93,4 @@ export declare class FlowsApi extends BaseAPI {
      * @memberof FlowsApi
      */
     flowsControllerHandleGet(options?: AxiosRequestConfig): Promise<AxiosResponse<void>>;
-    /**
-     *
-     * @param {number} leadId
-     * @param {*} [options] Override http request option.
-     * @throws {RequiredError}
-     * @memberof FlowsApi
-     */
-    flowsControllerHandleGet2(leadId: number, options?: AxiosRequestConfig): Promise<AxiosResponse<void>>;
 }

@@ -26,4 +26,11 @@ export interface ConversationMessageDto {
      * @example Hola como estas?
      */
     conversation: string;
+
+    /**
+     * @type {string}
+     * @memberof ConversationMessageDto
+     * @example Hola como estas?
+     */
+    renderedMessage: string;
 }

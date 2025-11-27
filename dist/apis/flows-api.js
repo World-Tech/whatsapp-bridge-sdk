@@ -103,43 +103,6 @@ const FlowsApiAxiosParamCreator = function (configuration) {
                 options: localVarRequestOptions,
             };
         }),
-        /**
-         *
-         * @param {number} leadId
-         * @param {*} [options] Override http request option.
-         * @throws {RequiredError}
-         */
-        flowsControllerHandleGet2: (leadId_1, ...args_1) => __awaiter(this, [leadId_1, ...args_1], void 0, function* (leadId, options = {}) {
-            // verify required parameter 'leadId' is not null or undefined
-            if (leadId === null || leadId === undefined) {
-                throw new base_1.RequiredError('leadId', 'Required parameter leadId was null or undefined when calling flowsControllerHandleGet2.');
-            }
-            const localVarPath = `/api/flows/getOffer/{leadId}`
-                .replace(`{${"leadId"}}`, encodeURIComponent(String(leadId)));
-            // use dummy base URL string because the URL constructor only accepts absolute URLs.
-            const localVarUrlObj = new URL(localVarPath, 'https://example.com');
-            let baseOptions;
-            if (configuration) {
-                baseOptions = configuration.baseOptions;
-            }
-            const localVarRequestOptions = Object.assign(Object.assign({ method: 'GET' }, baseOptions), options);
-            const localVarHeaderParameter = {};
-            const localVarQueryParameter = {};
-            const query = new URLSearchParams(localVarUrlObj.search);
-            for (const key in localVarQueryParameter) {
-                query.set(key, localVarQueryParameter[key]);
-            }
-            for (const key in options.params) {
-                query.set(key, options.params[key]);
-            }
-            localVarUrlObj.search = (new URLSearchParams(query)).toString();
-            let headersFromBaseOptions = baseOptions && baseOptions.headers ? baseOptions.headers : {};
-            localVarRequestOptions.headers = Object.assign(Object.assign(Object.assign({}, localVarHeaderParameter), headersFromBaseOptions), options.headers);
-            return {
-                url: localVarUrlObj.pathname + localVarUrlObj.search + localVarUrlObj.hash,
-                options: localVarRequestOptions,
-            };
-        }),
     };
 };
 exports.FlowsApiAxiosParamCreator = FlowsApiAxiosParamCreator;
@@ -178,21 +141,6 @@ const FlowsApiFp = function (configuration) {
                 };
             });
         },
-        /**
-         *
-         * @param {number} leadId
-         * @param {*} [options] Override http request option.
-         * @throws {RequiredError}
-         */
-        flowsControllerHandleGet2(leadId, options) {
-            return __awaiter(this, void 0, void 0, function* () {
-                const localVarAxiosArgs = yield (0, exports.FlowsApiAxiosParamCreator)(configuration).flowsControllerHandleGet2(leadId, options);
-                return (axios = axios_1.default, basePath = base_1.BASE_PATH) => {
-                    const axiosRequestArgs = Object.assign(Object.assign({}, localVarAxiosArgs.options), { url: basePath + localVarAxiosArgs.url });
-                    return axios.request(axiosRequestArgs);
-                };
-            });
-        },
     };
 };
 exports.FlowsApiFp = FlowsApiFp;
@@ -221,17 +169,6 @@ const FlowsApiFactory = function (configuration, basePath, axios) {
         flowsControllerHandleGet(options) {
             return __awaiter(this, void 0, void 0, function* () {
                 return (0, exports.FlowsApiFp)(configuration).flowsControllerHandleGet(options).then((request) => request(axios, basePath));
-            });
-        },
-        /**
-         *
-         * @param {number} leadId
-         * @param {*} [options] Override http request option.
-         * @throws {RequiredError}
-         */
-        flowsControllerHandleGet2(leadId, options) {
-            return __awaiter(this, void 0, void 0, function* () {
-                return (0, exports.FlowsApiFp)(configuration).flowsControllerHandleGet2(leadId, options).then((request) => request(axios, basePath));
             });
         },
     };
@@ -265,18 +202,6 @@ class FlowsApi extends base_1.BaseAPI {
     flowsControllerHandleGet(options) {
         return __awaiter(this, void 0, void 0, function* () {
             return (0, exports.FlowsApiFp)(this.configuration).flowsControllerHandleGet(options).then((request) => request(this.axios, this.basePath));
-        });
-    }
-    /**
-     *
-     * @param {number} leadId
-     * @param {*} [options] Override http request option.
-     * @throws {RequiredError}
-     * @memberof FlowsApi
-     */
-    flowsControllerHandleGet2(leadId, options) {
-        return __awaiter(this, void 0, void 0, function* () {
-            return (0, exports.FlowsApiFp)(this.configuration).flowsControllerHandleGet2(leadId, options).then((request) => request(this.axios, this.basePath));
         });
     }
 }

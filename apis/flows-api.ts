@@ -100,45 +100,6 @@ export const FlowsApiAxiosParamCreator = function (configuration?: Configuration
                 options: localVarRequestOptions,
             };
         },
-        /**
-         * 
-         * @param {number} leadId 
-         * @param {*} [options] Override http request option.
-         * @throws {RequiredError}
-         */
-        flowsControllerHandleGet2: async (leadId: number, options: AxiosRequestConfig = {}): Promise<RequestArgs> => {
-            // verify required parameter 'leadId' is not null or undefined
-            if (leadId === null || leadId === undefined) {
-                throw new RequiredError('leadId','Required parameter leadId was null or undefined when calling flowsControllerHandleGet2.');
-            }
-            const localVarPath = `/api/flows/getOffer/{leadId}`
-                .replace(`{${"leadId"}}`, encodeURIComponent(String(leadId)));
-            // use dummy base URL string because the URL constructor only accepts absolute URLs.
-            const localVarUrlObj = new URL(localVarPath, 'https://example.com');
-            let baseOptions;
-            if (configuration) {
-                baseOptions = configuration.baseOptions;
-            }
-            const localVarRequestOptions :AxiosRequestConfig = { method: 'GET', ...baseOptions, ...options};
-            const localVarHeaderParameter = {} as any;
-            const localVarQueryParameter = {} as any;
-
-            const query = new URLSearchParams(localVarUrlObj.search);
-            for (const key in localVarQueryParameter) {
-                query.set(key, localVarQueryParameter[key]);
-            }
-            for (const key in options.params) {
-                query.set(key, options.params[key]);
-            }
-            localVarUrlObj.search = (new URLSearchParams(query)).toString();
-            let headersFromBaseOptions = baseOptions && baseOptions.headers ? baseOptions.headers : {};
-            localVarRequestOptions.headers = {...localVarHeaderParameter, ...headersFromBaseOptions, ...options.headers};
-
-            return {
-                url: localVarUrlObj.pathname + localVarUrlObj.search + localVarUrlObj.hash,
-                options: localVarRequestOptions,
-            };
-        },
     }
 };
 
@@ -173,19 +134,6 @@ export const FlowsApiFp = function(configuration?: Configuration) {
                 return axios.request(axiosRequestArgs);
             };
         },
-        /**
-         * 
-         * @param {number} leadId 
-         * @param {*} [options] Override http request option.
-         * @throws {RequiredError}
-         */
-        async flowsControllerHandleGet2(leadId: number, options?: AxiosRequestConfig): Promise<(axios?: AxiosInstance, basePath?: string) => Promise<AxiosResponse<void>>> {
-            const localVarAxiosArgs = await FlowsApiAxiosParamCreator(configuration).flowsControllerHandleGet2(leadId, options);
-            return (axios: AxiosInstance = globalAxios, basePath: string = BASE_PATH) => {
-                const axiosRequestArgs :AxiosRequestConfig = {...localVarAxiosArgs.options, url: basePath + localVarAxiosArgs.url};
-                return axios.request(axiosRequestArgs);
-            };
-        },
     }
 };
 
@@ -211,15 +159,6 @@ export const FlowsApiFactory = function (configuration?: Configuration, basePath
          */
         async flowsControllerHandleGet(options?: AxiosRequestConfig): Promise<AxiosResponse<void>> {
             return FlowsApiFp(configuration).flowsControllerHandleGet(options).then((request) => request(axios, basePath));
-        },
-        /**
-         * 
-         * @param {number} leadId 
-         * @param {*} [options] Override http request option.
-         * @throws {RequiredError}
-         */
-        async flowsControllerHandleGet2(leadId: number, options?: AxiosRequestConfig): Promise<AxiosResponse<void>> {
-            return FlowsApiFp(configuration).flowsControllerHandleGet2(leadId, options).then((request) => request(axios, basePath));
         },
     };
 };
@@ -249,15 +188,5 @@ export class FlowsApi extends BaseAPI {
      */
     public async flowsControllerHandleGet(options?: AxiosRequestConfig) : Promise<AxiosResponse<void>> {
         return FlowsApiFp(this.configuration).flowsControllerHandleGet(options).then((request) => request(this.axios, this.basePath));
-    }
-    /**
-     * 
-     * @param {number} leadId 
-     * @param {*} [options] Override http request option.
-     * @throws {RequiredError}
-     * @memberof FlowsApi
-     */
-    public async flowsControllerHandleGet2(leadId: number, options?: AxiosRequestConfig) : Promise<AxiosResponse<void>> {
-        return FlowsApiFp(this.configuration).flowsControllerHandleGet2(leadId, options).then((request) => request(this.axios, this.basePath));
     }
 }
