@@ -163,6 +163,7 @@ const ChatsApiAxiosParamCreator = function (configuration) {
         /**
          *
          * @param {number} branchId
+         * @param {string} apikey
          * @param {string} [q]
          * @param {boolean} [unassigned]
          * @param {boolean} [unread]
@@ -175,10 +176,14 @@ const ChatsApiAxiosParamCreator = function (configuration) {
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        getChats: (branchId_1, q_1, unassigned_1, unread_1, rowsPerPage_1, currentPage_1, userId_1, externallyInitiated_1, id_1, assignmentTypeCode_1, ...args_1) => __awaiter(this, [branchId_1, q_1, unassigned_1, unread_1, rowsPerPage_1, currentPage_1, userId_1, externallyInitiated_1, id_1, assignmentTypeCode_1, ...args_1], void 0, function* (branchId, q, unassigned, unread, rowsPerPage, currentPage, userId, externallyInitiated, id, assignmentTypeCode, options = {}) {
+        getChats: (branchId_1, apikey_1, q_1, unassigned_1, unread_1, rowsPerPage_1, currentPage_1, userId_1, externallyInitiated_1, id_1, assignmentTypeCode_1, ...args_1) => __awaiter(this, [branchId_1, apikey_1, q_1, unassigned_1, unread_1, rowsPerPage_1, currentPage_1, userId_1, externallyInitiated_1, id_1, assignmentTypeCode_1, ...args_1], void 0, function* (branchId, apikey, q, unassigned, unread, rowsPerPage, currentPage, userId, externallyInitiated, id, assignmentTypeCode, options = {}) {
             // verify required parameter 'branchId' is not null or undefined
             if (branchId === null || branchId === undefined) {
                 throw new base_1.RequiredError('branchId', 'Required parameter branchId was null or undefined when calling getChats.');
+            }
+            // verify required parameter 'apikey' is not null or undefined
+            if (apikey === null || apikey === undefined) {
+                throw new base_1.RequiredError('apikey', 'Required parameter apikey was null or undefined when calling getChats.');
             }
             const localVarPath = `/api/chats`;
             // use dummy base URL string because the URL constructor only accepts absolute URLs.
@@ -219,6 +224,9 @@ const ChatsApiAxiosParamCreator = function (configuration) {
             }
             if (assignmentTypeCode !== undefined) {
                 localVarQueryParameter['assignmentTypeCode'] = assignmentTypeCode;
+            }
+            if (apikey !== undefined && apikey !== null) {
+                localVarHeaderParameter['apikey'] = String(apikey);
             }
             const query = new URLSearchParams(localVarUrlObj.search);
             for (const key in localVarQueryParameter) {
@@ -339,6 +347,7 @@ const ChatsApiFp = function (configuration) {
         /**
          *
          * @param {number} branchId
+         * @param {string} apikey
          * @param {string} [q]
          * @param {boolean} [unassigned]
          * @param {boolean} [unread]
@@ -351,9 +360,9 @@ const ChatsApiFp = function (configuration) {
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        getChats(branchId, q, unassigned, unread, rowsPerPage, currentPage, userId, externallyInitiated, id, assignmentTypeCode, options) {
+        getChats(branchId, apikey, q, unassigned, unread, rowsPerPage, currentPage, userId, externallyInitiated, id, assignmentTypeCode, options) {
             return __awaiter(this, void 0, void 0, function* () {
-                const localVarAxiosArgs = yield (0, exports.ChatsApiAxiosParamCreator)(configuration).getChats(branchId, q, unassigned, unread, rowsPerPage, currentPage, userId, externallyInitiated, id, assignmentTypeCode, options);
+                const localVarAxiosArgs = yield (0, exports.ChatsApiAxiosParamCreator)(configuration).getChats(branchId, apikey, q, unassigned, unread, rowsPerPage, currentPage, userId, externallyInitiated, id, assignmentTypeCode, options);
                 return (axios = axios_1.default, basePath = base_1.BASE_PATH) => {
                     const axiosRequestArgs = Object.assign(Object.assign({}, localVarAxiosArgs.options), { url: basePath + localVarAxiosArgs.url });
                     return axios.request(axiosRequestArgs);
@@ -423,6 +432,7 @@ const ChatsApiFactory = function (configuration, basePath, axios) {
         /**
          *
          * @param {number} branchId
+         * @param {string} apikey
          * @param {string} [q]
          * @param {boolean} [unassigned]
          * @param {boolean} [unread]
@@ -435,9 +445,9 @@ const ChatsApiFactory = function (configuration, basePath, axios) {
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        getChats(branchId, q, unassigned, unread, rowsPerPage, currentPage, userId, externallyInitiated, id, assignmentTypeCode, options) {
+        getChats(branchId, apikey, q, unassigned, unread, rowsPerPage, currentPage, userId, externallyInitiated, id, assignmentTypeCode, options) {
             return __awaiter(this, void 0, void 0, function* () {
-                return (0, exports.ChatsApiFp)(configuration).getChats(branchId, q, unassigned, unread, rowsPerPage, currentPage, userId, externallyInitiated, id, assignmentTypeCode, options).then((request) => request(axios, basePath));
+                return (0, exports.ChatsApiFp)(configuration).getChats(branchId, apikey, q, unassigned, unread, rowsPerPage, currentPage, userId, externallyInitiated, id, assignmentTypeCode, options).then((request) => request(axios, basePath));
             });
         },
         /**
@@ -503,6 +513,7 @@ class ChatsApi extends base_1.BaseAPI {
     /**
      *
      * @param {number} branchId
+     * @param {string} apikey
      * @param {string} [q]
      * @param {boolean} [unassigned]
      * @param {boolean} [unread]
@@ -516,9 +527,9 @@ class ChatsApi extends base_1.BaseAPI {
      * @throws {RequiredError}
      * @memberof ChatsApi
      */
-    getChats(branchId, q, unassigned, unread, rowsPerPage, currentPage, userId, externallyInitiated, id, assignmentTypeCode, options) {
+    getChats(branchId, apikey, q, unassigned, unread, rowsPerPage, currentPage, userId, externallyInitiated, id, assignmentTypeCode, options) {
         return __awaiter(this, void 0, void 0, function* () {
-            return (0, exports.ChatsApiFp)(this.configuration).getChats(branchId, q, unassigned, unread, rowsPerPage, currentPage, userId, externallyInitiated, id, assignmentTypeCode, options).then((request) => request(this.axios, this.basePath));
+            return (0, exports.ChatsApiFp)(this.configuration).getChats(branchId, apikey, q, unassigned, unread, rowsPerPage, currentPage, userId, externallyInitiated, id, assignmentTypeCode, options).then((request) => request(this.axios, this.basePath));
         });
     }
     /**
