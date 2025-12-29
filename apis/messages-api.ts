@@ -33,10 +33,11 @@ export const MessagesApiAxiosParamCreator = function (configuration?: Configurat
          * 
          * @param {number} branchId 
          * @param {number} chatId 
+         * @param {string} apikey 
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        getMessages: async (branchId: number, chatId: number, options: AxiosRequestConfig = {}): Promise<RequestArgs> => {
+        getMessages: async (branchId: number, chatId: number, apikey: string, options: AxiosRequestConfig = {}): Promise<RequestArgs> => {
             // verify required parameter 'branchId' is not null or undefined
             if (branchId === null || branchId === undefined) {
                 throw new RequiredError('branchId','Required parameter branchId was null or undefined when calling getMessages.');
@@ -44,6 +45,10 @@ export const MessagesApiAxiosParamCreator = function (configuration?: Configurat
             // verify required parameter 'chatId' is not null or undefined
             if (chatId === null || chatId === undefined) {
                 throw new RequiredError('chatId','Required parameter chatId was null or undefined when calling getMessages.');
+            }
+            // verify required parameter 'apikey' is not null or undefined
+            if (apikey === null || apikey === undefined) {
+                throw new RequiredError('apikey','Required parameter apikey was null or undefined when calling getMessages.');
             }
             const localVarPath = `/api/messages`;
             // use dummy base URL string because the URL constructor only accepts absolute URLs.
@@ -62,6 +67,10 @@ export const MessagesApiAxiosParamCreator = function (configuration?: Configurat
 
             if (chatId !== undefined) {
                 localVarQueryParameter['chatId'] = chatId;
+            }
+
+            if (apikey !== undefined && apikey !== null) {
+                localVarHeaderParameter['apikey'] = String(apikey);
             }
 
             const query = new URLSearchParams(localVarUrlObj.search);
@@ -83,13 +92,18 @@ export const MessagesApiAxiosParamCreator = function (configuration?: Configurat
         /**
          * 
          * @param {ReadMessageDto} body 
+         * @param {string} apikey 
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        readMessage: async (body: ReadMessageDto, options: AxiosRequestConfig = {}): Promise<RequestArgs> => {
+        readMessage: async (body: ReadMessageDto, apikey: string, options: AxiosRequestConfig = {}): Promise<RequestArgs> => {
             // verify required parameter 'body' is not null or undefined
             if (body === null || body === undefined) {
                 throw new RequiredError('body','Required parameter body was null or undefined when calling readMessage.');
+            }
+            // verify required parameter 'apikey' is not null or undefined
+            if (apikey === null || apikey === undefined) {
+                throw new RequiredError('apikey','Required parameter apikey was null or undefined when calling readMessage.');
             }
             const localVarPath = `/api/messages/read`;
             // use dummy base URL string because the URL constructor only accepts absolute URLs.
@@ -101,6 +115,10 @@ export const MessagesApiAxiosParamCreator = function (configuration?: Configurat
             const localVarRequestOptions :AxiosRequestConfig = { method: 'POST', ...baseOptions, ...options};
             const localVarHeaderParameter = {} as any;
             const localVarQueryParameter = {} as any;
+
+            if (apikey !== undefined && apikey !== null) {
+                localVarHeaderParameter['apikey'] = String(apikey);
+            }
 
             localVarHeaderParameter['Content-Type'] = 'application/json';
 
@@ -125,13 +143,18 @@ export const MessagesApiAxiosParamCreator = function (configuration?: Configurat
         /**
          * 
          * @param {SendTemplateDataDto} body 
+         * @param {string} apikey 
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        sendTemplateMessage: async (body: SendTemplateDataDto, options: AxiosRequestConfig = {}): Promise<RequestArgs> => {
+        sendTemplateMessage: async (body: SendTemplateDataDto, apikey: string, options: AxiosRequestConfig = {}): Promise<RequestArgs> => {
             // verify required parameter 'body' is not null or undefined
             if (body === null || body === undefined) {
                 throw new RequiredError('body','Required parameter body was null or undefined when calling sendTemplateMessage.');
+            }
+            // verify required parameter 'apikey' is not null or undefined
+            if (apikey === null || apikey === undefined) {
+                throw new RequiredError('apikey','Required parameter apikey was null or undefined when calling sendTemplateMessage.');
             }
             const localVarPath = `/api/messages/send-template`;
             // use dummy base URL string because the URL constructor only accepts absolute URLs.
@@ -143,6 +166,10 @@ export const MessagesApiAxiosParamCreator = function (configuration?: Configurat
             const localVarRequestOptions :AxiosRequestConfig = { method: 'POST', ...baseOptions, ...options};
             const localVarHeaderParameter = {} as any;
             const localVarQueryParameter = {} as any;
+
+            if (apikey !== undefined && apikey !== null) {
+                localVarHeaderParameter['apikey'] = String(apikey);
+            }
 
             localVarHeaderParameter['Content-Type'] = 'application/json';
 
@@ -167,13 +194,18 @@ export const MessagesApiAxiosParamCreator = function (configuration?: Configurat
         /**
          * 
          * @param {SendTextDto} body 
+         * @param {string} apikey 
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        sendTextMessage: async (body: SendTextDto, options: AxiosRequestConfig = {}): Promise<RequestArgs> => {
+        sendTextMessage: async (body: SendTextDto, apikey: string, options: AxiosRequestConfig = {}): Promise<RequestArgs> => {
             // verify required parameter 'body' is not null or undefined
             if (body === null || body === undefined) {
                 throw new RequiredError('body','Required parameter body was null or undefined when calling sendTextMessage.');
+            }
+            // verify required parameter 'apikey' is not null or undefined
+            if (apikey === null || apikey === undefined) {
+                throw new RequiredError('apikey','Required parameter apikey was null or undefined when calling sendTextMessage.');
             }
             const localVarPath = `/api/messages/send-text`;
             // use dummy base URL string because the URL constructor only accepts absolute URLs.
@@ -185,6 +217,10 @@ export const MessagesApiAxiosParamCreator = function (configuration?: Configurat
             const localVarRequestOptions :AxiosRequestConfig = { method: 'POST', ...baseOptions, ...options};
             const localVarHeaderParameter = {} as any;
             const localVarQueryParameter = {} as any;
+
+            if (apikey !== undefined && apikey !== null) {
+                localVarHeaderParameter['apikey'] = String(apikey);
+            }
 
             localVarHeaderParameter['Content-Type'] = 'application/json';
 
@@ -219,11 +255,12 @@ export const MessagesApiFp = function(configuration?: Configuration) {
          * 
          * @param {number} branchId 
          * @param {number} chatId 
+         * @param {string} apikey 
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        async getMessages(branchId: number, chatId: number, options?: AxiosRequestConfig): Promise<(axios?: AxiosInstance, basePath?: string) => Promise<AxiosResponse<MessageResponseDto>>> {
-            const localVarAxiosArgs = await MessagesApiAxiosParamCreator(configuration).getMessages(branchId, chatId, options);
+        async getMessages(branchId: number, chatId: number, apikey: string, options?: AxiosRequestConfig): Promise<(axios?: AxiosInstance, basePath?: string) => Promise<AxiosResponse<MessageResponseDto>>> {
+            const localVarAxiosArgs = await MessagesApiAxiosParamCreator(configuration).getMessages(branchId, chatId, apikey, options);
             return (axios: AxiosInstance = globalAxios, basePath: string = BASE_PATH) => {
                 const axiosRequestArgs :AxiosRequestConfig = {...localVarAxiosArgs.options, url: basePath + localVarAxiosArgs.url};
                 return axios.request(axiosRequestArgs);
@@ -232,11 +269,12 @@ export const MessagesApiFp = function(configuration?: Configuration) {
         /**
          * 
          * @param {ReadMessageDto} body 
+         * @param {string} apikey 
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        async readMessage(body: ReadMessageDto, options?: AxiosRequestConfig): Promise<(axios?: AxiosInstance, basePath?: string) => Promise<AxiosResponse<ReadMessageResponseDataDto>>> {
-            const localVarAxiosArgs = await MessagesApiAxiosParamCreator(configuration).readMessage(body, options);
+        async readMessage(body: ReadMessageDto, apikey: string, options?: AxiosRequestConfig): Promise<(axios?: AxiosInstance, basePath?: string) => Promise<AxiosResponse<ReadMessageResponseDataDto>>> {
+            const localVarAxiosArgs = await MessagesApiAxiosParamCreator(configuration).readMessage(body, apikey, options);
             return (axios: AxiosInstance = globalAxios, basePath: string = BASE_PATH) => {
                 const axiosRequestArgs :AxiosRequestConfig = {...localVarAxiosArgs.options, url: basePath + localVarAxiosArgs.url};
                 return axios.request(axiosRequestArgs);
@@ -245,11 +283,12 @@ export const MessagesApiFp = function(configuration?: Configuration) {
         /**
          * 
          * @param {SendTemplateDataDto} body 
+         * @param {string} apikey 
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        async sendTemplateMessage(body: SendTemplateDataDto, options?: AxiosRequestConfig): Promise<(axios?: AxiosInstance, basePath?: string) => Promise<AxiosResponse<SendTextDataResponseDto>>> {
-            const localVarAxiosArgs = await MessagesApiAxiosParamCreator(configuration).sendTemplateMessage(body, options);
+        async sendTemplateMessage(body: SendTemplateDataDto, apikey: string, options?: AxiosRequestConfig): Promise<(axios?: AxiosInstance, basePath?: string) => Promise<AxiosResponse<SendTextDataResponseDto>>> {
+            const localVarAxiosArgs = await MessagesApiAxiosParamCreator(configuration).sendTemplateMessage(body, apikey, options);
             return (axios: AxiosInstance = globalAxios, basePath: string = BASE_PATH) => {
                 const axiosRequestArgs :AxiosRequestConfig = {...localVarAxiosArgs.options, url: basePath + localVarAxiosArgs.url};
                 return axios.request(axiosRequestArgs);
@@ -258,11 +297,12 @@ export const MessagesApiFp = function(configuration?: Configuration) {
         /**
          * 
          * @param {SendTextDto} body 
+         * @param {string} apikey 
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        async sendTextMessage(body: SendTextDto, options?: AxiosRequestConfig): Promise<(axios?: AxiosInstance, basePath?: string) => Promise<AxiosResponse<SendTextDataResponseDto>>> {
-            const localVarAxiosArgs = await MessagesApiAxiosParamCreator(configuration).sendTextMessage(body, options);
+        async sendTextMessage(body: SendTextDto, apikey: string, options?: AxiosRequestConfig): Promise<(axios?: AxiosInstance, basePath?: string) => Promise<AxiosResponse<SendTextDataResponseDto>>> {
+            const localVarAxiosArgs = await MessagesApiAxiosParamCreator(configuration).sendTextMessage(body, apikey, options);
             return (axios: AxiosInstance = globalAxios, basePath: string = BASE_PATH) => {
                 const axiosRequestArgs :AxiosRequestConfig = {...localVarAxiosArgs.options, url: basePath + localVarAxiosArgs.url};
                 return axios.request(axiosRequestArgs);
@@ -281,38 +321,42 @@ export const MessagesApiFactory = function (configuration?: Configuration, baseP
          * 
          * @param {number} branchId 
          * @param {number} chatId 
+         * @param {string} apikey 
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        async getMessages(branchId: number, chatId: number, options?: AxiosRequestConfig): Promise<AxiosResponse<MessageResponseDto>> {
-            return MessagesApiFp(configuration).getMessages(branchId, chatId, options).then((request) => request(axios, basePath));
+        async getMessages(branchId: number, chatId: number, apikey: string, options?: AxiosRequestConfig): Promise<AxiosResponse<MessageResponseDto>> {
+            return MessagesApiFp(configuration).getMessages(branchId, chatId, apikey, options).then((request) => request(axios, basePath));
         },
         /**
          * 
          * @param {ReadMessageDto} body 
+         * @param {string} apikey 
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        async readMessage(body: ReadMessageDto, options?: AxiosRequestConfig): Promise<AxiosResponse<ReadMessageResponseDataDto>> {
-            return MessagesApiFp(configuration).readMessage(body, options).then((request) => request(axios, basePath));
+        async readMessage(body: ReadMessageDto, apikey: string, options?: AxiosRequestConfig): Promise<AxiosResponse<ReadMessageResponseDataDto>> {
+            return MessagesApiFp(configuration).readMessage(body, apikey, options).then((request) => request(axios, basePath));
         },
         /**
          * 
          * @param {SendTemplateDataDto} body 
+         * @param {string} apikey 
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        async sendTemplateMessage(body: SendTemplateDataDto, options?: AxiosRequestConfig): Promise<AxiosResponse<SendTextDataResponseDto>> {
-            return MessagesApiFp(configuration).sendTemplateMessage(body, options).then((request) => request(axios, basePath));
+        async sendTemplateMessage(body: SendTemplateDataDto, apikey: string, options?: AxiosRequestConfig): Promise<AxiosResponse<SendTextDataResponseDto>> {
+            return MessagesApiFp(configuration).sendTemplateMessage(body, apikey, options).then((request) => request(axios, basePath));
         },
         /**
          * 
          * @param {SendTextDto} body 
+         * @param {string} apikey 
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        async sendTextMessage(body: SendTextDto, options?: AxiosRequestConfig): Promise<AxiosResponse<SendTextDataResponseDto>> {
-            return MessagesApiFp(configuration).sendTextMessage(body, options).then((request) => request(axios, basePath));
+        async sendTextMessage(body: SendTextDto, apikey: string, options?: AxiosRequestConfig): Promise<AxiosResponse<SendTextDataResponseDto>> {
+            return MessagesApiFp(configuration).sendTextMessage(body, apikey, options).then((request) => request(axios, basePath));
         },
     };
 };
@@ -328,41 +372,45 @@ export class MessagesApi extends BaseAPI {
      * 
      * @param {number} branchId 
      * @param {number} chatId 
+     * @param {string} apikey 
      * @param {*} [options] Override http request option.
      * @throws {RequiredError}
      * @memberof MessagesApi
      */
-    public async getMessages(branchId: number, chatId: number, options?: AxiosRequestConfig) : Promise<AxiosResponse<MessageResponseDto>> {
-        return MessagesApiFp(this.configuration).getMessages(branchId, chatId, options).then((request) => request(this.axios, this.basePath));
+    public async getMessages(branchId: number, chatId: number, apikey: string, options?: AxiosRequestConfig) : Promise<AxiosResponse<MessageResponseDto>> {
+        return MessagesApiFp(this.configuration).getMessages(branchId, chatId, apikey, options).then((request) => request(this.axios, this.basePath));
     }
     /**
      * 
      * @param {ReadMessageDto} body 
+     * @param {string} apikey 
      * @param {*} [options] Override http request option.
      * @throws {RequiredError}
      * @memberof MessagesApi
      */
-    public async readMessage(body: ReadMessageDto, options?: AxiosRequestConfig) : Promise<AxiosResponse<ReadMessageResponseDataDto>> {
-        return MessagesApiFp(this.configuration).readMessage(body, options).then((request) => request(this.axios, this.basePath));
+    public async readMessage(body: ReadMessageDto, apikey: string, options?: AxiosRequestConfig) : Promise<AxiosResponse<ReadMessageResponseDataDto>> {
+        return MessagesApiFp(this.configuration).readMessage(body, apikey, options).then((request) => request(this.axios, this.basePath));
     }
     /**
      * 
      * @param {SendTemplateDataDto} body 
+     * @param {string} apikey 
      * @param {*} [options] Override http request option.
      * @throws {RequiredError}
      * @memberof MessagesApi
      */
-    public async sendTemplateMessage(body: SendTemplateDataDto, options?: AxiosRequestConfig) : Promise<AxiosResponse<SendTextDataResponseDto>> {
-        return MessagesApiFp(this.configuration).sendTemplateMessage(body, options).then((request) => request(this.axios, this.basePath));
+    public async sendTemplateMessage(body: SendTemplateDataDto, apikey: string, options?: AxiosRequestConfig) : Promise<AxiosResponse<SendTextDataResponseDto>> {
+        return MessagesApiFp(this.configuration).sendTemplateMessage(body, apikey, options).then((request) => request(this.axios, this.basePath));
     }
     /**
      * 
      * @param {SendTextDto} body 
+     * @param {string} apikey 
      * @param {*} [options] Override http request option.
      * @throws {RequiredError}
      * @memberof MessagesApi
      */
-    public async sendTextMessage(body: SendTextDto, options?: AxiosRequestConfig) : Promise<AxiosResponse<SendTextDataResponseDto>> {
-        return MessagesApiFp(this.configuration).sendTextMessage(body, options).then((request) => request(this.axios, this.basePath));
+    public async sendTextMessage(body: SendTextDto, apikey: string, options?: AxiosRequestConfig) : Promise<AxiosResponse<SendTextDataResponseDto>> {
+        return MessagesApiFp(this.configuration).sendTextMessage(body, apikey, options).then((request) => request(this.axios, this.basePath));
     }
 }

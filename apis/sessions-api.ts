@@ -28,13 +28,18 @@ export const SessionsApiAxiosParamCreator = function (configuration?: Configurat
         /**
          * 
          * @param {string} sessionUuid 
+         * @param {string} apikey 
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        getSession: async (sessionUuid: string, options: AxiosRequestConfig = {}): Promise<RequestArgs> => {
+        getSession: async (sessionUuid: string, apikey: string, options: AxiosRequestConfig = {}): Promise<RequestArgs> => {
             // verify required parameter 'sessionUuid' is not null or undefined
             if (sessionUuid === null || sessionUuid === undefined) {
                 throw new RequiredError('sessionUuid','Required parameter sessionUuid was null or undefined when calling getSession.');
+            }
+            // verify required parameter 'apikey' is not null or undefined
+            if (apikey === null || apikey === undefined) {
+                throw new RequiredError('apikey','Required parameter apikey was null or undefined when calling getSession.');
             }
             const localVarPath = `/api/sessions/{sessionUuid}`
                 .replace(`{${"sessionUuid"}}`, encodeURIComponent(String(sessionUuid)));
@@ -47,6 +52,10 @@ export const SessionsApiAxiosParamCreator = function (configuration?: Configurat
             const localVarRequestOptions :AxiosRequestConfig = { method: 'GET', ...baseOptions, ...options};
             const localVarHeaderParameter = {} as any;
             const localVarQueryParameter = {} as any;
+
+            if (apikey !== undefined && apikey !== null) {
+                localVarHeaderParameter['apikey'] = String(apikey);
+            }
 
             const query = new URLSearchParams(localVarUrlObj.search);
             for (const key in localVarQueryParameter) {
@@ -67,13 +76,18 @@ export const SessionsApiAxiosParamCreator = function (configuration?: Configurat
         /**
          * 
          * @param {number} branchId 
+         * @param {string} apikey 
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        getSessions: async (branchId: number, options: AxiosRequestConfig = {}): Promise<RequestArgs> => {
+        getSessions: async (branchId: number, apikey: string, options: AxiosRequestConfig = {}): Promise<RequestArgs> => {
             // verify required parameter 'branchId' is not null or undefined
             if (branchId === null || branchId === undefined) {
                 throw new RequiredError('branchId','Required parameter branchId was null or undefined when calling getSessions.');
+            }
+            // verify required parameter 'apikey' is not null or undefined
+            if (apikey === null || apikey === undefined) {
+                throw new RequiredError('apikey','Required parameter apikey was null or undefined when calling getSessions.');
             }
             const localVarPath = `/api/sessions`;
             // use dummy base URL string because the URL constructor only accepts absolute URLs.
@@ -88,6 +102,10 @@ export const SessionsApiAxiosParamCreator = function (configuration?: Configurat
 
             if (branchId !== undefined) {
                 localVarQueryParameter['branchId'] = branchId;
+            }
+
+            if (apikey !== undefined && apikey !== null) {
+                localVarHeaderParameter['apikey'] = String(apikey);
             }
 
             const query = new URLSearchParams(localVarUrlObj.search);
@@ -118,11 +136,12 @@ export const SessionsApiFp = function(configuration?: Configuration) {
         /**
          * 
          * @param {string} sessionUuid 
+         * @param {string} apikey 
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        async getSession(sessionUuid: string, options?: AxiosRequestConfig): Promise<(axios?: AxiosInstance, basePath?: string) => Promise<AxiosResponse<SessionResponseDataDto>>> {
-            const localVarAxiosArgs = await SessionsApiAxiosParamCreator(configuration).getSession(sessionUuid, options);
+        async getSession(sessionUuid: string, apikey: string, options?: AxiosRequestConfig): Promise<(axios?: AxiosInstance, basePath?: string) => Promise<AxiosResponse<SessionResponseDataDto>>> {
+            const localVarAxiosArgs = await SessionsApiAxiosParamCreator(configuration).getSession(sessionUuid, apikey, options);
             return (axios: AxiosInstance = globalAxios, basePath: string = BASE_PATH) => {
                 const axiosRequestArgs :AxiosRequestConfig = {...localVarAxiosArgs.options, url: basePath + localVarAxiosArgs.url};
                 return axios.request(axiosRequestArgs);
@@ -131,11 +150,12 @@ export const SessionsApiFp = function(configuration?: Configuration) {
         /**
          * 
          * @param {number} branchId 
+         * @param {string} apikey 
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        async getSessions(branchId: number, options?: AxiosRequestConfig): Promise<(axios?: AxiosInstance, basePath?: string) => Promise<AxiosResponse<SessionsResponseDataDto>>> {
-            const localVarAxiosArgs = await SessionsApiAxiosParamCreator(configuration).getSessions(branchId, options);
+        async getSessions(branchId: number, apikey: string, options?: AxiosRequestConfig): Promise<(axios?: AxiosInstance, basePath?: string) => Promise<AxiosResponse<SessionsResponseDataDto>>> {
+            const localVarAxiosArgs = await SessionsApiAxiosParamCreator(configuration).getSessions(branchId, apikey, options);
             return (axios: AxiosInstance = globalAxios, basePath: string = BASE_PATH) => {
                 const axiosRequestArgs :AxiosRequestConfig = {...localVarAxiosArgs.options, url: basePath + localVarAxiosArgs.url};
                 return axios.request(axiosRequestArgs);
@@ -153,20 +173,22 @@ export const SessionsApiFactory = function (configuration?: Configuration, baseP
         /**
          * 
          * @param {string} sessionUuid 
+         * @param {string} apikey 
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        async getSession(sessionUuid: string, options?: AxiosRequestConfig): Promise<AxiosResponse<SessionResponseDataDto>> {
-            return SessionsApiFp(configuration).getSession(sessionUuid, options).then((request) => request(axios, basePath));
+        async getSession(sessionUuid: string, apikey: string, options?: AxiosRequestConfig): Promise<AxiosResponse<SessionResponseDataDto>> {
+            return SessionsApiFp(configuration).getSession(sessionUuid, apikey, options).then((request) => request(axios, basePath));
         },
         /**
          * 
          * @param {number} branchId 
+         * @param {string} apikey 
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        async getSessions(branchId: number, options?: AxiosRequestConfig): Promise<AxiosResponse<SessionsResponseDataDto>> {
-            return SessionsApiFp(configuration).getSessions(branchId, options).then((request) => request(axios, basePath));
+        async getSessions(branchId: number, apikey: string, options?: AxiosRequestConfig): Promise<AxiosResponse<SessionsResponseDataDto>> {
+            return SessionsApiFp(configuration).getSessions(branchId, apikey, options).then((request) => request(axios, basePath));
         },
     };
 };
@@ -181,21 +203,23 @@ export class SessionsApi extends BaseAPI {
     /**
      * 
      * @param {string} sessionUuid 
+     * @param {string} apikey 
      * @param {*} [options] Override http request option.
      * @throws {RequiredError}
      * @memberof SessionsApi
      */
-    public async getSession(sessionUuid: string, options?: AxiosRequestConfig) : Promise<AxiosResponse<SessionResponseDataDto>> {
-        return SessionsApiFp(this.configuration).getSession(sessionUuid, options).then((request) => request(this.axios, this.basePath));
+    public async getSession(sessionUuid: string, apikey: string, options?: AxiosRequestConfig) : Promise<AxiosResponse<SessionResponseDataDto>> {
+        return SessionsApiFp(this.configuration).getSession(sessionUuid, apikey, options).then((request) => request(this.axios, this.basePath));
     }
     /**
      * 
      * @param {number} branchId 
+     * @param {string} apikey 
      * @param {*} [options] Override http request option.
      * @throws {RequiredError}
      * @memberof SessionsApi
      */
-    public async getSessions(branchId: number, options?: AxiosRequestConfig) : Promise<AxiosResponse<SessionsResponseDataDto>> {
-        return SessionsApiFp(this.configuration).getSessions(branchId, options).then((request) => request(this.axios, this.basePath));
+    public async getSessions(branchId: number, apikey: string, options?: AxiosRequestConfig) : Promise<AxiosResponse<SessionsResponseDataDto>> {
+        return SessionsApiFp(this.configuration).getSessions(branchId, apikey, options).then((request) => request(this.axios, this.basePath));
     }
 }

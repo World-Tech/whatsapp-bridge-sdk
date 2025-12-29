@@ -31,13 +31,18 @@ export const ChatsApiAxiosParamCreator = function (configuration?: Configuration
         /**
          * 
          * @param {AssignToMeDto} body 
+         * @param {string} apikey 
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        assignToSeller: async (body: AssignToMeDto, options: AxiosRequestConfig = {}): Promise<RequestArgs> => {
+        assignToSeller: async (body: AssignToMeDto, apikey: string, options: AxiosRequestConfig = {}): Promise<RequestArgs> => {
             // verify required parameter 'body' is not null or undefined
             if (body === null || body === undefined) {
                 throw new RequiredError('body','Required parameter body was null or undefined when calling assignToSeller.');
+            }
+            // verify required parameter 'apikey' is not null or undefined
+            if (apikey === null || apikey === undefined) {
+                throw new RequiredError('apikey','Required parameter apikey was null or undefined when calling assignToSeller.');
             }
             const localVarPath = `/api/chats/assign-to-seller`;
             // use dummy base URL string because the URL constructor only accepts absolute URLs.
@@ -49,6 +54,10 @@ export const ChatsApiAxiosParamCreator = function (configuration?: Configuration
             const localVarRequestOptions :AxiosRequestConfig = { method: 'POST', ...baseOptions, ...options};
             const localVarHeaderParameter = {} as any;
             const localVarQueryParameter = {} as any;
+
+            if (apikey !== undefined && apikey !== null) {
+                localVarHeaderParameter['apikey'] = String(apikey);
+            }
 
             localVarHeaderParameter['Content-Type'] = 'application/json';
 
@@ -73,15 +82,20 @@ export const ChatsApiAxiosParamCreator = function (configuration?: Configuration
         /**
          * 
          * @param {AssignmentTypeDto} body 
+         * @param {string} apikey 
          * @param {string} cellphone 
          * @param {number} id 
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        assignmentType: async (body: AssignmentTypeDto, cellphone: string, id: number, options: AxiosRequestConfig = {}): Promise<RequestArgs> => {
+        assignmentType: async (body: AssignmentTypeDto, apikey: string, cellphone: string, id: number, options: AxiosRequestConfig = {}): Promise<RequestArgs> => {
             // verify required parameter 'body' is not null or undefined
             if (body === null || body === undefined) {
                 throw new RequiredError('body','Required parameter body was null or undefined when calling assignmentType.');
+            }
+            // verify required parameter 'apikey' is not null or undefined
+            if (apikey === null || apikey === undefined) {
+                throw new RequiredError('apikey','Required parameter apikey was null or undefined when calling assignmentType.');
             }
             // verify required parameter 'cellphone' is not null or undefined
             if (cellphone === null || cellphone === undefined) {
@@ -103,6 +117,10 @@ export const ChatsApiAxiosParamCreator = function (configuration?: Configuration
             const localVarRequestOptions :AxiosRequestConfig = { method: 'PUT', ...baseOptions, ...options};
             const localVarHeaderParameter = {} as any;
             const localVarQueryParameter = {} as any;
+
+            if (apikey !== undefined && apikey !== null) {
+                localVarHeaderParameter['apikey'] = String(apikey);
+            }
 
             localVarHeaderParameter['Content-Type'] = 'application/json';
 
@@ -127,13 +145,18 @@ export const ChatsApiAxiosParamCreator = function (configuration?: Configuration
         /**
          * 
          * @param {number} id 
+         * @param {string} apikey 
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        getChat: async (id: number, options: AxiosRequestConfig = {}): Promise<RequestArgs> => {
+        getChat: async (id: number, apikey: string, options: AxiosRequestConfig = {}): Promise<RequestArgs> => {
             // verify required parameter 'id' is not null or undefined
             if (id === null || id === undefined) {
                 throw new RequiredError('id','Required parameter id was null or undefined when calling getChat.');
+            }
+            // verify required parameter 'apikey' is not null or undefined
+            if (apikey === null || apikey === undefined) {
+                throw new RequiredError('apikey','Required parameter apikey was null or undefined when calling getChat.');
             }
             const localVarPath = `/api/chats/{id}`
                 .replace(`{${"id"}}`, encodeURIComponent(String(id)));
@@ -146,6 +169,10 @@ export const ChatsApiAxiosParamCreator = function (configuration?: Configuration
             const localVarRequestOptions :AxiosRequestConfig = { method: 'GET', ...baseOptions, ...options};
             const localVarHeaderParameter = {} as any;
             const localVarQueryParameter = {} as any;
+
+            if (apikey !== undefined && apikey !== null) {
+                localVarHeaderParameter['apikey'] = String(apikey);
+            }
 
             const query = new URLSearchParams(localVarUrlObj.search);
             for (const key in localVarQueryParameter) {
@@ -319,11 +346,12 @@ export const ChatsApiFp = function(configuration?: Configuration) {
         /**
          * 
          * @param {AssignToMeDto} body 
+         * @param {string} apikey 
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        async assignToSeller(body: AssignToMeDto, options?: AxiosRequestConfig): Promise<(axios?: AxiosInstance, basePath?: string) => Promise<AxiosResponse<void>>> {
-            const localVarAxiosArgs = await ChatsApiAxiosParamCreator(configuration).assignToSeller(body, options);
+        async assignToSeller(body: AssignToMeDto, apikey: string, options?: AxiosRequestConfig): Promise<(axios?: AxiosInstance, basePath?: string) => Promise<AxiosResponse<void>>> {
+            const localVarAxiosArgs = await ChatsApiAxiosParamCreator(configuration).assignToSeller(body, apikey, options);
             return (axios: AxiosInstance = globalAxios, basePath: string = BASE_PATH) => {
                 const axiosRequestArgs :AxiosRequestConfig = {...localVarAxiosArgs.options, url: basePath + localVarAxiosArgs.url};
                 return axios.request(axiosRequestArgs);
@@ -332,13 +360,14 @@ export const ChatsApiFp = function(configuration?: Configuration) {
         /**
          * 
          * @param {AssignmentTypeDto} body 
+         * @param {string} apikey 
          * @param {string} cellphone 
          * @param {number} id 
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        async assignmentType(body: AssignmentTypeDto, cellphone: string, id: number, options?: AxiosRequestConfig): Promise<(axios?: AxiosInstance, basePath?: string) => Promise<AxiosResponse<void>>> {
-            const localVarAxiosArgs = await ChatsApiAxiosParamCreator(configuration).assignmentType(body, cellphone, id, options);
+        async assignmentType(body: AssignmentTypeDto, apikey: string, cellphone: string, id: number, options?: AxiosRequestConfig): Promise<(axios?: AxiosInstance, basePath?: string) => Promise<AxiosResponse<void>>> {
+            const localVarAxiosArgs = await ChatsApiAxiosParamCreator(configuration).assignmentType(body, apikey, cellphone, id, options);
             return (axios: AxiosInstance = globalAxios, basePath: string = BASE_PATH) => {
                 const axiosRequestArgs :AxiosRequestConfig = {...localVarAxiosArgs.options, url: basePath + localVarAxiosArgs.url};
                 return axios.request(axiosRequestArgs);
@@ -347,11 +376,12 @@ export const ChatsApiFp = function(configuration?: Configuration) {
         /**
          * 
          * @param {number} id 
+         * @param {string} apikey 
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        async getChat(id: number, options?: AxiosRequestConfig): Promise<(axios?: AxiosInstance, basePath?: string) => Promise<AxiosResponse<WhatsappChatResponseDTO>>> {
-            const localVarAxiosArgs = await ChatsApiAxiosParamCreator(configuration).getChat(id, options);
+        async getChat(id: number, apikey: string, options?: AxiosRequestConfig): Promise<(axios?: AxiosInstance, basePath?: string) => Promise<AxiosResponse<WhatsappChatResponseDTO>>> {
+            const localVarAxiosArgs = await ChatsApiAxiosParamCreator(configuration).getChat(id, apikey, options);
             return (axios: AxiosInstance = globalAxios, basePath: string = BASE_PATH) => {
                 const axiosRequestArgs :AxiosRequestConfig = {...localVarAxiosArgs.options, url: basePath + localVarAxiosArgs.url};
                 return axios.request(axiosRequestArgs);
@@ -406,31 +436,34 @@ export const ChatsApiFactory = function (configuration?: Configuration, basePath
         /**
          * 
          * @param {AssignToMeDto} body 
+         * @param {string} apikey 
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        async assignToSeller(body: AssignToMeDto, options?: AxiosRequestConfig): Promise<AxiosResponse<void>> {
-            return ChatsApiFp(configuration).assignToSeller(body, options).then((request) => request(axios, basePath));
+        async assignToSeller(body: AssignToMeDto, apikey: string, options?: AxiosRequestConfig): Promise<AxiosResponse<void>> {
+            return ChatsApiFp(configuration).assignToSeller(body, apikey, options).then((request) => request(axios, basePath));
         },
         /**
          * 
          * @param {AssignmentTypeDto} body 
+         * @param {string} apikey 
          * @param {string} cellphone 
          * @param {number} id 
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        async assignmentType(body: AssignmentTypeDto, cellphone: string, id: number, options?: AxiosRequestConfig): Promise<AxiosResponse<void>> {
-            return ChatsApiFp(configuration).assignmentType(body, cellphone, id, options).then((request) => request(axios, basePath));
+        async assignmentType(body: AssignmentTypeDto, apikey: string, cellphone: string, id: number, options?: AxiosRequestConfig): Promise<AxiosResponse<void>> {
+            return ChatsApiFp(configuration).assignmentType(body, apikey, cellphone, id, options).then((request) => request(axios, basePath));
         },
         /**
          * 
          * @param {number} id 
+         * @param {string} apikey 
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        async getChat(id: number, options?: AxiosRequestConfig): Promise<AxiosResponse<WhatsappChatResponseDTO>> {
-            return ChatsApiFp(configuration).getChat(id, options).then((request) => request(axios, basePath));
+        async getChat(id: number, apikey: string, options?: AxiosRequestConfig): Promise<AxiosResponse<WhatsappChatResponseDTO>> {
+            return ChatsApiFp(configuration).getChat(id, apikey, options).then((request) => request(axios, basePath));
         },
         /**
          * 
@@ -474,34 +507,37 @@ export class ChatsApi extends BaseAPI {
     /**
      * 
      * @param {AssignToMeDto} body 
+     * @param {string} apikey 
      * @param {*} [options] Override http request option.
      * @throws {RequiredError}
      * @memberof ChatsApi
      */
-    public async assignToSeller(body: AssignToMeDto, options?: AxiosRequestConfig) : Promise<AxiosResponse<void>> {
-        return ChatsApiFp(this.configuration).assignToSeller(body, options).then((request) => request(this.axios, this.basePath));
+    public async assignToSeller(body: AssignToMeDto, apikey: string, options?: AxiosRequestConfig) : Promise<AxiosResponse<void>> {
+        return ChatsApiFp(this.configuration).assignToSeller(body, apikey, options).then((request) => request(this.axios, this.basePath));
     }
     /**
      * 
      * @param {AssignmentTypeDto} body 
+     * @param {string} apikey 
      * @param {string} cellphone 
      * @param {number} id 
      * @param {*} [options] Override http request option.
      * @throws {RequiredError}
      * @memberof ChatsApi
      */
-    public async assignmentType(body: AssignmentTypeDto, cellphone: string, id: number, options?: AxiosRequestConfig) : Promise<AxiosResponse<void>> {
-        return ChatsApiFp(this.configuration).assignmentType(body, cellphone, id, options).then((request) => request(this.axios, this.basePath));
+    public async assignmentType(body: AssignmentTypeDto, apikey: string, cellphone: string, id: number, options?: AxiosRequestConfig) : Promise<AxiosResponse<void>> {
+        return ChatsApiFp(this.configuration).assignmentType(body, apikey, cellphone, id, options).then((request) => request(this.axios, this.basePath));
     }
     /**
      * 
      * @param {number} id 
+     * @param {string} apikey 
      * @param {*} [options] Override http request option.
      * @throws {RequiredError}
      * @memberof ChatsApi
      */
-    public async getChat(id: number, options?: AxiosRequestConfig) : Promise<AxiosResponse<WhatsappChatResponseDTO>> {
-        return ChatsApiFp(this.configuration).getChat(id, options).then((request) => request(this.axios, this.basePath));
+    public async getChat(id: number, apikey: string, options?: AxiosRequestConfig) : Promise<AxiosResponse<WhatsappChatResponseDTO>> {
+        return ChatsApiFp(this.configuration).getChat(id, apikey, options).then((request) => request(this.axios, this.basePath));
     }
     /**
      * 

@@ -29,10 +29,11 @@ export const ContactsApiAxiosParamCreator = function (configuration?: Configurat
          * 
          * @param {number} cellphone 
          * @param {number} branchId 
+         * @param {string} apikey 
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        getChatFromCellphone: async (cellphone: number, branchId: number, options: AxiosRequestConfig = {}): Promise<RequestArgs> => {
+        getChatFromCellphone: async (cellphone: number, branchId: number, apikey: string, options: AxiosRequestConfig = {}): Promise<RequestArgs> => {
             // verify required parameter 'cellphone' is not null or undefined
             if (cellphone === null || cellphone === undefined) {
                 throw new RequiredError('cellphone','Required parameter cellphone was null or undefined when calling getChatFromCellphone.');
@@ -40,6 +41,10 @@ export const ContactsApiAxiosParamCreator = function (configuration?: Configurat
             // verify required parameter 'branchId' is not null or undefined
             if (branchId === null || branchId === undefined) {
                 throw new RequiredError('branchId','Required parameter branchId was null or undefined when calling getChatFromCellphone.');
+            }
+            // verify required parameter 'apikey' is not null or undefined
+            if (apikey === null || apikey === undefined) {
+                throw new RequiredError('apikey','Required parameter apikey was null or undefined when calling getChatFromCellphone.');
             }
             const localVarPath = `/api/contacts/{cellphone}/chat`
                 .replace(`{${"cellphone"}}`, encodeURIComponent(String(cellphone)));
@@ -55,6 +60,10 @@ export const ContactsApiAxiosParamCreator = function (configuration?: Configurat
 
             if (branchId !== undefined) {
                 localVarQueryParameter['branchId'] = branchId;
+            }
+
+            if (apikey !== undefined && apikey !== null) {
+                localVarHeaderParameter['apikey'] = String(apikey);
             }
 
             const query = new URLSearchParams(localVarUrlObj.search);
@@ -76,13 +85,18 @@ export const ContactsApiAxiosParamCreator = function (configuration?: Configurat
         /**
          * 
          * @param {number} branchId 
+         * @param {string} apikey 
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        getContacts: async (branchId: number, options: AxiosRequestConfig = {}): Promise<RequestArgs> => {
+        getContacts: async (branchId: number, apikey: string, options: AxiosRequestConfig = {}): Promise<RequestArgs> => {
             // verify required parameter 'branchId' is not null or undefined
             if (branchId === null || branchId === undefined) {
                 throw new RequiredError('branchId','Required parameter branchId was null or undefined when calling getContacts.');
+            }
+            // verify required parameter 'apikey' is not null or undefined
+            if (apikey === null || apikey === undefined) {
+                throw new RequiredError('apikey','Required parameter apikey was null or undefined when calling getContacts.');
             }
             const localVarPath = `/api/contacts`;
             // use dummy base URL string because the URL constructor only accepts absolute URLs.
@@ -97,6 +111,10 @@ export const ContactsApiAxiosParamCreator = function (configuration?: Configurat
 
             if (branchId !== undefined) {
                 localVarQueryParameter['branchId'] = branchId;
+            }
+
+            if (apikey !== undefined && apikey !== null) {
+                localVarHeaderParameter['apikey'] = String(apikey);
             }
 
             const query = new URLSearchParams(localVarUrlObj.search);
@@ -128,11 +146,12 @@ export const ContactsApiFp = function(configuration?: Configuration) {
          * 
          * @param {number} cellphone 
          * @param {number} branchId 
+         * @param {string} apikey 
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        async getChatFromCellphone(cellphone: number, branchId: number, options?: AxiosRequestConfig): Promise<(axios?: AxiosInstance, basePath?: string) => Promise<AxiosResponse<WhatsappChatResponseDTO>>> {
-            const localVarAxiosArgs = await ContactsApiAxiosParamCreator(configuration).getChatFromCellphone(cellphone, branchId, options);
+        async getChatFromCellphone(cellphone: number, branchId: number, apikey: string, options?: AxiosRequestConfig): Promise<(axios?: AxiosInstance, basePath?: string) => Promise<AxiosResponse<WhatsappChatResponseDTO>>> {
+            const localVarAxiosArgs = await ContactsApiAxiosParamCreator(configuration).getChatFromCellphone(cellphone, branchId, apikey, options);
             return (axios: AxiosInstance = globalAxios, basePath: string = BASE_PATH) => {
                 const axiosRequestArgs :AxiosRequestConfig = {...localVarAxiosArgs.options, url: basePath + localVarAxiosArgs.url};
                 return axios.request(axiosRequestArgs);
@@ -141,11 +160,12 @@ export const ContactsApiFp = function(configuration?: Configuration) {
         /**
          * 
          * @param {number} branchId 
+         * @param {string} apikey 
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        async getContacts(branchId: number, options?: AxiosRequestConfig): Promise<(axios?: AxiosInstance, basePath?: string) => Promise<AxiosResponse<ContactsResponseDTO>>> {
-            const localVarAxiosArgs = await ContactsApiAxiosParamCreator(configuration).getContacts(branchId, options);
+        async getContacts(branchId: number, apikey: string, options?: AxiosRequestConfig): Promise<(axios?: AxiosInstance, basePath?: string) => Promise<AxiosResponse<ContactsResponseDTO>>> {
+            const localVarAxiosArgs = await ContactsApiAxiosParamCreator(configuration).getContacts(branchId, apikey, options);
             return (axios: AxiosInstance = globalAxios, basePath: string = BASE_PATH) => {
                 const axiosRequestArgs :AxiosRequestConfig = {...localVarAxiosArgs.options, url: basePath + localVarAxiosArgs.url};
                 return axios.request(axiosRequestArgs);
@@ -164,20 +184,22 @@ export const ContactsApiFactory = function (configuration?: Configuration, baseP
          * 
          * @param {number} cellphone 
          * @param {number} branchId 
+         * @param {string} apikey 
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        async getChatFromCellphone(cellphone: number, branchId: number, options?: AxiosRequestConfig): Promise<AxiosResponse<WhatsappChatResponseDTO>> {
-            return ContactsApiFp(configuration).getChatFromCellphone(cellphone, branchId, options).then((request) => request(axios, basePath));
+        async getChatFromCellphone(cellphone: number, branchId: number, apikey: string, options?: AxiosRequestConfig): Promise<AxiosResponse<WhatsappChatResponseDTO>> {
+            return ContactsApiFp(configuration).getChatFromCellphone(cellphone, branchId, apikey, options).then((request) => request(axios, basePath));
         },
         /**
          * 
          * @param {number} branchId 
+         * @param {string} apikey 
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        async getContacts(branchId: number, options?: AxiosRequestConfig): Promise<AxiosResponse<ContactsResponseDTO>> {
-            return ContactsApiFp(configuration).getContacts(branchId, options).then((request) => request(axios, basePath));
+        async getContacts(branchId: number, apikey: string, options?: AxiosRequestConfig): Promise<AxiosResponse<ContactsResponseDTO>> {
+            return ContactsApiFp(configuration).getContacts(branchId, apikey, options).then((request) => request(axios, basePath));
         },
     };
 };
@@ -193,21 +215,23 @@ export class ContactsApi extends BaseAPI {
      * 
      * @param {number} cellphone 
      * @param {number} branchId 
+     * @param {string} apikey 
      * @param {*} [options] Override http request option.
      * @throws {RequiredError}
      * @memberof ContactsApi
      */
-    public async getChatFromCellphone(cellphone: number, branchId: number, options?: AxiosRequestConfig) : Promise<AxiosResponse<WhatsappChatResponseDTO>> {
-        return ContactsApiFp(this.configuration).getChatFromCellphone(cellphone, branchId, options).then((request) => request(this.axios, this.basePath));
+    public async getChatFromCellphone(cellphone: number, branchId: number, apikey: string, options?: AxiosRequestConfig) : Promise<AxiosResponse<WhatsappChatResponseDTO>> {
+        return ContactsApiFp(this.configuration).getChatFromCellphone(cellphone, branchId, apikey, options).then((request) => request(this.axios, this.basePath));
     }
     /**
      * 
      * @param {number} branchId 
+     * @param {string} apikey 
      * @param {*} [options] Override http request option.
      * @throws {RequiredError}
      * @memberof ContactsApi
      */
-    public async getContacts(branchId: number, options?: AxiosRequestConfig) : Promise<AxiosResponse<ContactsResponseDTO>> {
-        return ContactsApiFp(this.configuration).getContacts(branchId, options).then((request) => request(this.axios, this.basePath));
+    public async getContacts(branchId: number, apikey: string, options?: AxiosRequestConfig) : Promise<AxiosResponse<ContactsResponseDTO>> {
+        return ContactsApiFp(this.configuration).getContacts(branchId, apikey, options).then((request) => request(this.axios, this.basePath));
     }
 }

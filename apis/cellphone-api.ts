@@ -29,10 +29,11 @@ export const CellphoneApiAxiosParamCreator = function (configuration?: Configura
          * 
          * @param {CellphoneValidationDto} body 
          * @param {string} authorization Custom header
+         * @param {string} apikey 
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        validate: async (body: CellphoneValidationDto, authorization: string, options: AxiosRequestConfig = {}): Promise<RequestArgs> => {
+        validate: async (body: CellphoneValidationDto, authorization: string, apikey: string, options: AxiosRequestConfig = {}): Promise<RequestArgs> => {
             // verify required parameter 'body' is not null or undefined
             if (body === null || body === undefined) {
                 throw new RequiredError('body','Required parameter body was null or undefined when calling validate.');
@@ -40,6 +41,10 @@ export const CellphoneApiAxiosParamCreator = function (configuration?: Configura
             // verify required parameter 'authorization' is not null or undefined
             if (authorization === null || authorization === undefined) {
                 throw new RequiredError('authorization','Required parameter authorization was null or undefined when calling validate.');
+            }
+            // verify required parameter 'apikey' is not null or undefined
+            if (apikey === null || apikey === undefined) {
+                throw new RequiredError('apikey','Required parameter apikey was null or undefined when calling validate.');
             }
             const localVarPath = `/api/cellphone/validate`;
             // use dummy base URL string because the URL constructor only accepts absolute URLs.
@@ -52,17 +57,12 @@ export const CellphoneApiAxiosParamCreator = function (configuration?: Configura
             const localVarHeaderParameter = {} as any;
             const localVarQueryParameter = {} as any;
 
-            // authentication access-token required
-            // http bearer authentication required
-            if (configuration && configuration.accessToken) {
-                const accessToken = typeof configuration.accessToken === 'function'
-                    ? await configuration.accessToken()
-                    : await configuration.accessToken;
-                localVarHeaderParameter["Authorization"] = "Bearer " + accessToken;
-            }
-
             if (authorization !== undefined && authorization !== null) {
                 localVarHeaderParameter['Authorization'] = String(authorization);
+            }
+
+            if (apikey !== undefined && apikey !== null) {
+                localVarHeaderParameter['apikey'] = String(apikey);
             }
 
             localVarHeaderParameter['Content-Type'] = 'application/json';
@@ -98,11 +98,12 @@ export const CellphoneApiFp = function(configuration?: Configuration) {
          * 
          * @param {CellphoneValidationDto} body 
          * @param {string} authorization Custom header
+         * @param {string} apikey 
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        async validate(body: CellphoneValidationDto, authorization: string, options?: AxiosRequestConfig): Promise<(axios?: AxiosInstance, basePath?: string) => Promise<AxiosResponse<void>>> {
-            const localVarAxiosArgs = await CellphoneApiAxiosParamCreator(configuration).validate(body, authorization, options);
+        async validate(body: CellphoneValidationDto, authorization: string, apikey: string, options?: AxiosRequestConfig): Promise<(axios?: AxiosInstance, basePath?: string) => Promise<AxiosResponse<void>>> {
+            const localVarAxiosArgs = await CellphoneApiAxiosParamCreator(configuration).validate(body, authorization, apikey, options);
             return (axios: AxiosInstance = globalAxios, basePath: string = BASE_PATH) => {
                 const axiosRequestArgs :AxiosRequestConfig = {...localVarAxiosArgs.options, url: basePath + localVarAxiosArgs.url};
                 return axios.request(axiosRequestArgs);
@@ -121,11 +122,12 @@ export const CellphoneApiFactory = function (configuration?: Configuration, base
          * 
          * @param {CellphoneValidationDto} body 
          * @param {string} authorization Custom header
+         * @param {string} apikey 
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        async validate(body: CellphoneValidationDto, authorization: string, options?: AxiosRequestConfig): Promise<AxiosResponse<void>> {
-            return CellphoneApiFp(configuration).validate(body, authorization, options).then((request) => request(axios, basePath));
+        async validate(body: CellphoneValidationDto, authorization: string, apikey: string, options?: AxiosRequestConfig): Promise<AxiosResponse<void>> {
+            return CellphoneApiFp(configuration).validate(body, authorization, apikey, options).then((request) => request(axios, basePath));
         },
     };
 };
@@ -141,11 +143,12 @@ export class CellphoneApi extends BaseAPI {
      * 
      * @param {CellphoneValidationDto} body 
      * @param {string} authorization Custom header
+     * @param {string} apikey 
      * @param {*} [options] Override http request option.
      * @throws {RequiredError}
      * @memberof CellphoneApi
      */
-    public async validate(body: CellphoneValidationDto, authorization: string, options?: AxiosRequestConfig) : Promise<AxiosResponse<void>> {
-        return CellphoneApiFp(this.configuration).validate(body, authorization, options).then((request) => request(this.axios, this.basePath));
+    public async validate(body: CellphoneValidationDto, authorization: string, apikey: string, options?: AxiosRequestConfig) : Promise<AxiosResponse<void>> {
+        return CellphoneApiFp(this.configuration).validate(body, authorization, apikey, options).then((request) => request(this.axios, this.basePath));
     }
 }
