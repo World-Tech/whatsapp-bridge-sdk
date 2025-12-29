@@ -270,14 +270,19 @@ const ChatsApiAxiosParamCreator = function (configuration) {
         /**
          *
          * @param {MarkChatUnreadDto} body
+         * @param {string} apikey
          * @param {number} id
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        markChatUnread: (body_1, id_1, ...args_1) => __awaiter(this, [body_1, id_1, ...args_1], void 0, function* (body, id, options = {}) {
+        markChatUnread: (body_1, apikey_1, id_1, ...args_1) => __awaiter(this, [body_1, apikey_1, id_1, ...args_1], void 0, function* (body, apikey, id, options = {}) {
             // verify required parameter 'body' is not null or undefined
             if (body === null || body === undefined) {
                 throw new base_1.RequiredError('body', 'Required parameter body was null or undefined when calling markChatUnread.');
+            }
+            // verify required parameter 'apikey' is not null or undefined
+            if (apikey === null || apikey === undefined) {
+                throw new base_1.RequiredError('apikey', 'Required parameter apikey was null or undefined when calling markChatUnread.');
             }
             // verify required parameter 'id' is not null or undefined
             if (id === null || id === undefined) {
@@ -294,6 +299,9 @@ const ChatsApiAxiosParamCreator = function (configuration) {
             const localVarRequestOptions = Object.assign(Object.assign({ method: 'POST' }, baseOptions), options);
             const localVarHeaderParameter = {};
             const localVarQueryParameter = {};
+            if (apikey !== undefined && apikey !== null) {
+                localVarHeaderParameter['apikey'] = String(apikey);
+            }
             localVarHeaderParameter['Content-Type'] = 'application/json';
             const query = new URLSearchParams(localVarUrlObj.search);
             for (const key in localVarQueryParameter) {
@@ -399,13 +407,14 @@ const ChatsApiFp = function (configuration) {
         /**
          *
          * @param {MarkChatUnreadDto} body
+         * @param {string} apikey
          * @param {number} id
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        markChatUnread(body, id, options) {
+        markChatUnread(body, apikey, id, options) {
             return __awaiter(this, void 0, void 0, function* () {
-                const localVarAxiosArgs = yield (0, exports.ChatsApiAxiosParamCreator)(configuration).markChatUnread(body, id, options);
+                const localVarAxiosArgs = yield (0, exports.ChatsApiAxiosParamCreator)(configuration).markChatUnread(body, apikey, id, options);
                 return (axios = axios_1.default, basePath = base_1.BASE_PATH) => {
                     const axiosRequestArgs = Object.assign(Object.assign({}, localVarAxiosArgs.options), { url: basePath + localVarAxiosArgs.url });
                     return axios.request(axiosRequestArgs);
@@ -483,13 +492,14 @@ const ChatsApiFactory = function (configuration, basePath, axios) {
         /**
          *
          * @param {MarkChatUnreadDto} body
+         * @param {string} apikey
          * @param {number} id
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        markChatUnread(body, id, options) {
+        markChatUnread(body, apikey, id, options) {
             return __awaiter(this, void 0, void 0, function* () {
-                return (0, exports.ChatsApiFp)(configuration).markChatUnread(body, id, options).then((request) => request(axios, basePath));
+                return (0, exports.ChatsApiFp)(configuration).markChatUnread(body, apikey, id, options).then((request) => request(axios, basePath));
             });
         },
     };
@@ -568,14 +578,15 @@ class ChatsApi extends base_1.BaseAPI {
     /**
      *
      * @param {MarkChatUnreadDto} body
+     * @param {string} apikey
      * @param {number} id
      * @param {*} [options] Override http request option.
      * @throws {RequiredError}
      * @memberof ChatsApi
      */
-    markChatUnread(body, id, options) {
+    markChatUnread(body, apikey, id, options) {
         return __awaiter(this, void 0, void 0, function* () {
-            return (0, exports.ChatsApiFp)(this.configuration).markChatUnread(body, id, options).then((request) => request(this.axios, this.basePath));
+            return (0, exports.ChatsApiFp)(this.configuration).markChatUnread(body, apikey, id, options).then((request) => request(this.axios, this.basePath));
         });
     }
 }

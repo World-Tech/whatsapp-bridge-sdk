@@ -68,11 +68,12 @@ export declare const ChatsApiAxiosParamCreator: (configuration?: Configuration) 
     /**
      *
      * @param {MarkChatUnreadDto} body
+     * @param {string} apikey
      * @param {number} id
      * @param {*} [options] Override http request option.
      * @throws {RequiredError}
      */
-    markChatUnread: (body: MarkChatUnreadDto, id: number, options?: AxiosRequestConfig) => Promise<RequestArgs>;
+    markChatUnread: (body: MarkChatUnreadDto, apikey: string, id: number, options?: AxiosRequestConfig) => Promise<RequestArgs>;
 };
 /**
  * ChatsApi - functional programming interface
@@ -125,11 +126,12 @@ export declare const ChatsApiFp: (configuration?: Configuration) => {
     /**
      *
      * @param {MarkChatUnreadDto} body
+     * @param {string} apikey
      * @param {number} id
      * @param {*} [options] Override http request option.
      * @throws {RequiredError}
      */
-    markChatUnread(body: MarkChatUnreadDto, id: number, options?: AxiosRequestConfig): Promise<(axios?: AxiosInstance, basePath?: string) => Promise<AxiosResponse<void>>>;
+    markChatUnread(body: MarkChatUnreadDto, apikey: string, id: number, options?: AxiosRequestConfig): Promise<(axios?: AxiosInstance, basePath?: string) => Promise<AxiosResponse<void>>>;
 };
 /**
  * ChatsApi - factory interface
@@ -182,11 +184,12 @@ export declare const ChatsApiFactory: (configuration?: Configuration, basePath?:
     /**
      *
      * @param {MarkChatUnreadDto} body
+     * @param {string} apikey
      * @param {number} id
      * @param {*} [options] Override http request option.
      * @throws {RequiredError}
      */
-    markChatUnread(body: MarkChatUnreadDto, id: number, options?: AxiosRequestConfig): Promise<AxiosResponse<void>>;
+    markChatUnread(body: MarkChatUnreadDto, apikey: string, id: number, options?: AxiosRequestConfig): Promise<AxiosResponse<void>>;
 };
 /**
  * ChatsApi - object-oriented interface
@@ -245,10 +248,11 @@ export declare class ChatsApi extends BaseAPI {
     /**
      *
      * @param {MarkChatUnreadDto} body
+     * @param {string} apikey
      * @param {number} id
      * @param {*} [options] Override http request option.
      * @throws {RequiredError}
      * @memberof ChatsApi
      */
-    markChatUnread(body: MarkChatUnreadDto, id: number, options?: AxiosRequestConfig): Promise<AxiosResponse<void>>;
+    markChatUnread(body: MarkChatUnreadDto, apikey: string, id: number, options?: AxiosRequestConfig): Promise<AxiosResponse<void>>;
 }
