@@ -25,26 +25,29 @@ export declare const ChatsApiAxiosParamCreator: (configuration?: Configuration) 
     /**
      *
      * @param {AssignToMeDto} body
+     * @param {string} apikey
      * @param {*} [options] Override http request option.
      * @throws {RequiredError}
      */
-    assignToSeller: (body: AssignToMeDto, options?: AxiosRequestConfig) => Promise<RequestArgs>;
+    assignToSeller: (body: AssignToMeDto, apikey: string, options?: AxiosRequestConfig) => Promise<RequestArgs>;
     /**
      *
      * @param {AssignmentTypeDto} body
+     * @param {string} apikey
      * @param {string} cellphone
      * @param {number} id
      * @param {*} [options] Override http request option.
      * @throws {RequiredError}
      */
-    assignmentType: (body: AssignmentTypeDto, cellphone: string, id: number, options?: AxiosRequestConfig) => Promise<RequestArgs>;
+    assignmentType: (body: AssignmentTypeDto, apikey: string, cellphone: string, id: number, options?: AxiosRequestConfig) => Promise<RequestArgs>;
     /**
      *
      * @param {number} id
+     * @param {string} apikey
      * @param {*} [options] Override http request option.
      * @throws {RequiredError}
      */
-    getChat: (id: number, options?: AxiosRequestConfig) => Promise<RequestArgs>;
+    getChat: (id: number, apikey: string, options?: AxiosRequestConfig) => Promise<RequestArgs>;
     /**
      *
      * @param {number} branchId
@@ -79,26 +82,29 @@ export declare const ChatsApiFp: (configuration?: Configuration) => {
     /**
      *
      * @param {AssignToMeDto} body
+     * @param {string} apikey
      * @param {*} [options] Override http request option.
      * @throws {RequiredError}
      */
-    assignToSeller(body: AssignToMeDto, options?: AxiosRequestConfig): Promise<(axios?: AxiosInstance, basePath?: string) => Promise<AxiosResponse<void>>>;
+    assignToSeller(body: AssignToMeDto, apikey: string, options?: AxiosRequestConfig): Promise<(axios?: AxiosInstance, basePath?: string) => Promise<AxiosResponse<void>>>;
     /**
      *
      * @param {AssignmentTypeDto} body
+     * @param {string} apikey
      * @param {string} cellphone
      * @param {number} id
      * @param {*} [options] Override http request option.
      * @throws {RequiredError}
      */
-    assignmentType(body: AssignmentTypeDto, cellphone: string, id: number, options?: AxiosRequestConfig): Promise<(axios?: AxiosInstance, basePath?: string) => Promise<AxiosResponse<void>>>;
+    assignmentType(body: AssignmentTypeDto, apikey: string, cellphone: string, id: number, options?: AxiosRequestConfig): Promise<(axios?: AxiosInstance, basePath?: string) => Promise<AxiosResponse<void>>>;
     /**
      *
      * @param {number} id
+     * @param {string} apikey
      * @param {*} [options] Override http request option.
      * @throws {RequiredError}
      */
-    getChat(id: number, options?: AxiosRequestConfig): Promise<(axios?: AxiosInstance, basePath?: string) => Promise<AxiosResponse<WhatsappChatResponseDTO>>>;
+    getChat(id: number, apikey: string, options?: AxiosRequestConfig): Promise<(axios?: AxiosInstance, basePath?: string) => Promise<AxiosResponse<WhatsappChatResponseDTO>>>;
     /**
      *
      * @param {number} branchId
@@ -133,26 +139,29 @@ export declare const ChatsApiFactory: (configuration?: Configuration, basePath?:
     /**
      *
      * @param {AssignToMeDto} body
+     * @param {string} apikey
      * @param {*} [options] Override http request option.
      * @throws {RequiredError}
      */
-    assignToSeller(body: AssignToMeDto, options?: AxiosRequestConfig): Promise<AxiosResponse<void>>;
+    assignToSeller(body: AssignToMeDto, apikey: string, options?: AxiosRequestConfig): Promise<AxiosResponse<void>>;
     /**
      *
      * @param {AssignmentTypeDto} body
+     * @param {string} apikey
      * @param {string} cellphone
      * @param {number} id
      * @param {*} [options] Override http request option.
      * @throws {RequiredError}
      */
-    assignmentType(body: AssignmentTypeDto, cellphone: string, id: number, options?: AxiosRequestConfig): Promise<AxiosResponse<void>>;
+    assignmentType(body: AssignmentTypeDto, apikey: string, cellphone: string, id: number, options?: AxiosRequestConfig): Promise<AxiosResponse<void>>;
     /**
      *
      * @param {number} id
+     * @param {string} apikey
      * @param {*} [options] Override http request option.
      * @throws {RequiredError}
      */
-    getChat(id: number, options?: AxiosRequestConfig): Promise<AxiosResponse<WhatsappChatResponseDTO>>;
+    getChat(id: number, apikey: string, options?: AxiosRequestConfig): Promise<AxiosResponse<WhatsappChatResponseDTO>>;
     /**
      *
      * @param {number} branchId
@@ -189,29 +198,32 @@ export declare class ChatsApi extends BaseAPI {
     /**
      *
      * @param {AssignToMeDto} body
+     * @param {string} apikey
      * @param {*} [options] Override http request option.
      * @throws {RequiredError}
      * @memberof ChatsApi
      */
-    assignToSeller(body: AssignToMeDto, options?: AxiosRequestConfig): Promise<AxiosResponse<void>>;
+    assignToSeller(body: AssignToMeDto, apikey: string, options?: AxiosRequestConfig): Promise<AxiosResponse<void>>;
     /**
      *
      * @param {AssignmentTypeDto} body
+     * @param {string} apikey
      * @param {string} cellphone
      * @param {number} id
      * @param {*} [options] Override http request option.
      * @throws {RequiredError}
      * @memberof ChatsApi
      */
-    assignmentType(body: AssignmentTypeDto, cellphone: string, id: number, options?: AxiosRequestConfig): Promise<AxiosResponse<void>>;
+    assignmentType(body: AssignmentTypeDto, apikey: string, cellphone: string, id: number, options?: AxiosRequestConfig): Promise<AxiosResponse<void>>;
     /**
      *
      * @param {number} id
+     * @param {string} apikey
      * @param {*} [options] Override http request option.
      * @throws {RequiredError}
      * @memberof ChatsApi
      */
-    getChat(id: number, options?: AxiosRequestConfig): Promise<AxiosResponse<WhatsappChatResponseDTO>>;
+    getChat(id: number, apikey: string, options?: AxiosRequestConfig): Promise<AxiosResponse<WhatsappChatResponseDTO>>;
     /**
      *
      * @param {number} branchId

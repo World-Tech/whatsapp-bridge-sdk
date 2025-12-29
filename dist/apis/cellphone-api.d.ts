@@ -22,10 +22,11 @@ export declare const CellphoneApiAxiosParamCreator: (configuration?: Configurati
      *
      * @param {CellphoneValidationDto} body
      * @param {string} authorization Custom header
+     * @param {string} apikey
      * @param {*} [options] Override http request option.
      * @throws {RequiredError}
      */
-    validate: (body: CellphoneValidationDto, authorization: string, options?: AxiosRequestConfig) => Promise<RequestArgs>;
+    validate: (body: CellphoneValidationDto, authorization: string, apikey: string, options?: AxiosRequestConfig) => Promise<RequestArgs>;
 };
 /**
  * CellphoneApi - functional programming interface
@@ -36,10 +37,11 @@ export declare const CellphoneApiFp: (configuration?: Configuration) => {
      *
      * @param {CellphoneValidationDto} body
      * @param {string} authorization Custom header
+     * @param {string} apikey
      * @param {*} [options] Override http request option.
      * @throws {RequiredError}
      */
-    validate(body: CellphoneValidationDto, authorization: string, options?: AxiosRequestConfig): Promise<(axios?: AxiosInstance, basePath?: string) => Promise<AxiosResponse<void>>>;
+    validate(body: CellphoneValidationDto, authorization: string, apikey: string, options?: AxiosRequestConfig): Promise<(axios?: AxiosInstance, basePath?: string) => Promise<AxiosResponse<void>>>;
 };
 /**
  * CellphoneApi - factory interface
@@ -50,10 +52,11 @@ export declare const CellphoneApiFactory: (configuration?: Configuration, basePa
      *
      * @param {CellphoneValidationDto} body
      * @param {string} authorization Custom header
+     * @param {string} apikey
      * @param {*} [options] Override http request option.
      * @throws {RequiredError}
      */
-    validate(body: CellphoneValidationDto, authorization: string, options?: AxiosRequestConfig): Promise<AxiosResponse<void>>;
+    validate(body: CellphoneValidationDto, authorization: string, apikey: string, options?: AxiosRequestConfig): Promise<AxiosResponse<void>>;
 };
 /**
  * CellphoneApi - object-oriented interface
@@ -66,9 +69,10 @@ export declare class CellphoneApi extends BaseAPI {
      *
      * @param {CellphoneValidationDto} body
      * @param {string} authorization Custom header
+     * @param {string} apikey
      * @param {*} [options] Override http request option.
      * @throws {RequiredError}
      * @memberof CellphoneApi
      */
-    validate(body: CellphoneValidationDto, authorization: string, options?: AxiosRequestConfig): Promise<AxiosResponse<void>>;
+    validate(body: CellphoneValidationDto, authorization: string, apikey: string, options?: AxiosRequestConfig): Promise<AxiosResponse<void>>;
 }

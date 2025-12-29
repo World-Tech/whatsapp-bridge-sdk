@@ -37,10 +37,11 @@ const MessagesApiAxiosParamCreator = function (configuration) {
          *
          * @param {number} branchId
          * @param {number} chatId
+         * @param {string} apikey
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        getMessages: (branchId_1, chatId_1, ...args_1) => __awaiter(this, [branchId_1, chatId_1, ...args_1], void 0, function* (branchId, chatId, options = {}) {
+        getMessages: (branchId_1, chatId_1, apikey_1, ...args_1) => __awaiter(this, [branchId_1, chatId_1, apikey_1, ...args_1], void 0, function* (branchId, chatId, apikey, options = {}) {
             // verify required parameter 'branchId' is not null or undefined
             if (branchId === null || branchId === undefined) {
                 throw new base_1.RequiredError('branchId', 'Required parameter branchId was null or undefined when calling getMessages.');
@@ -48,6 +49,10 @@ const MessagesApiAxiosParamCreator = function (configuration) {
             // verify required parameter 'chatId' is not null or undefined
             if (chatId === null || chatId === undefined) {
                 throw new base_1.RequiredError('chatId', 'Required parameter chatId was null or undefined when calling getMessages.');
+            }
+            // verify required parameter 'apikey' is not null or undefined
+            if (apikey === null || apikey === undefined) {
+                throw new base_1.RequiredError('apikey', 'Required parameter apikey was null or undefined when calling getMessages.');
             }
             const localVarPath = `/api/messages`;
             // use dummy base URL string because the URL constructor only accepts absolute URLs.
@@ -64,6 +69,9 @@ const MessagesApiAxiosParamCreator = function (configuration) {
             }
             if (chatId !== undefined) {
                 localVarQueryParameter['chatId'] = chatId;
+            }
+            if (apikey !== undefined && apikey !== null) {
+                localVarHeaderParameter['apikey'] = String(apikey);
             }
             const query = new URLSearchParams(localVarUrlObj.search);
             for (const key in localVarQueryParameter) {
@@ -83,13 +91,18 @@ const MessagesApiAxiosParamCreator = function (configuration) {
         /**
          *
          * @param {ReadMessageDto} body
+         * @param {string} apikey
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        readMessage: (body_1, ...args_1) => __awaiter(this, [body_1, ...args_1], void 0, function* (body, options = {}) {
+        readMessage: (body_1, apikey_1, ...args_1) => __awaiter(this, [body_1, apikey_1, ...args_1], void 0, function* (body, apikey, options = {}) {
             // verify required parameter 'body' is not null or undefined
             if (body === null || body === undefined) {
                 throw new base_1.RequiredError('body', 'Required parameter body was null or undefined when calling readMessage.');
+            }
+            // verify required parameter 'apikey' is not null or undefined
+            if (apikey === null || apikey === undefined) {
+                throw new base_1.RequiredError('apikey', 'Required parameter apikey was null or undefined when calling readMessage.');
             }
             const localVarPath = `/api/messages/read`;
             // use dummy base URL string because the URL constructor only accepts absolute URLs.
@@ -101,6 +114,9 @@ const MessagesApiAxiosParamCreator = function (configuration) {
             const localVarRequestOptions = Object.assign(Object.assign({ method: 'POST' }, baseOptions), options);
             const localVarHeaderParameter = {};
             const localVarQueryParameter = {};
+            if (apikey !== undefined && apikey !== null) {
+                localVarHeaderParameter['apikey'] = String(apikey);
+            }
             localVarHeaderParameter['Content-Type'] = 'application/json';
             const query = new URLSearchParams(localVarUrlObj.search);
             for (const key in localVarQueryParameter) {
@@ -122,13 +138,18 @@ const MessagesApiAxiosParamCreator = function (configuration) {
         /**
          *
          * @param {SendTemplateDataDto} body
+         * @param {string} apikey
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        sendTemplateMessage: (body_1, ...args_1) => __awaiter(this, [body_1, ...args_1], void 0, function* (body, options = {}) {
+        sendTemplateMessage: (body_1, apikey_1, ...args_1) => __awaiter(this, [body_1, apikey_1, ...args_1], void 0, function* (body, apikey, options = {}) {
             // verify required parameter 'body' is not null or undefined
             if (body === null || body === undefined) {
                 throw new base_1.RequiredError('body', 'Required parameter body was null or undefined when calling sendTemplateMessage.');
+            }
+            // verify required parameter 'apikey' is not null or undefined
+            if (apikey === null || apikey === undefined) {
+                throw new base_1.RequiredError('apikey', 'Required parameter apikey was null or undefined when calling sendTemplateMessage.');
             }
             const localVarPath = `/api/messages/send-template`;
             // use dummy base URL string because the URL constructor only accepts absolute URLs.
@@ -140,6 +161,9 @@ const MessagesApiAxiosParamCreator = function (configuration) {
             const localVarRequestOptions = Object.assign(Object.assign({ method: 'POST' }, baseOptions), options);
             const localVarHeaderParameter = {};
             const localVarQueryParameter = {};
+            if (apikey !== undefined && apikey !== null) {
+                localVarHeaderParameter['apikey'] = String(apikey);
+            }
             localVarHeaderParameter['Content-Type'] = 'application/json';
             const query = new URLSearchParams(localVarUrlObj.search);
             for (const key in localVarQueryParameter) {
@@ -161,13 +185,18 @@ const MessagesApiAxiosParamCreator = function (configuration) {
         /**
          *
          * @param {SendTextDto} body
+         * @param {string} apikey
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        sendTextMessage: (body_1, ...args_1) => __awaiter(this, [body_1, ...args_1], void 0, function* (body, options = {}) {
+        sendTextMessage: (body_1, apikey_1, ...args_1) => __awaiter(this, [body_1, apikey_1, ...args_1], void 0, function* (body, apikey, options = {}) {
             // verify required parameter 'body' is not null or undefined
             if (body === null || body === undefined) {
                 throw new base_1.RequiredError('body', 'Required parameter body was null or undefined when calling sendTextMessage.');
+            }
+            // verify required parameter 'apikey' is not null or undefined
+            if (apikey === null || apikey === undefined) {
+                throw new base_1.RequiredError('apikey', 'Required parameter apikey was null or undefined when calling sendTextMessage.');
             }
             const localVarPath = `/api/messages/send-text`;
             // use dummy base URL string because the URL constructor only accepts absolute URLs.
@@ -179,6 +208,9 @@ const MessagesApiAxiosParamCreator = function (configuration) {
             const localVarRequestOptions = Object.assign(Object.assign({ method: 'POST' }, baseOptions), options);
             const localVarHeaderParameter = {};
             const localVarQueryParameter = {};
+            if (apikey !== undefined && apikey !== null) {
+                localVarHeaderParameter['apikey'] = String(apikey);
+            }
             localVarHeaderParameter['Content-Type'] = 'application/json';
             const query = new URLSearchParams(localVarUrlObj.search);
             for (const key in localVarQueryParameter) {
@@ -210,12 +242,13 @@ const MessagesApiFp = function (configuration) {
          *
          * @param {number} branchId
          * @param {number} chatId
+         * @param {string} apikey
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        getMessages(branchId, chatId, options) {
+        getMessages(branchId, chatId, apikey, options) {
             return __awaiter(this, void 0, void 0, function* () {
-                const localVarAxiosArgs = yield (0, exports.MessagesApiAxiosParamCreator)(configuration).getMessages(branchId, chatId, options);
+                const localVarAxiosArgs = yield (0, exports.MessagesApiAxiosParamCreator)(configuration).getMessages(branchId, chatId, apikey, options);
                 return (axios = axios_1.default, basePath = base_1.BASE_PATH) => {
                     const axiosRequestArgs = Object.assign(Object.assign({}, localVarAxiosArgs.options), { url: basePath + localVarAxiosArgs.url });
                     return axios.request(axiosRequestArgs);
@@ -225,12 +258,13 @@ const MessagesApiFp = function (configuration) {
         /**
          *
          * @param {ReadMessageDto} body
+         * @param {string} apikey
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        readMessage(body, options) {
+        readMessage(body, apikey, options) {
             return __awaiter(this, void 0, void 0, function* () {
-                const localVarAxiosArgs = yield (0, exports.MessagesApiAxiosParamCreator)(configuration).readMessage(body, options);
+                const localVarAxiosArgs = yield (0, exports.MessagesApiAxiosParamCreator)(configuration).readMessage(body, apikey, options);
                 return (axios = axios_1.default, basePath = base_1.BASE_PATH) => {
                     const axiosRequestArgs = Object.assign(Object.assign({}, localVarAxiosArgs.options), { url: basePath + localVarAxiosArgs.url });
                     return axios.request(axiosRequestArgs);
@@ -240,12 +274,13 @@ const MessagesApiFp = function (configuration) {
         /**
          *
          * @param {SendTemplateDataDto} body
+         * @param {string} apikey
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        sendTemplateMessage(body, options) {
+        sendTemplateMessage(body, apikey, options) {
             return __awaiter(this, void 0, void 0, function* () {
-                const localVarAxiosArgs = yield (0, exports.MessagesApiAxiosParamCreator)(configuration).sendTemplateMessage(body, options);
+                const localVarAxiosArgs = yield (0, exports.MessagesApiAxiosParamCreator)(configuration).sendTemplateMessage(body, apikey, options);
                 return (axios = axios_1.default, basePath = base_1.BASE_PATH) => {
                     const axiosRequestArgs = Object.assign(Object.assign({}, localVarAxiosArgs.options), { url: basePath + localVarAxiosArgs.url });
                     return axios.request(axiosRequestArgs);
@@ -255,12 +290,13 @@ const MessagesApiFp = function (configuration) {
         /**
          *
          * @param {SendTextDto} body
+         * @param {string} apikey
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        sendTextMessage(body, options) {
+        sendTextMessage(body, apikey, options) {
             return __awaiter(this, void 0, void 0, function* () {
-                const localVarAxiosArgs = yield (0, exports.MessagesApiAxiosParamCreator)(configuration).sendTextMessage(body, options);
+                const localVarAxiosArgs = yield (0, exports.MessagesApiAxiosParamCreator)(configuration).sendTextMessage(body, apikey, options);
                 return (axios = axios_1.default, basePath = base_1.BASE_PATH) => {
                     const axiosRequestArgs = Object.assign(Object.assign({}, localVarAxiosArgs.options), { url: basePath + localVarAxiosArgs.url });
                     return axios.request(axiosRequestArgs);
@@ -280,45 +316,49 @@ const MessagesApiFactory = function (configuration, basePath, axios) {
          *
          * @param {number} branchId
          * @param {number} chatId
+         * @param {string} apikey
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        getMessages(branchId, chatId, options) {
+        getMessages(branchId, chatId, apikey, options) {
             return __awaiter(this, void 0, void 0, function* () {
-                return (0, exports.MessagesApiFp)(configuration).getMessages(branchId, chatId, options).then((request) => request(axios, basePath));
+                return (0, exports.MessagesApiFp)(configuration).getMessages(branchId, chatId, apikey, options).then((request) => request(axios, basePath));
             });
         },
         /**
          *
          * @param {ReadMessageDto} body
+         * @param {string} apikey
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        readMessage(body, options) {
+        readMessage(body, apikey, options) {
             return __awaiter(this, void 0, void 0, function* () {
-                return (0, exports.MessagesApiFp)(configuration).readMessage(body, options).then((request) => request(axios, basePath));
+                return (0, exports.MessagesApiFp)(configuration).readMessage(body, apikey, options).then((request) => request(axios, basePath));
             });
         },
         /**
          *
          * @param {SendTemplateDataDto} body
+         * @param {string} apikey
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        sendTemplateMessage(body, options) {
+        sendTemplateMessage(body, apikey, options) {
             return __awaiter(this, void 0, void 0, function* () {
-                return (0, exports.MessagesApiFp)(configuration).sendTemplateMessage(body, options).then((request) => request(axios, basePath));
+                return (0, exports.MessagesApiFp)(configuration).sendTemplateMessage(body, apikey, options).then((request) => request(axios, basePath));
             });
         },
         /**
          *
          * @param {SendTextDto} body
+         * @param {string} apikey
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        sendTextMessage(body, options) {
+        sendTextMessage(body, apikey, options) {
             return __awaiter(this, void 0, void 0, function* () {
-                return (0, exports.MessagesApiFp)(configuration).sendTextMessage(body, options).then((request) => request(axios, basePath));
+                return (0, exports.MessagesApiFp)(configuration).sendTextMessage(body, apikey, options).then((request) => request(axios, basePath));
             });
         },
     };
@@ -335,49 +375,53 @@ class MessagesApi extends base_1.BaseAPI {
      *
      * @param {number} branchId
      * @param {number} chatId
+     * @param {string} apikey
      * @param {*} [options] Override http request option.
      * @throws {RequiredError}
      * @memberof MessagesApi
      */
-    getMessages(branchId, chatId, options) {
+    getMessages(branchId, chatId, apikey, options) {
         return __awaiter(this, void 0, void 0, function* () {
-            return (0, exports.MessagesApiFp)(this.configuration).getMessages(branchId, chatId, options).then((request) => request(this.axios, this.basePath));
+            return (0, exports.MessagesApiFp)(this.configuration).getMessages(branchId, chatId, apikey, options).then((request) => request(this.axios, this.basePath));
         });
     }
     /**
      *
      * @param {ReadMessageDto} body
+     * @param {string} apikey
      * @param {*} [options] Override http request option.
      * @throws {RequiredError}
      * @memberof MessagesApi
      */
-    readMessage(body, options) {
+    readMessage(body, apikey, options) {
         return __awaiter(this, void 0, void 0, function* () {
-            return (0, exports.MessagesApiFp)(this.configuration).readMessage(body, options).then((request) => request(this.axios, this.basePath));
+            return (0, exports.MessagesApiFp)(this.configuration).readMessage(body, apikey, options).then((request) => request(this.axios, this.basePath));
         });
     }
     /**
      *
      * @param {SendTemplateDataDto} body
+     * @param {string} apikey
      * @param {*} [options] Override http request option.
      * @throws {RequiredError}
      * @memberof MessagesApi
      */
-    sendTemplateMessage(body, options) {
+    sendTemplateMessage(body, apikey, options) {
         return __awaiter(this, void 0, void 0, function* () {
-            return (0, exports.MessagesApiFp)(this.configuration).sendTemplateMessage(body, options).then((request) => request(this.axios, this.basePath));
+            return (0, exports.MessagesApiFp)(this.configuration).sendTemplateMessage(body, apikey, options).then((request) => request(this.axios, this.basePath));
         });
     }
     /**
      *
      * @param {SendTextDto} body
+     * @param {string} apikey
      * @param {*} [options] Override http request option.
      * @throws {RequiredError}
      * @memberof MessagesApi
      */
-    sendTextMessage(body, options) {
+    sendTextMessage(body, apikey, options) {
         return __awaiter(this, void 0, void 0, function* () {
-            return (0, exports.MessagesApiFp)(this.configuration).sendTextMessage(body, options).then((request) => request(this.axios, this.basePath));
+            return (0, exports.MessagesApiFp)(this.configuration).sendTextMessage(body, apikey, options).then((request) => request(this.axios, this.basePath));
         });
     }
 }

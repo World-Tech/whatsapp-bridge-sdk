@@ -22,17 +22,19 @@ export declare const SessionsApiAxiosParamCreator: (configuration?: Configuratio
     /**
      *
      * @param {string} sessionUuid
+     * @param {string} apikey
      * @param {*} [options] Override http request option.
      * @throws {RequiredError}
      */
-    getSession: (sessionUuid: string, options?: AxiosRequestConfig) => Promise<RequestArgs>;
+    getSession: (sessionUuid: string, apikey: string, options?: AxiosRequestConfig) => Promise<RequestArgs>;
     /**
      *
      * @param {number} branchId
+     * @param {string} apikey
      * @param {*} [options] Override http request option.
      * @throws {RequiredError}
      */
-    getSessions: (branchId: number, options?: AxiosRequestConfig) => Promise<RequestArgs>;
+    getSessions: (branchId: number, apikey: string, options?: AxiosRequestConfig) => Promise<RequestArgs>;
 };
 /**
  * SessionsApi - functional programming interface
@@ -42,17 +44,19 @@ export declare const SessionsApiFp: (configuration?: Configuration) => {
     /**
      *
      * @param {string} sessionUuid
+     * @param {string} apikey
      * @param {*} [options] Override http request option.
      * @throws {RequiredError}
      */
-    getSession(sessionUuid: string, options?: AxiosRequestConfig): Promise<(axios?: AxiosInstance, basePath?: string) => Promise<AxiosResponse<SessionResponseDataDto>>>;
+    getSession(sessionUuid: string, apikey: string, options?: AxiosRequestConfig): Promise<(axios?: AxiosInstance, basePath?: string) => Promise<AxiosResponse<SessionResponseDataDto>>>;
     /**
      *
      * @param {number} branchId
+     * @param {string} apikey
      * @param {*} [options] Override http request option.
      * @throws {RequiredError}
      */
-    getSessions(branchId: number, options?: AxiosRequestConfig): Promise<(axios?: AxiosInstance, basePath?: string) => Promise<AxiosResponse<SessionsResponseDataDto>>>;
+    getSessions(branchId: number, apikey: string, options?: AxiosRequestConfig): Promise<(axios?: AxiosInstance, basePath?: string) => Promise<AxiosResponse<SessionsResponseDataDto>>>;
 };
 /**
  * SessionsApi - factory interface
@@ -62,17 +66,19 @@ export declare const SessionsApiFactory: (configuration?: Configuration, basePat
     /**
      *
      * @param {string} sessionUuid
+     * @param {string} apikey
      * @param {*} [options] Override http request option.
      * @throws {RequiredError}
      */
-    getSession(sessionUuid: string, options?: AxiosRequestConfig): Promise<AxiosResponse<SessionResponseDataDto>>;
+    getSession(sessionUuid: string, apikey: string, options?: AxiosRequestConfig): Promise<AxiosResponse<SessionResponseDataDto>>;
     /**
      *
      * @param {number} branchId
+     * @param {string} apikey
      * @param {*} [options] Override http request option.
      * @throws {RequiredError}
      */
-    getSessions(branchId: number, options?: AxiosRequestConfig): Promise<AxiosResponse<SessionsResponseDataDto>>;
+    getSessions(branchId: number, apikey: string, options?: AxiosRequestConfig): Promise<AxiosResponse<SessionsResponseDataDto>>;
 };
 /**
  * SessionsApi - object-oriented interface
@@ -84,17 +90,19 @@ export declare class SessionsApi extends BaseAPI {
     /**
      *
      * @param {string} sessionUuid
+     * @param {string} apikey
      * @param {*} [options] Override http request option.
      * @throws {RequiredError}
      * @memberof SessionsApi
      */
-    getSession(sessionUuid: string, options?: AxiosRequestConfig): Promise<AxiosResponse<SessionResponseDataDto>>;
+    getSession(sessionUuid: string, apikey: string, options?: AxiosRequestConfig): Promise<AxiosResponse<SessionResponseDataDto>>;
     /**
      *
      * @param {number} branchId
+     * @param {string} apikey
      * @param {*} [options] Override http request option.
      * @throws {RequiredError}
      * @memberof SessionsApi
      */
-    getSessions(branchId: number, options?: AxiosRequestConfig): Promise<AxiosResponse<SessionsResponseDataDto>>;
+    getSessions(branchId: number, apikey: string, options?: AxiosRequestConfig): Promise<AxiosResponse<SessionsResponseDataDto>>;
 }

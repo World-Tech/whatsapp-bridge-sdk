@@ -36,13 +36,18 @@ const ChatsApiAxiosParamCreator = function (configuration) {
         /**
          *
          * @param {AssignToMeDto} body
+         * @param {string} apikey
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        assignToSeller: (body_1, ...args_1) => __awaiter(this, [body_1, ...args_1], void 0, function* (body, options = {}) {
+        assignToSeller: (body_1, apikey_1, ...args_1) => __awaiter(this, [body_1, apikey_1, ...args_1], void 0, function* (body, apikey, options = {}) {
             // verify required parameter 'body' is not null or undefined
             if (body === null || body === undefined) {
                 throw new base_1.RequiredError('body', 'Required parameter body was null or undefined when calling assignToSeller.');
+            }
+            // verify required parameter 'apikey' is not null or undefined
+            if (apikey === null || apikey === undefined) {
+                throw new base_1.RequiredError('apikey', 'Required parameter apikey was null or undefined when calling assignToSeller.');
             }
             const localVarPath = `/api/chats/assign-to-seller`;
             // use dummy base URL string because the URL constructor only accepts absolute URLs.
@@ -54,6 +59,9 @@ const ChatsApiAxiosParamCreator = function (configuration) {
             const localVarRequestOptions = Object.assign(Object.assign({ method: 'POST' }, baseOptions), options);
             const localVarHeaderParameter = {};
             const localVarQueryParameter = {};
+            if (apikey !== undefined && apikey !== null) {
+                localVarHeaderParameter['apikey'] = String(apikey);
+            }
             localVarHeaderParameter['Content-Type'] = 'application/json';
             const query = new URLSearchParams(localVarUrlObj.search);
             for (const key in localVarQueryParameter) {
@@ -75,15 +83,20 @@ const ChatsApiAxiosParamCreator = function (configuration) {
         /**
          *
          * @param {AssignmentTypeDto} body
+         * @param {string} apikey
          * @param {string} cellphone
          * @param {number} id
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        assignmentType: (body_1, cellphone_1, id_1, ...args_1) => __awaiter(this, [body_1, cellphone_1, id_1, ...args_1], void 0, function* (body, cellphone, id, options = {}) {
+        assignmentType: (body_1, apikey_1, cellphone_1, id_1, ...args_1) => __awaiter(this, [body_1, apikey_1, cellphone_1, id_1, ...args_1], void 0, function* (body, apikey, cellphone, id, options = {}) {
             // verify required parameter 'body' is not null or undefined
             if (body === null || body === undefined) {
                 throw new base_1.RequiredError('body', 'Required parameter body was null or undefined when calling assignmentType.');
+            }
+            // verify required parameter 'apikey' is not null or undefined
+            if (apikey === null || apikey === undefined) {
+                throw new base_1.RequiredError('apikey', 'Required parameter apikey was null or undefined when calling assignmentType.');
             }
             // verify required parameter 'cellphone' is not null or undefined
             if (cellphone === null || cellphone === undefined) {
@@ -105,6 +118,9 @@ const ChatsApiAxiosParamCreator = function (configuration) {
             const localVarRequestOptions = Object.assign(Object.assign({ method: 'PUT' }, baseOptions), options);
             const localVarHeaderParameter = {};
             const localVarQueryParameter = {};
+            if (apikey !== undefined && apikey !== null) {
+                localVarHeaderParameter['apikey'] = String(apikey);
+            }
             localVarHeaderParameter['Content-Type'] = 'application/json';
             const query = new URLSearchParams(localVarUrlObj.search);
             for (const key in localVarQueryParameter) {
@@ -126,13 +142,18 @@ const ChatsApiAxiosParamCreator = function (configuration) {
         /**
          *
          * @param {number} id
+         * @param {string} apikey
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        getChat: (id_1, ...args_1) => __awaiter(this, [id_1, ...args_1], void 0, function* (id, options = {}) {
+        getChat: (id_1, apikey_1, ...args_1) => __awaiter(this, [id_1, apikey_1, ...args_1], void 0, function* (id, apikey, options = {}) {
             // verify required parameter 'id' is not null or undefined
             if (id === null || id === undefined) {
                 throw new base_1.RequiredError('id', 'Required parameter id was null or undefined when calling getChat.');
+            }
+            // verify required parameter 'apikey' is not null or undefined
+            if (apikey === null || apikey === undefined) {
+                throw new base_1.RequiredError('apikey', 'Required parameter apikey was null or undefined when calling getChat.');
             }
             const localVarPath = `/api/chats/{id}`
                 .replace(`{${"id"}}`, encodeURIComponent(String(id)));
@@ -145,6 +166,9 @@ const ChatsApiAxiosParamCreator = function (configuration) {
             const localVarRequestOptions = Object.assign(Object.assign({ method: 'GET' }, baseOptions), options);
             const localVarHeaderParameter = {};
             const localVarQueryParameter = {};
+            if (apikey !== undefined && apikey !== null) {
+                localVarHeaderParameter['apikey'] = String(apikey);
+            }
             const query = new URLSearchParams(localVarUrlObj.search);
             for (const key in localVarQueryParameter) {
                 query.set(key, localVarQueryParameter[key]);
@@ -300,12 +324,13 @@ const ChatsApiFp = function (configuration) {
         /**
          *
          * @param {AssignToMeDto} body
+         * @param {string} apikey
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        assignToSeller(body, options) {
+        assignToSeller(body, apikey, options) {
             return __awaiter(this, void 0, void 0, function* () {
-                const localVarAxiosArgs = yield (0, exports.ChatsApiAxiosParamCreator)(configuration).assignToSeller(body, options);
+                const localVarAxiosArgs = yield (0, exports.ChatsApiAxiosParamCreator)(configuration).assignToSeller(body, apikey, options);
                 return (axios = axios_1.default, basePath = base_1.BASE_PATH) => {
                     const axiosRequestArgs = Object.assign(Object.assign({}, localVarAxiosArgs.options), { url: basePath + localVarAxiosArgs.url });
                     return axios.request(axiosRequestArgs);
@@ -315,14 +340,15 @@ const ChatsApiFp = function (configuration) {
         /**
          *
          * @param {AssignmentTypeDto} body
+         * @param {string} apikey
          * @param {string} cellphone
          * @param {number} id
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        assignmentType(body, cellphone, id, options) {
+        assignmentType(body, apikey, cellphone, id, options) {
             return __awaiter(this, void 0, void 0, function* () {
-                const localVarAxiosArgs = yield (0, exports.ChatsApiAxiosParamCreator)(configuration).assignmentType(body, cellphone, id, options);
+                const localVarAxiosArgs = yield (0, exports.ChatsApiAxiosParamCreator)(configuration).assignmentType(body, apikey, cellphone, id, options);
                 return (axios = axios_1.default, basePath = base_1.BASE_PATH) => {
                     const axiosRequestArgs = Object.assign(Object.assign({}, localVarAxiosArgs.options), { url: basePath + localVarAxiosArgs.url });
                     return axios.request(axiosRequestArgs);
@@ -332,12 +358,13 @@ const ChatsApiFp = function (configuration) {
         /**
          *
          * @param {number} id
+         * @param {string} apikey
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        getChat(id, options) {
+        getChat(id, apikey, options) {
             return __awaiter(this, void 0, void 0, function* () {
-                const localVarAxiosArgs = yield (0, exports.ChatsApiAxiosParamCreator)(configuration).getChat(id, options);
+                const localVarAxiosArgs = yield (0, exports.ChatsApiAxiosParamCreator)(configuration).getChat(id, apikey, options);
                 return (axios = axios_1.default, basePath = base_1.BASE_PATH) => {
                     const axiosRequestArgs = Object.assign(Object.assign({}, localVarAxiosArgs.options), { url: basePath + localVarAxiosArgs.url });
                     return axios.request(axiosRequestArgs);
@@ -397,36 +424,39 @@ const ChatsApiFactory = function (configuration, basePath, axios) {
         /**
          *
          * @param {AssignToMeDto} body
+         * @param {string} apikey
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        assignToSeller(body, options) {
+        assignToSeller(body, apikey, options) {
             return __awaiter(this, void 0, void 0, function* () {
-                return (0, exports.ChatsApiFp)(configuration).assignToSeller(body, options).then((request) => request(axios, basePath));
+                return (0, exports.ChatsApiFp)(configuration).assignToSeller(body, apikey, options).then((request) => request(axios, basePath));
             });
         },
         /**
          *
          * @param {AssignmentTypeDto} body
+         * @param {string} apikey
          * @param {string} cellphone
          * @param {number} id
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        assignmentType(body, cellphone, id, options) {
+        assignmentType(body, apikey, cellphone, id, options) {
             return __awaiter(this, void 0, void 0, function* () {
-                return (0, exports.ChatsApiFp)(configuration).assignmentType(body, cellphone, id, options).then((request) => request(axios, basePath));
+                return (0, exports.ChatsApiFp)(configuration).assignmentType(body, apikey, cellphone, id, options).then((request) => request(axios, basePath));
             });
         },
         /**
          *
          * @param {number} id
+         * @param {string} apikey
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        getChat(id, options) {
+        getChat(id, apikey, options) {
             return __awaiter(this, void 0, void 0, function* () {
-                return (0, exports.ChatsApiFp)(configuration).getChat(id, options).then((request) => request(axios, basePath));
+                return (0, exports.ChatsApiFp)(configuration).getChat(id, apikey, options).then((request) => request(axios, basePath));
             });
         },
         /**
@@ -475,39 +505,42 @@ class ChatsApi extends base_1.BaseAPI {
     /**
      *
      * @param {AssignToMeDto} body
+     * @param {string} apikey
      * @param {*} [options] Override http request option.
      * @throws {RequiredError}
      * @memberof ChatsApi
      */
-    assignToSeller(body, options) {
+    assignToSeller(body, apikey, options) {
         return __awaiter(this, void 0, void 0, function* () {
-            return (0, exports.ChatsApiFp)(this.configuration).assignToSeller(body, options).then((request) => request(this.axios, this.basePath));
+            return (0, exports.ChatsApiFp)(this.configuration).assignToSeller(body, apikey, options).then((request) => request(this.axios, this.basePath));
         });
     }
     /**
      *
      * @param {AssignmentTypeDto} body
+     * @param {string} apikey
      * @param {string} cellphone
      * @param {number} id
      * @param {*} [options] Override http request option.
      * @throws {RequiredError}
      * @memberof ChatsApi
      */
-    assignmentType(body, cellphone, id, options) {
+    assignmentType(body, apikey, cellphone, id, options) {
         return __awaiter(this, void 0, void 0, function* () {
-            return (0, exports.ChatsApiFp)(this.configuration).assignmentType(body, cellphone, id, options).then((request) => request(this.axios, this.basePath));
+            return (0, exports.ChatsApiFp)(this.configuration).assignmentType(body, apikey, cellphone, id, options).then((request) => request(this.axios, this.basePath));
         });
     }
     /**
      *
      * @param {number} id
+     * @param {string} apikey
      * @param {*} [options] Override http request option.
      * @throws {RequiredError}
      * @memberof ChatsApi
      */
-    getChat(id, options) {
+    getChat(id, apikey, options) {
         return __awaiter(this, void 0, void 0, function* () {
-            return (0, exports.ChatsApiFp)(this.configuration).getChat(id, options).then((request) => request(this.axios, this.basePath));
+            return (0, exports.ChatsApiFp)(this.configuration).getChat(id, apikey, options).then((request) => request(this.axios, this.basePath));
         });
     }
     /**

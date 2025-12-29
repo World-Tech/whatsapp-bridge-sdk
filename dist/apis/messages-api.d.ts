@@ -27,31 +27,35 @@ export declare const MessagesApiAxiosParamCreator: (configuration?: Configuratio
      *
      * @param {number} branchId
      * @param {number} chatId
+     * @param {string} apikey
      * @param {*} [options] Override http request option.
      * @throws {RequiredError}
      */
-    getMessages: (branchId: number, chatId: number, options?: AxiosRequestConfig) => Promise<RequestArgs>;
+    getMessages: (branchId: number, chatId: number, apikey: string, options?: AxiosRequestConfig) => Promise<RequestArgs>;
     /**
      *
      * @param {ReadMessageDto} body
+     * @param {string} apikey
      * @param {*} [options] Override http request option.
      * @throws {RequiredError}
      */
-    readMessage: (body: ReadMessageDto, options?: AxiosRequestConfig) => Promise<RequestArgs>;
+    readMessage: (body: ReadMessageDto, apikey: string, options?: AxiosRequestConfig) => Promise<RequestArgs>;
     /**
      *
      * @param {SendTemplateDataDto} body
+     * @param {string} apikey
      * @param {*} [options] Override http request option.
      * @throws {RequiredError}
      */
-    sendTemplateMessage: (body: SendTemplateDataDto, options?: AxiosRequestConfig) => Promise<RequestArgs>;
+    sendTemplateMessage: (body: SendTemplateDataDto, apikey: string, options?: AxiosRequestConfig) => Promise<RequestArgs>;
     /**
      *
      * @param {SendTextDto} body
+     * @param {string} apikey
      * @param {*} [options] Override http request option.
      * @throws {RequiredError}
      */
-    sendTextMessage: (body: SendTextDto, options?: AxiosRequestConfig) => Promise<RequestArgs>;
+    sendTextMessage: (body: SendTextDto, apikey: string, options?: AxiosRequestConfig) => Promise<RequestArgs>;
 };
 /**
  * MessagesApi - functional programming interface
@@ -62,31 +66,35 @@ export declare const MessagesApiFp: (configuration?: Configuration) => {
      *
      * @param {number} branchId
      * @param {number} chatId
+     * @param {string} apikey
      * @param {*} [options] Override http request option.
      * @throws {RequiredError}
      */
-    getMessages(branchId: number, chatId: number, options?: AxiosRequestConfig): Promise<(axios?: AxiosInstance, basePath?: string) => Promise<AxiosResponse<MessageResponseDto>>>;
+    getMessages(branchId: number, chatId: number, apikey: string, options?: AxiosRequestConfig): Promise<(axios?: AxiosInstance, basePath?: string) => Promise<AxiosResponse<MessageResponseDto>>>;
     /**
      *
      * @param {ReadMessageDto} body
+     * @param {string} apikey
      * @param {*} [options] Override http request option.
      * @throws {RequiredError}
      */
-    readMessage(body: ReadMessageDto, options?: AxiosRequestConfig): Promise<(axios?: AxiosInstance, basePath?: string) => Promise<AxiosResponse<ReadMessageResponseDataDto>>>;
+    readMessage(body: ReadMessageDto, apikey: string, options?: AxiosRequestConfig): Promise<(axios?: AxiosInstance, basePath?: string) => Promise<AxiosResponse<ReadMessageResponseDataDto>>>;
     /**
      *
      * @param {SendTemplateDataDto} body
+     * @param {string} apikey
      * @param {*} [options] Override http request option.
      * @throws {RequiredError}
      */
-    sendTemplateMessage(body: SendTemplateDataDto, options?: AxiosRequestConfig): Promise<(axios?: AxiosInstance, basePath?: string) => Promise<AxiosResponse<SendTextDataResponseDto>>>;
+    sendTemplateMessage(body: SendTemplateDataDto, apikey: string, options?: AxiosRequestConfig): Promise<(axios?: AxiosInstance, basePath?: string) => Promise<AxiosResponse<SendTextDataResponseDto>>>;
     /**
      *
      * @param {SendTextDto} body
+     * @param {string} apikey
      * @param {*} [options] Override http request option.
      * @throws {RequiredError}
      */
-    sendTextMessage(body: SendTextDto, options?: AxiosRequestConfig): Promise<(axios?: AxiosInstance, basePath?: string) => Promise<AxiosResponse<SendTextDataResponseDto>>>;
+    sendTextMessage(body: SendTextDto, apikey: string, options?: AxiosRequestConfig): Promise<(axios?: AxiosInstance, basePath?: string) => Promise<AxiosResponse<SendTextDataResponseDto>>>;
 };
 /**
  * MessagesApi - factory interface
@@ -97,31 +105,35 @@ export declare const MessagesApiFactory: (configuration?: Configuration, basePat
      *
      * @param {number} branchId
      * @param {number} chatId
+     * @param {string} apikey
      * @param {*} [options] Override http request option.
      * @throws {RequiredError}
      */
-    getMessages(branchId: number, chatId: number, options?: AxiosRequestConfig): Promise<AxiosResponse<MessageResponseDto>>;
+    getMessages(branchId: number, chatId: number, apikey: string, options?: AxiosRequestConfig): Promise<AxiosResponse<MessageResponseDto>>;
     /**
      *
      * @param {ReadMessageDto} body
+     * @param {string} apikey
      * @param {*} [options] Override http request option.
      * @throws {RequiredError}
      */
-    readMessage(body: ReadMessageDto, options?: AxiosRequestConfig): Promise<AxiosResponse<ReadMessageResponseDataDto>>;
+    readMessage(body: ReadMessageDto, apikey: string, options?: AxiosRequestConfig): Promise<AxiosResponse<ReadMessageResponseDataDto>>;
     /**
      *
      * @param {SendTemplateDataDto} body
+     * @param {string} apikey
      * @param {*} [options] Override http request option.
      * @throws {RequiredError}
      */
-    sendTemplateMessage(body: SendTemplateDataDto, options?: AxiosRequestConfig): Promise<AxiosResponse<SendTextDataResponseDto>>;
+    sendTemplateMessage(body: SendTemplateDataDto, apikey: string, options?: AxiosRequestConfig): Promise<AxiosResponse<SendTextDataResponseDto>>;
     /**
      *
      * @param {SendTextDto} body
+     * @param {string} apikey
      * @param {*} [options] Override http request option.
      * @throws {RequiredError}
      */
-    sendTextMessage(body: SendTextDto, options?: AxiosRequestConfig): Promise<AxiosResponse<SendTextDataResponseDto>>;
+    sendTextMessage(body: SendTextDto, apikey: string, options?: AxiosRequestConfig): Promise<AxiosResponse<SendTextDataResponseDto>>;
 };
 /**
  * MessagesApi - object-oriented interface
@@ -134,33 +146,37 @@ export declare class MessagesApi extends BaseAPI {
      *
      * @param {number} branchId
      * @param {number} chatId
+     * @param {string} apikey
      * @param {*} [options] Override http request option.
      * @throws {RequiredError}
      * @memberof MessagesApi
      */
-    getMessages(branchId: number, chatId: number, options?: AxiosRequestConfig): Promise<AxiosResponse<MessageResponseDto>>;
+    getMessages(branchId: number, chatId: number, apikey: string, options?: AxiosRequestConfig): Promise<AxiosResponse<MessageResponseDto>>;
     /**
      *
      * @param {ReadMessageDto} body
+     * @param {string} apikey
      * @param {*} [options] Override http request option.
      * @throws {RequiredError}
      * @memberof MessagesApi
      */
-    readMessage(body: ReadMessageDto, options?: AxiosRequestConfig): Promise<AxiosResponse<ReadMessageResponseDataDto>>;
+    readMessage(body: ReadMessageDto, apikey: string, options?: AxiosRequestConfig): Promise<AxiosResponse<ReadMessageResponseDataDto>>;
     /**
      *
      * @param {SendTemplateDataDto} body
+     * @param {string} apikey
      * @param {*} [options] Override http request option.
      * @throws {RequiredError}
      * @memberof MessagesApi
      */
-    sendTemplateMessage(body: SendTemplateDataDto, options?: AxiosRequestConfig): Promise<AxiosResponse<SendTextDataResponseDto>>;
+    sendTemplateMessage(body: SendTemplateDataDto, apikey: string, options?: AxiosRequestConfig): Promise<AxiosResponse<SendTextDataResponseDto>>;
     /**
      *
      * @param {SendTextDto} body
+     * @param {string} apikey
      * @param {*} [options] Override http request option.
      * @throws {RequiredError}
      * @memberof MessagesApi
      */
-    sendTextMessage(body: SendTextDto, options?: AxiosRequestConfig): Promise<AxiosResponse<SendTextDataResponseDto>>;
+    sendTextMessage(body: SendTextDto, apikey: string, options?: AxiosRequestConfig): Promise<AxiosResponse<SendTextDataResponseDto>>;
 }

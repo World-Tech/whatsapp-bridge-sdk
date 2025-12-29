@@ -23,17 +23,19 @@ export declare const ContactsApiAxiosParamCreator: (configuration?: Configuratio
      *
      * @param {number} cellphone
      * @param {number} branchId
+     * @param {string} apikey
      * @param {*} [options] Override http request option.
      * @throws {RequiredError}
      */
-    getChatFromCellphone: (cellphone: number, branchId: number, options?: AxiosRequestConfig) => Promise<RequestArgs>;
+    getChatFromCellphone: (cellphone: number, branchId: number, apikey: string, options?: AxiosRequestConfig) => Promise<RequestArgs>;
     /**
      *
      * @param {number} branchId
+     * @param {string} apikey
      * @param {*} [options] Override http request option.
      * @throws {RequiredError}
      */
-    getContacts: (branchId: number, options?: AxiosRequestConfig) => Promise<RequestArgs>;
+    getContacts: (branchId: number, apikey: string, options?: AxiosRequestConfig) => Promise<RequestArgs>;
 };
 /**
  * ContactsApi - functional programming interface
@@ -44,17 +46,19 @@ export declare const ContactsApiFp: (configuration?: Configuration) => {
      *
      * @param {number} cellphone
      * @param {number} branchId
+     * @param {string} apikey
      * @param {*} [options] Override http request option.
      * @throws {RequiredError}
      */
-    getChatFromCellphone(cellphone: number, branchId: number, options?: AxiosRequestConfig): Promise<(axios?: AxiosInstance, basePath?: string) => Promise<AxiosResponse<WhatsappChatResponseDTO>>>;
+    getChatFromCellphone(cellphone: number, branchId: number, apikey: string, options?: AxiosRequestConfig): Promise<(axios?: AxiosInstance, basePath?: string) => Promise<AxiosResponse<WhatsappChatResponseDTO>>>;
     /**
      *
      * @param {number} branchId
+     * @param {string} apikey
      * @param {*} [options] Override http request option.
      * @throws {RequiredError}
      */
-    getContacts(branchId: number, options?: AxiosRequestConfig): Promise<(axios?: AxiosInstance, basePath?: string) => Promise<AxiosResponse<ContactsResponseDTO>>>;
+    getContacts(branchId: number, apikey: string, options?: AxiosRequestConfig): Promise<(axios?: AxiosInstance, basePath?: string) => Promise<AxiosResponse<ContactsResponseDTO>>>;
 };
 /**
  * ContactsApi - factory interface
@@ -65,17 +69,19 @@ export declare const ContactsApiFactory: (configuration?: Configuration, basePat
      *
      * @param {number} cellphone
      * @param {number} branchId
+     * @param {string} apikey
      * @param {*} [options] Override http request option.
      * @throws {RequiredError}
      */
-    getChatFromCellphone(cellphone: number, branchId: number, options?: AxiosRequestConfig): Promise<AxiosResponse<WhatsappChatResponseDTO>>;
+    getChatFromCellphone(cellphone: number, branchId: number, apikey: string, options?: AxiosRequestConfig): Promise<AxiosResponse<WhatsappChatResponseDTO>>;
     /**
      *
      * @param {number} branchId
+     * @param {string} apikey
      * @param {*} [options] Override http request option.
      * @throws {RequiredError}
      */
-    getContacts(branchId: number, options?: AxiosRequestConfig): Promise<AxiosResponse<ContactsResponseDTO>>;
+    getContacts(branchId: number, apikey: string, options?: AxiosRequestConfig): Promise<AxiosResponse<ContactsResponseDTO>>;
 };
 /**
  * ContactsApi - object-oriented interface
@@ -88,17 +94,19 @@ export declare class ContactsApi extends BaseAPI {
      *
      * @param {number} cellphone
      * @param {number} branchId
+     * @param {string} apikey
      * @param {*} [options] Override http request option.
      * @throws {RequiredError}
      * @memberof ContactsApi
      */
-    getChatFromCellphone(cellphone: number, branchId: number, options?: AxiosRequestConfig): Promise<AxiosResponse<WhatsappChatResponseDTO>>;
+    getChatFromCellphone(cellphone: number, branchId: number, apikey: string, options?: AxiosRequestConfig): Promise<AxiosResponse<WhatsappChatResponseDTO>>;
     /**
      *
      * @param {number} branchId
+     * @param {string} apikey
      * @param {*} [options] Override http request option.
      * @throws {RequiredError}
      * @memberof ContactsApi
      */
-    getContacts(branchId: number, options?: AxiosRequestConfig): Promise<AxiosResponse<ContactsResponseDTO>>;
+    getContacts(branchId: number, apikey: string, options?: AxiosRequestConfig): Promise<AxiosResponse<ContactsResponseDTO>>;
 }
